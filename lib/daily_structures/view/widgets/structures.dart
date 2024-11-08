@@ -9,8 +9,11 @@ class Structures extends StatelessWidget {
       5,
       (index) => Structure(
         name: 'Structure $index',
-        description: 'Description $index',
-        isCompleted: index.isOdd,
+        description: 'Structure description $index',
+        isCompleted: index.isOdd && index != 0,
+        isStarted: !index.isOdd && index != 0,
+        completedStepsCount: 2,
+        totalStepsCount: 3,
       ),
     );
 
