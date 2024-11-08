@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:happy_day/daily_structures/daily_structures.dart';
 import 'package:happy_day/shared/widgets/sliver_delegate.dart';
+import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 part 'widgets/structure.dart';
 part 'widgets/structures.dart';
@@ -24,9 +25,7 @@ class DailyStructuresView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final l10n = context.l10n;
     return Scaffold(
-      // appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
       body: const SafeArea(child: DailyStructuresContent()),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
@@ -73,14 +72,3 @@ class DailyStructuresContent extends StatelessWidget {
     );
   }
 }
-
-// class CounterText extends StatelessWidget {
-//   const CounterText({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final theme = Theme.of(context);
-//     final count = context.select((DailyStructuresCubit cubit) => cubit.state);
-//     return Text('$count', style: theme.textTheme.displayLarge);
-//   }
-// }
