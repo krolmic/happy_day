@@ -26,19 +26,20 @@ class Structure extends StatelessWidget {
     final buildIconButton = buildCheckIconButton || buildAddIconButton;
 
     return ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-        title: Text(name),
-        subtitle: Text(description),
-        trailing: SizedBox(
-          width: 50,
-          height: 50,
-          child: buildIconButton
-              ? _StructureIconButton(isCompleted: isCompleted)
-              : _StructureProgress(
-                  completedStepsCount: completedStepsCount,
-                  totalStepsCount: totalStepsCount,
-                ),
-        ));
+      contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+      title: Text(name),
+      subtitle: Text(description),
+      trailing: SizedBox(
+        width: 50,
+        height: 50,
+        child: buildIconButton
+            ? _StructureIconButton(isCompleted: isCompleted)
+            : _StructureProgress(
+                completedStepsCount: completedStepsCount,
+                totalStepsCount: totalStepsCount,
+              ),
+      ),
+    );
   }
 }
 
