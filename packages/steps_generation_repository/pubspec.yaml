@@ -1,0 +1,20 @@
+name: steps_generation_repository
+description: Client and repository for generating structures steps
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+  flutter: ^3.24.0
+
+dependencies:
+  google_generative_ai: ^0.4.6
+  firebase_vertexai: ^1.0.2
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  very_good_analysis: ^6.0.0
