@@ -1,6 +1,6 @@
 part of '../router.dart';
 
-final _homeRoute = GoRoute(
+final _dailyStructuresRoute = GoRoute(
   name: RoutesNames.dailyStructures,
   path: '/${RoutesNames.dailyStructures}',
   builder: (context, state) => const DailyStructuresPage(),

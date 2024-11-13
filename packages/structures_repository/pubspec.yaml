@@ -6,6 +6,10 @@ publish_to: none
 environment:
   sdk: ^3.5.0
 
+dependencies:
+  structures_api:
+    path: ../structures_api
+
 dev_dependencies:
   mocktail: ^1.0.4
   test: ^1.25.8
