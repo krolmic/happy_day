@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:happy_day/l10n/l10n.dart';
 import 'package:happy_day/shared/router/router.dart';
+import 'package:happy_day/shared/theme.dart';
+import 'package:structures_repository/structures_repository.dart';
 import 'package:toastification/toastification.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({required this.structuresRepository, super.key});
+
+  final StructuresRepository structuresRepository;
+
+  @override
+  Widget build(BuildContext context) {
+    return RepositoryProvider.value(
+      value: structuresRepository,
+      child: const AppView(),
+    );
+  }
+}
+
+class AppView extends StatelessWidget {
+  const AppView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ToastificationWrapper(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: getTheme(context),
+        theme: HappyDayTheme.theme,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         routerConfig: goRouter,
       ),
-    );
-  }
-
-  ThemeData getTheme(BuildContext context) {
-    return ThemeData(
-      appBarTheme: AppBarTheme(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      listTileTheme: ListTileThemeData(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        tileColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
-        iconColor: Theme.of(context).colorScheme.primary,
-      ),
-      useMaterial3: true,
     );
   }
 }

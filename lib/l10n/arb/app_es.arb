@@ -1,7 +1,15 @@
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+    "errorMessage": "Se ha producido un error",
+    "editStructureAddAppBarTitle": "Añadir estructura",
+    "editStructureTitleLabel": "Título",
+    "editStructureDescriptionLabel": "Descripción",
+    "editStructureColorLabel": "Color",
+    "editStructureSelectColorLabel": "Selecciona un color",
+    "editStructurePreviewLabel": "Vista previa",
+    "editStructureStepsGenerationLoadingMessage": "Generando pasos...",
+    "editStructureStepsGenerationSuccessMessage": "Pasos generados correctamente!",
+    "editStructureStepsGenerationFailureMessage": "Error al generar pasos.",
+    "editStructureAddSuccessMessage": "Estructura añadida correctamente!",
+    "editStructureUpdateSuccessMessage": "Estructura actualizada correctamente!"
 }

@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:happy_day/daily_structures/daily_structures.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:structures_api/structures_api.dart';
 
 import '../../helpers/helpers.dart';
 
-class MockDailyStructuresCubit extends MockCubit<int>
+class MockDailyStructuresCubit extends MockCubit<DailyStructuresState>
     implements DailyStructuresCubit {}
 
 void main() {
@@ -18,7 +19,14 @@ void main() {
     });
 
     testWidgets('renders Structures', (tester) async {
-      const state = 42;
+      final state = DailyStructuresState(
+        structuresStatus: DailyStructuresStatus.success,
+        structures: [
+          Structure.empty(),
+          Structure.empty(),
+        ],
+        date: DateTime.now(),
+      );
       when(() => counterCubit.state).thenReturn(state);
       await tester.pumpApp(
         BlocProvider.value(
@@ -26,7 +34,7 @@ void main() {
           child: const DailyStructuresView(),
         ),
       );
-      expect(find.byType(Structures), findsOneWidget);
+      expect(find.byType(DailyStructures), findsOneWidget);
     });
   });
 }

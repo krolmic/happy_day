@@ -1,7 +1,15 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+    "errorMessage": "An error occurred",
+    "editStructureAddAppBarTitle": "New Structure",
+    "editStructureTitleLabel": "Title",
+    "editStructureDescriptionLabel": "Description",
+    "editStructureColorLabel": "Color",
+    "editStructureSelectColorLabel": "Select a color",
+    "editStructurePreviewLabel": "Preview",
+    "editStructureStepsGenerationLoadingMessage": "Generating steps...",
+    "editStructureStepsGenerationSuccessMessage": "Steps generated successfully!",
+    "editStructureStepsGenerationFailureMessage": "Failed to generate steps.",
+    "editStructureAddSuccessMessage": "Structure added successfully!",
+    "editStructureUpdateSuccessMessage": "Structure updated successfully!"
 }

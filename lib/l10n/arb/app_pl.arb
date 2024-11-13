@@ -1,0 +1,15 @@
+{
+    "@@locale": "pl",
+    "errorMessage": "Wystąpił błąd",
+    "editStructureAddAppBarTitle": "Dodaj strukturę",
+    "editStructureTitleLabel": "Tytuł",
+    "editStructureDescriptionLabel": "Opis",
+    "editStructureColorLabel": "Kolor",
+    "editStructureSelectColorLabel": "Wybierz kolor",
+    "editStructurePreviewLabel": "Podgląd",
+    "editStructureStepsGenerationLoadingMessage": "Kroki są generowane...",
+    "editStructureStepsGenerationSuccessMessage": "Kroki generowane pomyślnie!",
+    "editStructureStepsGenerationFailureMessage": "Błąd podczas generowania kroków.",
+    "editStructureAddSuccessMessage": "Struktura dodana pomyślnie!",
+    "editStructureUpdateSuccessMessage": "Struktura zaktualizowana pomyślnie!"
+}
