@@ -234,10 +234,10 @@ packages:
     dependency: "direct main"
     description:
       name: easy_date_timeline
-      sha256: "069b8a5069b0b4de47fc4d612b550bf6a68f019f4bc06d5d3b12198b76fe75b4"
+      sha256: c6103e6487e9bf04f991ea762eff14672c2c111e80a5a4b0e308540a202a62c2
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.4"
   equatable:
     dependency: transitive
     description:
