@@ -126,9 +126,10 @@ class __$$StructureStepImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$StructureStepImpl implements _StructureStep {
+class _$StructureStepImpl extends _StructureStep {
   _$StructureStepImpl(
-      {required this.id, required this.structureId, required this.title});
+      {required this.id, required this.structureId, required this.title})
+      : super._();
 
   factory _$StructureStepImpl.fromJson(Map<String, dynamic> json) =>
       _$$StructureStepImplFromJson(json);
@@ -176,11 +177,12 @@ class _$StructureStepImpl implements _StructureStep {
   }
 }
 
-abstract class _StructureStep implements StructureStep {
+abstract class _StructureStep extends StructureStep {
   factory _StructureStep(
       {required final String id,
       required final String structureId,
       required final String title}) = _$StructureStepImpl;
+  _StructureStep._() : super._();
 
   factory _StructureStep.fromJson(Map<String, dynamic> json) =
       _$StructureStepImpl.fromJson;

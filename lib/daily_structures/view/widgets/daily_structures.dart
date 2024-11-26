@@ -35,9 +35,12 @@ class DailyStructures extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.structuresOfADay != current.structuresOfADay,
                 builder: (context, state) {
+                  final structureOfADay = state.getStructureOfADay(structure);
+
                   return DailyStructure(
+                    key: ValueKey(structureOfADay?.id ?? structure.id),
                     structure: structure,
-                    structureOfADay: state.getStructureOfADay(structure),
+                    structureOfADay: structureOfADay,
                     date: state.date,
                   );
                 },

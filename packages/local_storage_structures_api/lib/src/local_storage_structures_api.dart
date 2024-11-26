@@ -53,6 +53,9 @@ class LocalStorageStructuresApi extends StructuresApi {
   String? _getValue(String key) => _plugin.getString(key);
   Future<void> _setValue(String key, String value) =>
       _plugin.setString(key, value);
+  Future<void> _deleteValue(String key) => _plugin.remove(key);
+  List<String> _getKeys(String prefix) =>
+      _plugin.getKeys().where((key) => key.startsWith(prefix)).toList();
 
   /// Loads structures and structures of a day and adds them to the streams
   /// [_structuresStreamController] and [_structuresOfADayStreamController].
@@ -159,6 +162,28 @@ class LocalStorageStructuresApi extends StructuresApi {
   }
 
   @override
+  Future<void> deleteAllStructuresOfADay(String structureId) async {
+    final keys = _getKeys(kStructuresOfADayCollectionKey);
+
+    for (final key in keys) {
+      final structuresOfADayJson = _getValue(key);
+
+      if (structuresOfADayJson != null) {
+        final structuresOfADay = List<Map<dynamic, dynamic>>.from(
+          json.decode(structuresOfADayJson) as List,
+        )
+            .map(
+              (jsonMap) =>
+                  StructureOfADay.fromJson(Map<String, dynamic>.from(jsonMap)),
+            )
+            .toList()
+          ..removeWhere((s) => s.structureId == structureId);
+        return _setValue(key, json.encode(structuresOfADay));
+      }
+    }
+  }
+
+  @override
   Future<void> saveStructure(Structure structure) {
     final structures = [..._structuresStreamController.value];
     final structureIndex = structures.indexWhere((s) => s.id == structure.id);
@@ -206,6 +231,11 @@ class LocalStorageStructuresApi extends StructuresApi {
   @override
   Future<void> saveSteps(List<StructureStep> steps, String structureId) async {
     await _setValue(kStepsCollectionKey + structureId, json.encode(steps));
+  }
+
+  @override
+  Future<void> deleteAllSteps(String structureId) async {
+    return _deleteValue(kStepsCollectionKey + structureId);
   }
 
   @override

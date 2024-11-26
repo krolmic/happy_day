@@ -15,6 +15,10 @@ class StructuresRepository {
   List<StructureStep> getSteps(String structureId) =>
       _structuresApi.getSteps(structureId);
 
+  /// Deletes all steps assigned to a [Structure] with the given [structureId].
+  Future<void> deleteAllSteps(String structureId) =>
+      _structuresApi.deleteAllSteps(structureId);
+
   /// Provides a [Stream] of structures.
   Stream<List<Structure>> getStructures() => _structuresApi.getStructures();
 
@@ -48,4 +52,9 @@ class StructuresRepository {
   /// Deletes a structure of a day with the given [id].
   Future<void> deleteStructureOfADay(String id) =>
       _structuresApi.deleteStructureOfADay(id);
+
+  /// Deletes all structures of a day assigned to a [Structure] with the given
+  /// [structureId].
+  Future<void> deleteAllStructuresOfADay(String structureId) =>
+      _structuresApi.deleteAllStructuresOfADay(structureId);
 }

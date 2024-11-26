@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter_fimber/flutter_fimber.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:happy_day/shared/extensions/datetime.dart';
 import 'package:structures_api/structures_api.dart';
@@ -42,7 +42,11 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
         ),
       ),
       onError: (Object error, StackTrace stackTrace) {
-        log('Error fetching structures', error: error, stackTrace: stackTrace);
+        Fimber.e(
+          'Failed to init structures',
+          ex: error,
+          stacktrace: stackTrace,
+        );
 
         emit(
           state.copyWith(
@@ -63,10 +67,10 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
         ),
       ),
       onError: (Object error, StackTrace stackTrace) {
-        log(
-          'Error fetching structures of a day',
-          error: error,
-          stackTrace: stackTrace,
+        Fimber.e(
+          'Failed in structures of a day stream',
+          ex: error,
+          stacktrace: stackTrace,
         );
 
         emit(
@@ -80,10 +84,10 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
     try {
       _structuresRepository.loadStructuresOfADay(state.date);
     } catch (e, stackTrace) {
-      log(
-        'Error loading structures of a day',
-        error: e,
-        stackTrace: stackTrace,
+      Fimber.e(
+        'Failed to load structures of a day',
+        ex: e,
+        stacktrace: stackTrace,
       );
 
       emit(
@@ -105,10 +109,10 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
 
       _structuresRepository.loadStructuresOfADay(date);
     } catch (e, stackTrace) {
-      log(
-        'Error loading structures of a day',
-        error: e,
-        stackTrace: stackTrace,
+      Fimber.e(
+        'Failed to set date',
+        ex: e,
+        stacktrace: stackTrace,
       );
 
       emit(
@@ -146,10 +150,10 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
         );
       }
     } catch (e, stackTrace) {
-      log(
-        'Error starting structure',
-        error: e,
-        stackTrace: stackTrace,
+      Fimber.e(
+        'Failed to start structure',
+        ex: e,
+        stacktrace: stackTrace,
       );
 
       emit(

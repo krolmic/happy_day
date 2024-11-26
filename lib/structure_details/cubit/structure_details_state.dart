@@ -18,14 +18,24 @@ class StructureDetailsState with _$StructureDetailsState {
     required Structure structure,
     required DateTime date,
     StructureOfADay? structureOfADay,
+    @Default(0) int activeStepIndex,
     @Default(StartStructureStatus.initial)
     StartStructureStatus startStructureStatus,
     @Default(StepCompletionStatus.initial)
     StepCompletionStatus stepCompletionStatus,
+    @Default([]) List<StructureStep> steps,
   }) = _StructureDetailsState;
 }
 
 extension StructureDetailsStateX on StructureDetailsState {
   bool get isStructureStarted =>
       structureOfADay != null && structure.id == structureOfADay!.structureId;
+
+  bool isStepCompleted(String stepId) =>
+      structureOfADay?.completedStepsIds.contains(stepId) ?? false;
+
+  bool get isCurrentStepCompleted => isStepCompleted(steps[activeStepIndex].id);
+
+  bool get isFirstStep => activeStepIndex == 0;
+  bool get isLastStep => activeStepIndex == steps.length - 1;
 }

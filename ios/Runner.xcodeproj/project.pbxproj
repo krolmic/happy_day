@@ -16,7 +16,6 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		A385BAFD47FFD17E31112EBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C72A62E996AE3CEC0962317A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +76,6 @@
 		A16B40D1DA10DAAD69B37609 /* Pods-RunnerTests.profile-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile-staging.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile-staging.xcconfig"; sourceTree = "<group>"; };
 		C1ACBD25FABC7E673CC874C1 /* Pods-Runner.profile-development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-development.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-development.xcconfig"; sourceTree = "<group>"; };
 		C5EAAC90EF5FF510E47864E2 /* Pods-RunnerTests.release-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release-staging.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release-staging.xcconfig"; sourceTree = "<group>"; };
-		C72A62E996AE3CEC0962317A /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C8AADCC90C5A60FC903BEDA7 /* Pods-RunnerTests.debug-development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug-development.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug-development.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,7 +136,6 @@
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				F52D45335D3330F8248193D8 /* Pods */,
 				7D6A2FFA710D720C1FDC8548 /* Frameworks */,
-				C72A62E996AE3CEC0962317A /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,6 +218,7 @@
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
+				F5154B102CF603DB00F7E9B2 /* ShellScript */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
@@ -292,7 +290,6 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
-				A385BAFD47FFD17E31112EBB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +386,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		9E1C9C36061BA2F1657E9358 /* FlutterFire: "flutterfire bundle-service-file" */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -408,6 +405,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\n#!/bin/bash\nPATH=${PATH}:$FLUTTER_ROOT/bin:$HOME/.pub-cache/bin\nflutterfire bundle-service-file --plist-destination=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app --build-configuration=${CONFIGURATION} --platform=ios --apple-project-path=${SRCROOT}\n";
+		};
+		F5154B102CF603DB00F7E9B2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Get the configuration name\nenvironment=\"${CONFIGURATION}\"\n\n# Convert to lowercase\nenvironment=$(echo $environment | tr '[:upper:]' '[:lower:]')\n\n# Map configurations to flavor names\ncase $environment in\n    *\"development\"*)\n        flavor=\"development\"\n        ;;\n    *\"staging\"*)\n        flavor=\"staging\"\n        ;;\n    *\"production\"*)\n        flavor=\"production\"\n        ;;\n    *)\n        echo \"Error: Unknown configuration ${environment}\"\n        exit 1\n        ;;\nesac\n\necho \"Using GoogleService-Info.plist from flavor: ${flavor}\"\n\n# Copy appropriate GoogleService-Info.plist for the flavor\ncp \"${PROJECT_DIR}/flavors/${flavor}/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n";
 		};
 		F5730D7A84EAD71DC9D201A7 /* FlutterFire: "flutterfire upload-crashlytics-symbols" */ = {
 			isa = PBXShellScriptBuildPhase;

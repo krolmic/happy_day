@@ -3,17 +3,16 @@ part of '../edit_structure_page.dart';
 class Label extends StatelessWidget {
   const Label({
     required this.text,
-    this.isActive = false,
+    this.color,
     super.key,
   });
 
   final String text;
-  final bool isActive;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = isActive ? theme.primaryColor : theme.unselectedWidgetColor;
 
     return Text(
       text,

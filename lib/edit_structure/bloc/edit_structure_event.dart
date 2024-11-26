@@ -8,6 +8,13 @@ class EditStructureEvent with _$EditStructureEvent {
       _DescriptionChanged;
   const factory EditStructureEvent.colorChanged(Color color) = _ColorChanged;
   const factory EditStructureEvent.nextStep() = _NextStep;
+  const factory EditStructureEvent.stepChanged(int index, String title) =
+      _StepChanged;
+  const factory EditStructureEvent.stepRemoved(int index) = _StepRemoved;
+  const factory EditStructureEvent.stepAdded() = _StepAdded;
+  const factory EditStructureEvent.stepReordered(int oldIndex, int newIndex) =
+      _StepReordered;
+  const factory EditStructureEvent.structureDeleted() = _StructureDeleted;
 }
 
 extension EditStructureEventX on EditStructureEvent {
@@ -16,8 +23,18 @@ extension EditStructureEventX on EditStructureEvent {
   bool get isDescriptionChanged => this is _DescriptionChanged;
   bool get isColorChanged => this is _ColorChanged;
   bool get isNextStep => this is _NextStep;
+  bool get isStepChanged => this is _StepChanged;
+  bool get isStepRemoved => this is _StepRemoved;
+  bool get isStepAdded => this is _StepAdded;
+  bool get isStepReordered => this is _StepReordered;
+  bool get isStructureDeleted => this is _StructureDeleted;
 
   String get title => (this as _TitleChanged).title;
   String get description => (this as _DescriptionChanged).description;
   Color get color => (this as _ColorChanged).color;
+  int get changedStepIndex => (this as _StepChanged).index;
+  String get changedStepTitle => (this as _StepChanged).title;
+  int get removedStepIndex => (this as _StepRemoved).index;
+  int get reorderedOldIndex => (this as _StepReordered).oldIndex;
+  int get reorderedNewIndex => (this as _StepReordered).newIndex;
 }

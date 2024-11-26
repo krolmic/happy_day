@@ -1,12 +1,18 @@
+import 'package:confetti/confetti.dart';
+import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:happy_day/l10n/l10n.dart';
 import 'package:happy_day/shared/router/routes_names.dart';
 import 'package:happy_day/shared/toastification.dart';
+import 'package:happy_day/shared/widgets/max_width.dart';
 import 'package:happy_day/structure_details/structure_details.dart';
+import 'package:intl/intl.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
+
+part 'widgets/steps.dart';
 
 class StructureDetailsPage extends StatelessWidget {
   const StructureDetailsPage({
@@ -28,24 +34,50 @@ class StructureDetailsPage extends StatelessWidget {
         structure: structure,
         date: date,
         structureOfADay: structureOfADay,
-      ),
+      )..init(),
       child: StructureDetailsView(
         structure: structure,
+        date: date,
       ),
     );
   }
 }
 
-class StructureDetailsView extends StatelessWidget {
+class StructureDetailsView extends StatefulWidget {
   const StructureDetailsView({
     required this.structure,
+    required this.date,
     super.key,
   });
 
   final Structure structure;
+  final DateTime date;
+
+  @override
+  State<StructureDetailsView> createState() => _StructureDetailsViewState();
+}
+
+class _StructureDetailsViewState extends State<StructureDetailsView> {
+  late ConfettiController _confettiController;
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiController =
+        ConfettiController(duration: const Duration(milliseconds: 500));
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final color = Color(widget.structure.color);
+    final theme = Theme.of(context);
+
     return MultiBlocListener(
       listeners: [
         BlocListener<StructureDetailsCubit, StructureDetailsState>(
@@ -57,24 +89,90 @@ class StructureDetailsView extends StatelessWidget {
             }
           },
         ),
+        BlocListener<StructureDetailsCubit, StructureDetailsState>(
+          listenWhen: (previous, current) =>
+              previous.structureOfADay != current.structureOfADay,
+          listener: (context, state) {
+            if (state.structureOfADay?.isCompleted ?? false) {
+              _confettiController.play();
+              showSuccessToastification(
+                title: context.l10n.structureCompletedMessage,
+              );
+            }
+          },
+        ),
       ],
       child: Scaffold(
         appBar: buildAppBar(),
         floatingActionButton: buildFloatingActionButton(context),
         body: SafeArea(
-          child: CustomScrollView(
-            slivers: <Widget>[
-              if (structure.description != null)
-                SliverPadding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  sliver: SliverToBoxAdapter(
-                    child: Text(
-                      structure.description!,
-                      style: Theme.of(context).textTheme.bodyMedium,
+          child: Stack(
+            children: [
+              MaxWidth(
+                child: CustomScrollView(
+                  slivers: <Widget>[
+                    SliverToBoxAdapter(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 30,
+                        ),
+                        decoration: BoxDecoration(
+                          color: color.withOpacity(0.25),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              widget.structure.title,
+                              style: theme.textTheme.headlineMedium?.copyWith(
+                                color: color,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 10),
+                            if (widget.structure.hasDescription)
+                              Text(
+                                widget.structure.description!,
+                                style: theme.textTheme.bodyLarge?.copyWith(
+                                  color: color,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                    SliverPadding(
+                      padding: const EdgeInsets.only(
+                        left: 30,
+                        right: 30,
+                        bottom: 100,
+                      ),
+                      sliver: SliverToBoxAdapter(
+                        child: Steps(
+                          color: color,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: ConfettiWidget(
+                  confettiController: _confettiController,
+                  blastDirection: 0,
+                  emissionFrequency: 0.5,
+                  colors: [
+                    color.withOpacity(0.1),
+                    color.withOpacity(0.25),
+                    color.withOpacity(0.5),
+                    color.withOpacity(0.75),
+                    color,
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -83,24 +181,67 @@ class StructureDetailsView extends StatelessWidget {
   }
 
   PreferredSizeWidget buildAppBar() {
+    final l10n = context.l10n;
+    final cubit = context.read<StructureDetailsCubit>();
+
     return AppBar(
-      title: Text(structure.title),
+      centerTitle: true,
+      title: Text(
+        DateFormat(
+          const DateFormatter.fullDateDMonthAsStrY().format(),
+        ).format(widget.date),
+      ),
       actions: [
         BlocBuilder<StructureDetailsCubit, StructureDetailsState>(
           buildWhen: (previous, current) =>
               previous.structureOfADay != current.structureOfADay,
           builder: (context, state) {
-            return !state.isStructureStarted
-                ? IconButton(
-                    onPressed:
-                        context.read<StructureDetailsCubit>().startStructure,
-                    icon: const Icon(Icons.add),
-                  )
-                : IconButton(
-                    onPressed:
-                        context.read<StructureDetailsCubit>().resetStructure,
-                    icon: const Icon(Icons.remove),
-                  );
+            return PopupMenuButton<String>(
+              color: Theme.of(context).colorScheme.surface,
+              icon: const Icon(Icons.more_vert),
+              onSelected: (value) {
+                switch (value) {
+                  case 'toggle':
+                    !state.isStructureStarted
+                        ? cubit.startStructure()
+                        : cubit.resetStructure();
+                  case 'edit':
+                    context.pushNamed(
+                      RoutesNames.editStructure,
+                      extra: widget.structure,
+                    );
+                }
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 'toggle',
+                  child: Row(
+                    children: [
+                      Icon(
+                        !state.isStructureStarted ? Icons.add : Icons.remove,
+                        size: 20,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        !state.isStructureStarted
+                            ? l10n.startStructure
+                            : l10n.resetStructure,
+                      ),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'edit',
+                  child: Row(
+                    children: [
+                      const Icon(Icons.edit, size: 20),
+                      const SizedBox(width: 8),
+                      Text(l10n.editStructure),
+                    ],
+                  ),
+                ),
+              ],
+            );
           },
         ),
       ],
@@ -108,12 +249,31 @@ class StructureDetailsView extends StatelessWidget {
   }
 
   Widget buildFloatingActionButton(BuildContext context) {
-    return FloatingActionButton(
-      elevation: 0,
-      onPressed: () {
-        context.pushNamed(RoutesNames.editStructure, extra: structure);
+    return BlocBuilder<StructureDetailsCubit, StructureDetailsState>(
+      buildWhen: (previous, current) =>
+          previous.activeStepIndex != current.activeStepIndex ||
+          previous.structureOfADay != current.structureOfADay,
+      builder: (context, state) {
+        final cubit = context.read<StructureDetailsCubit>();
+
+        final isBuild = !(state.isLastStep && state.isCurrentStepCompleted);
+
+        return AnimatedOpacity(
+          opacity: isBuild ? 1 : 0,
+          duration: const Duration(milliseconds: 200),
+          child: FloatingActionButton(
+            backgroundColor: Color(widget.structure.color),
+            elevation: 0,
+            onPressed: () {
+              if (!state.isCurrentStepCompleted) {
+                cubit.completeStep(state.steps[state.activeStepIndex].id);
+              }
+              cubit.setActiveStepIndex(state.activeStepIndex + 1);
+            },
+            child: const Icon(Icons.check),
+          ),
+        );
       },
-      child: const Icon(Icons.edit),
     );
   }
 }

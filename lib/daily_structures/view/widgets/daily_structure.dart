@@ -18,10 +18,16 @@ class DailyStructure extends StatelessWidget {
   Widget build(BuildContext context) {
     final isStarted = structureOfADay != null;
     final completedStepsCount = structureOfADay?.completedStepsIds.length ?? 0;
-    final totalStepsCount = structure.stepsIds.length;
+    final totalStepsCount =
+        structureOfADay?.stepsIds.length ?? structure.stepsIds.length;
+    // If new steps were added to the structure and the structure was started
+    // previously, daily completed steps may be greater than total steps count.
+    final completedStepsCountToBuild = completedStepsCount > totalStepsCount
+        ? totalStepsCount
+        : completedStepsCount;
 
     final buildCheckIconButton =
-        isStarted && completedStepsCount == totalStepsCount;
+        isStarted && completedStepsCountToBuild == totalStepsCount;
     final buildAddIconButton = !isStarted && !buildCheckIconButton;
     final buildIconButton = buildCheckIconButton || buildAddIconButton;
 
@@ -57,7 +63,7 @@ class DailyStructure extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
           color: color,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
         ),
       ),
       trailing: SizedBox(
@@ -72,7 +78,7 @@ class DailyStructure extends StatelessWidget {
                 date: date,
               )
             : _StructureProgress(
-                completedStepsCount: completedStepsCount,
+                completedStepsCount: completedStepsCountToBuild,
                 totalStepsCount: totalStepsCount,
                 color: color,
               ),
@@ -128,7 +134,7 @@ class _StructureIconButton extends StatelessWidget {
   }
 }
 
-class _StructureProgress extends StatelessWidget {
+class _StructureProgress extends StatefulWidget {
   const _StructureProgress({
     required this.completedStepsCount,
     required this.totalStepsCount,
@@ -140,28 +146,63 @@ class _StructureProgress extends StatelessWidget {
   final Color color;
 
   @override
+  State<_StructureProgress> createState() => _StructureProgressState();
+}
+
+class _StructureProgressState extends State<_StructureProgress> {
+  late final ValueNotifier<double> _progressNotifier;
+
+  @override
+  void initState() {
+    super.initState();
+    _progressNotifier = ValueNotifier(widget.completedStepsCount.toDouble());
+  }
+
+  @override
+  void didUpdateWidget(_StructureProgress oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.completedStepsCount != widget.completedStepsCount) {
+      _progressNotifier.value = widget.completedStepsCount.toDouble();
+    }
+  }
+
+  @override
+  void dispose() {
+    _progressNotifier.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return SimpleCircularProgressBar(
-      backColor: theme.colorScheme.surface,
-      progressColors: [color.withOpacity(0.75)],
-      animationDuration: 1,
-      valueNotifier: ValueNotifier(completedStepsCount.toDouble()),
-      maxValue: totalStepsCount.toDouble(),
-      backStrokeWidth: 4,
-      progressStrokeWidth: 4,
-      fullProgressColor: color.withOpacity(0.75),
-      size: 50,
-      mergeMode: true,
-      onGetText: (double value) {
-        return Text(
-          '$completedStepsCount / $totalStepsCount',
-          style: TextStyle(
-            fontSize: 10,
-            color: color,
-          ),
-        );
-      },
+
+    return Container(
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      margin: const EdgeInsets.all(1),
+      child: SimpleCircularProgressBar(
+        backColor: theme.colorScheme.surface,
+        progressColors: [widget.color.withOpacity(0.75)],
+        animationDuration: 1,
+        valueNotifier: _progressNotifier,
+        maxValue: widget.totalStepsCount.toDouble(),
+        backStrokeWidth: 4,
+        progressStrokeWidth: 4,
+        fullProgressColor: widget.color.withOpacity(0.75),
+        size: 50,
+        mergeMode: true,
+        onGetText: (double value) {
+          return Text(
+            '${widget.completedStepsCount} / ${widget.totalStepsCount}',
+            style: TextStyle(
+              fontSize: 10,
+              color: widget.color,
+            ),
+          );
+        },
+      ),
     );
   }
 }

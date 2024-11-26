@@ -8,6 +8,7 @@ import 'package:happy_day/shared/router/router.dart';
 import 'package:happy_day/shared/router/routes_names.dart';
 import 'package:happy_day/shared/theme.dart';
 import 'package:happy_day/shared/toastification.dart';
+import 'package:happy_day/shared/widgets/max_width.dart';
 import 'package:happy_day/shared/widgets/sliver_delegate.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -59,7 +60,11 @@ class DailyStructuresView extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        body: const SafeArea(child: DailyStructuresContent()),
+        body: const SafeArea(
+          child: MaxWidth(
+            child: DailyStructuresContent(),
+          ),
+        ),
         floatingActionButton: FloatingActionButton(
           elevation: 0,
           onPressed: () => context.pushNamed(RoutesNames.editStructure),

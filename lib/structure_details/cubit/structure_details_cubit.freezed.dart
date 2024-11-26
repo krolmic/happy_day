@@ -19,10 +19,12 @@ mixin _$StructureDetailsState {
   Structure get structure => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   StructureOfADay? get structureOfADay => throw _privateConstructorUsedError;
+  int get activeStepIndex => throw _privateConstructorUsedError;
   StartStructureStatus get startStructureStatus =>
       throw _privateConstructorUsedError;
   StepCompletionStatus get stepCompletionStatus =>
       throw _privateConstructorUsedError;
+  List<StructureStep> get steps => throw _privateConstructorUsedError;
 
   /// Create a copy of StructureDetailsState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,8 +43,10 @@ abstract class $StructureDetailsStateCopyWith<$Res> {
       {Structure structure,
       DateTime date,
       StructureOfADay? structureOfADay,
+      int activeStepIndex,
       StartStructureStatus startStructureStatus,
-      StepCompletionStatus stepCompletionStatus});
+      StepCompletionStatus stepCompletionStatus,
+      List<StructureStep> steps});
 
   $StructureCopyWith<$Res> get structure;
   $StructureOfADayCopyWith<$Res>? get structureOfADay;
@@ -67,8 +71,10 @@ class _$StructureDetailsStateCopyWithImpl<$Res,
     Object? structure = null,
     Object? date = null,
     Object? structureOfADay = freezed,
+    Object? activeStepIndex = null,
     Object? startStructureStatus = null,
     Object? stepCompletionStatus = null,
+    Object? steps = null,
   }) {
     return _then(_value.copyWith(
       structure: null == structure
@@ -83,6 +89,10 @@ class _$StructureDetailsStateCopyWithImpl<$Res,
           ? _value.structureOfADay
           : structureOfADay // ignore: cast_nullable_to_non_nullable
               as StructureOfADay?,
+      activeStepIndex: null == activeStepIndex
+          ? _value.activeStepIndex
+          : activeStepIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       startStructureStatus: null == startStructureStatus
           ? _value.startStructureStatus
           : startStructureStatus // ignore: cast_nullable_to_non_nullable
@@ -91,6 +101,10 @@ class _$StructureDetailsStateCopyWithImpl<$Res,
           ? _value.stepCompletionStatus
           : stepCompletionStatus // ignore: cast_nullable_to_non_nullable
               as StepCompletionStatus,
+      steps: null == steps
+          ? _value.steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as List<StructureStep>,
     ) as $Val);
   }
 
@@ -132,8 +146,10 @@ abstract class _$$StructureDetailsStateImplCopyWith<$Res>
       {Structure structure,
       DateTime date,
       StructureOfADay? structureOfADay,
+      int activeStepIndex,
       StartStructureStatus startStructureStatus,
-      StepCompletionStatus stepCompletionStatus});
+      StepCompletionStatus stepCompletionStatus,
+      List<StructureStep> steps});
 
   @override
   $StructureCopyWith<$Res> get structure;
@@ -158,8 +174,10 @@ class __$$StructureDetailsStateImplCopyWithImpl<$Res>
     Object? structure = null,
     Object? date = null,
     Object? structureOfADay = freezed,
+    Object? activeStepIndex = null,
     Object? startStructureStatus = null,
     Object? stepCompletionStatus = null,
+    Object? steps = null,
   }) {
     return _then(_$StructureDetailsStateImpl(
       structure: null == structure
@@ -174,6 +192,10 @@ class __$$StructureDetailsStateImplCopyWithImpl<$Res>
           ? _value.structureOfADay
           : structureOfADay // ignore: cast_nullable_to_non_nullable
               as StructureOfADay?,
+      activeStepIndex: null == activeStepIndex
+          ? _value.activeStepIndex
+          : activeStepIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       startStructureStatus: null == startStructureStatus
           ? _value.startStructureStatus
           : startStructureStatus // ignore: cast_nullable_to_non_nullable
@@ -182,6 +204,10 @@ class __$$StructureDetailsStateImplCopyWithImpl<$Res>
           ? _value.stepCompletionStatus
           : stepCompletionStatus // ignore: cast_nullable_to_non_nullable
               as StepCompletionStatus,
+      steps: null == steps
+          ? _value._steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as List<StructureStep>,
     ));
   }
 }
@@ -193,8 +219,11 @@ class _$StructureDetailsStateImpl implements _StructureDetailsState {
       {required this.structure,
       required this.date,
       this.structureOfADay,
+      this.activeStepIndex = 0,
       this.startStructureStatus = StartStructureStatus.initial,
-      this.stepCompletionStatus = StepCompletionStatus.initial});
+      this.stepCompletionStatus = StepCompletionStatus.initial,
+      final List<StructureStep> steps = const []})
+      : _steps = steps;
 
   @override
   final Structure structure;
@@ -204,14 +233,25 @@ class _$StructureDetailsStateImpl implements _StructureDetailsState {
   final StructureOfADay? structureOfADay;
   @override
   @JsonKey()
+  final int activeStepIndex;
+  @override
+  @JsonKey()
   final StartStructureStatus startStructureStatus;
   @override
   @JsonKey()
   final StepCompletionStatus stepCompletionStatus;
+  final List<StructureStep> _steps;
+  @override
+  @JsonKey()
+  List<StructureStep> get steps {
+    if (_steps is EqualUnmodifiableListView) return _steps;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_steps);
+  }
 
   @override
   String toString() {
-    return 'StructureDetailsState(structure: $structure, date: $date, structureOfADay: $structureOfADay, startStructureStatus: $startStructureStatus, stepCompletionStatus: $stepCompletionStatus)';
+    return 'StructureDetailsState(structure: $structure, date: $date, structureOfADay: $structureOfADay, activeStepIndex: $activeStepIndex, startStructureStatus: $startStructureStatus, stepCompletionStatus: $stepCompletionStatus, steps: $steps)';
   }
 
   @override
@@ -224,15 +264,25 @@ class _$StructureDetailsStateImpl implements _StructureDetailsState {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.structureOfADay, structureOfADay) ||
                 other.structureOfADay == structureOfADay) &&
+            (identical(other.activeStepIndex, activeStepIndex) ||
+                other.activeStepIndex == activeStepIndex) &&
             (identical(other.startStructureStatus, startStructureStatus) ||
                 other.startStructureStatus == startStructureStatus) &&
             (identical(other.stepCompletionStatus, stepCompletionStatus) ||
-                other.stepCompletionStatus == stepCompletionStatus));
+                other.stepCompletionStatus == stepCompletionStatus) &&
+            const DeepCollectionEquality().equals(other._steps, _steps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, structure, date, structureOfADay,
-      startStructureStatus, stepCompletionStatus);
+  int get hashCode => Object.hash(
+      runtimeType,
+      structure,
+      date,
+      structureOfADay,
+      activeStepIndex,
+      startStructureStatus,
+      stepCompletionStatus,
+      const DeepCollectionEquality().hash(_steps));
 
   /// Create a copy of StructureDetailsState
   /// with the given fields replaced by the non-null parameter values.
@@ -246,12 +296,13 @@ class _$StructureDetailsStateImpl implements _StructureDetailsState {
 
 abstract class _StructureDetailsState implements StructureDetailsState {
   factory _StructureDetailsState(
-          {required final Structure structure,
-          required final DateTime date,
-          final StructureOfADay? structureOfADay,
-          final StartStructureStatus startStructureStatus,
-          final StepCompletionStatus stepCompletionStatus}) =
-      _$StructureDetailsStateImpl;
+      {required final Structure structure,
+      required final DateTime date,
+      final StructureOfADay? structureOfADay,
+      final int activeStepIndex,
+      final StartStructureStatus startStructureStatus,
+      final StepCompletionStatus stepCompletionStatus,
+      final List<StructureStep> steps}) = _$StructureDetailsStateImpl;
 
   @override
   Structure get structure;
@@ -260,9 +311,13 @@ abstract class _StructureDetailsState implements StructureDetailsState {
   @override
   StructureOfADay? get structureOfADay;
   @override
+  int get activeStepIndex;
+  @override
   StartStructureStatus get startStructureStatus;
   @override
   StepCompletionStatus get stepCompletionStatus;
+  @override
+  List<StructureStep> get steps;
 
   /// Create a copy of StructureDetailsState
   /// with the given fields replaced by the non-null parameter values.

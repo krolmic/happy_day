@@ -30,6 +30,9 @@ abstract class StructuresApi {
   /// will be replaced.
   Future<void> saveSteps(List<StructureStep> steps, String structureId);
 
+  /// Deletes all steps assigned to a [Structure] with the given [structureId].
+  Future<void> deleteAllSteps(String structureId);
+
   /// Loads structures of a [day]
   /// so they're available in the stream provided by [getStructuresOfADay].
   void loadStructuresOfADay(DateTime day);
@@ -45,6 +48,10 @@ abstract class StructuresApi {
 
   /// Deletes a structure of a day with the given [id].
   Future<void> deleteStructureOfADay(String id);
+
+  /// Deletes all structures of a day
+  /// assigned to a [Structure] with the given id.
+  Future<void> deleteAllStructuresOfADay(String structureId);
 
   /// Closes the client and frees up any resources.
   Future<void> close();
