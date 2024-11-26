@@ -1,1 +1,84 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"happy-day-44b11","appId":"1:86462327884:android:cab0e1f29bcfb5331e58e9","fileOutput":"android/app/google-services.json"},"buildConfigurations":{"src/dev":{"projectId":"happy-day-dev","appId":"1:311862406648:android:bf7e6a3f24a22760587a0d","fileOutput":"android/app/src/dev/google-services.json"},"src/stg":{"projectId":"happy-day-stg","appId":"1:881917110490:android:552eb26966f6d2d73edde3","fileOutput":"android/app/src/stg/google-services.json"},"src/prod":{"projectId":"happy-day-prod","appId":"1:355750949707:android:b573466e58672fe4982ece","fileOutput":"android/app/src/prod/google-services.json"},"src/development":{"projectId":"happy-day-dev","appId":"1:311862406648:android:bf7e6a3f24a22760587a0d","fileOutput":"android/app/src/development/google-services.json"},"src/staging":{"projectId":"happy-day-stg","appId":"1:881917110490:android:552eb26966f6d2d73edde3","fileOutput":"android/app/src/staging/google-services.json"},"src/production":{"projectId":"happy-day-prod","appId":"1:355750949707:android:b573466e58672fe4982ece","fileOutput":"android/app/src/production/google-services.json"}}},"ios":{"default":{"projectId":"happy-day-44b11","appId":"1:86462327884:ios:47b616fd5a830f451e58e9","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"},"buildConfigurations":{"Debug-development":{"projectId":"happy-day-dev","appId":"1:311862406648:ios:ee523623fe640d18587a0d","uploadDebugSymbols":true,"fileOutput":"ios/flavors/development/GoogleService-Info.plist"},"Debug-staging":{"projectId":"happy-day-stg","appId":"1:881917110490:ios:5be7202e7dbd36a93edde3","uploadDebugSymbols":true,"fileOutput":"ios/flavors/staging/GoogleService-Info.plist"},"Debug-production":{"projectId":"happy-day-prod","appId":"1:355750949707:ios:c27847143509e6e4982ece","uploadDebugSymbols":true,"fileOutput":"ios/flavors/production/GoogleService-Info.plist"}}},"dart":{"lib/firebase_options.dart":{"projectId":"happy-day-44b11","configurations":{"android":"1:86462327884:android:cab0e1f29bcfb5331e58e9","ios":"1:86462327884:ios:47b616fd5a830f451e58e9","web":"1:86462327884:web:f4c6e5bca04b43c81e58e9"}},"lib/firebase_options_dev.dart":{"projectId":"happy-day-dev","configurations":{"android":"1:311862406648:android:bf7e6a3f24a22760587a0d","ios":"1:311862406648:ios:ee523623fe640d18587a0d","web":"1:311862406648:web:23836fd3316ff2b7587a0d"}},"lib/firebase_options_stg.dart":{"projectId":"happy-day-stg","configurations":{"android":"1:881917110490:android:552eb26966f6d2d73edde3","ios":"1:881917110490:ios:5be7202e7dbd36a93edde3","web":"1:881917110490:web:bef60608e64c1c393edde3"}},"lib/firebase_options_prod.dart":{"projectId":"happy-day-prod","configurations":{"android":"1:355750949707:android:b573466e58672fe4982ece","ios":"1:355750949707:ios:c27847143509e6e4982ece","web":"1:355750949707:web:1c03495d6a916049982ece"}}}}}}
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "happy-day-dev",
+                    "appId": "1:311862406648:android:bf7e6a3f24a22760587a0d",
+                    "fileOutput": "android/app/src/development/google-services.json"
+                },
+                "buildConfigurations": {
+                    "src/development": {
+                        "projectId": "happy-day-dev",
+                        "appId": "1:311862406648:android:bf7e6a3f24a22760587a0d",
+                        "fileOutput": "android/app/src/development/google-services.json"
+                    },
+                    "src/staging": {
+                        "projectId": "happy-day-stg",
+                        "appId": "1:881917110490:android:552eb26966f6d2d73edde3",
+                        "fileOutput": "android/app/src/staging/google-services.json"
+                    },
+                    "src/production": {
+                        "projectId": "happy-day-prod",
+                        "appId": "1:355750949707:android:b573466e58672fe4982ece",
+                        "fileOutput": "android/app/src/production/google-services.json"
+                    }
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "happy-day-dev",
+                    "appId": "1:311862406648:ios:ee523623fe640d18587a0d",
+                    "uploadDebugSymbols": true,
+                    "fileOutput": "ios/flavors/development/GoogleService-Info.plist"
+                },
+                "buildConfigurations": {
+                    "Debug-development": {
+                        "projectId": "happy-day-dev",
+                        "appId": "1:311862406648:ios:ee523623fe640d18587a0d",
+                        "uploadDebugSymbols": true,
+                        "fileOutput": "ios/flavors/development/GoogleService-Info.plist"
+                    },
+                    "Debug-staging": {
+                        "projectId": "happy-day-stg",
+                        "appId": "1:881917110490:ios:5be7202e7dbd36a93edde3",
+                        "uploadDebugSymbols": true,
+                        "fileOutput": "ios/flavors/staging/GoogleService-Info.plist"
+                    },
+                    "Debug-production": {
+                        "projectId": "happy-day-prod",
+                        "appId": "1:355750949707:ios:c27847143509e6e4982ece",
+                        "uploadDebugSymbols": true,
+                        "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
+                    }
+                }
+            },
+            "dart": {
+                "lib/firebase_options_dev.dart": {
+                    "projectId": "happy-day-dev",
+                    "configurations": {
+                        "android": "1:311862406648:android:bf7e6a3f24a22760587a0d",
+                        "ios": "1:311862406648:ios:ee523623fe640d18587a0d",
+                        "web": "1:311862406648:web:23836fd3316ff2b7587a0d"
+                    }
+                },
+                "lib/firebase_options_stg.dart": {
+                    "projectId": "happy-day-stg",
+                    "configurations": {
+                        "android": "1:881917110490:android:552eb26966f6d2d73edde3",
+                        "ios": "1:881917110490:ios:5be7202e7dbd36a93edde3",
+                        "web": "1:881917110490:web:bef60608e64c1c393edde3"
+                    }
+                },
+                "lib/firebase_options_prod.dart": {
+                    "projectId": "happy-day-prod",
+                    "configurations": {
+                        "android": "1:355750949707:android:b573466e58672fe4982ece",
+                        "ios": "1:355750949707:ios:c27847143509e6e4982ece",
+                        "web": "1:355750949707:web:1c03495d6a916049982ece"
+                    }
+                }
+            }
+        }
+    }
+}
