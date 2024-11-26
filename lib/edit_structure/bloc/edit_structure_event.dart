@@ -35,6 +35,6 @@ extension EditStructureEventX on EditStructureEvent {
   int get changedStepIndex => (this as _StepChanged).index;
   String get changedStepTitle => (this as _StepChanged).title;
   int get removedStepIndex => (this as _StepRemoved).index;
-  int get oldIndex => (this as _StepReordered).oldIndex;
-  int get newIndex => (this as _StepReordered).newIndex;
+  int get reorderedOldIndex => (this as _StepReordered).oldIndex;
+  int get reorderedNewIndex => (this as _StepReordered).newIndex;
 }

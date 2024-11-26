@@ -51,7 +51,11 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
       } else if (event.isStepAdded) {
         _onStepAdded(emit);
       } else if (event.isStepReordered) {
-        _onStepReordered(event.oldIndex, event.newIndex, emit);
+        _onStepReordered(
+          event.reorderedOldIndex,
+          event.reorderedNewIndex,
+          emit,
+        );
       } else if (event.isStructureDeleted) {
         await _onStructureDeleted(emit);
       }
