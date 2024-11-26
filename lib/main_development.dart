@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,10 +31,10 @@ Future<void> main() async {
     structuresApi: structuresApi,
     stepsGenerationRepository: stepsGenerationRepository,
     onFatalError: (details) {
-      log(details.exceptionAsString(), stackTrace: details.stack);
+      Fimber.e(details.exceptionAsString(), stacktrace: details.stack);
     },
     onError: (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+      Fimber.e(error.toString(), stacktrace: stackTrace);
     },
     logTree: logTree,
     sendCrashlyticsReports: false,
