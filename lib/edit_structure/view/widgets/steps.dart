@@ -13,18 +13,18 @@ class Steps extends StatefulWidget {
 }
 
 class _StepsState extends State<Steps> {
-  final Map<String, TextEditingController> _controllers = {};
+  final Map<String, TextEditingController> _stepsTitlesControllers = {};
 
   @override
   void dispose() {
-    for (final controller in _controllers.values) {
+    for (final controller in _stepsTitlesControllers.values) {
       controller.dispose();
     }
     super.dispose();
   }
 
   TextEditingController _getController(String id, String initialText) {
-    return _controllers.putIfAbsent(id, () {
+    return _stepsTitlesControllers.putIfAbsent(id, () {
       final controller = TextEditingController(text: initialText);
       // Prevent cursor jumping to end
       controller.selection = TextSelection.fromPosition(
@@ -63,7 +63,7 @@ class _StepsState extends State<Steps> {
             current.steps.map((e) => e.id).toList(),
           ),
       listener: (context, state) {
-        _controllers.removeWhere(
+        _stepsTitlesControllers.removeWhere(
           (id, _) => !state.steps.any((step) => step.id == id),
         );
       },
