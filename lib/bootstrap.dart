@@ -1,28 +1,40 @@
-import 'dart:developer';
-
-import 'package:bloc/bloc.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:happy_day/app/app_bloc_observer.dart';
+import 'package:flutter_fimber/flutter_fimber.dart';
 import 'package:happy_day/app/view/app.dart';
+import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
 
-void bootstrap({required StructuresApi structuresApi}) {
-  FlutterError.onError = (details) {
-    log(details.exceptionAsString(), stackTrace: details.stack);
-  };
+Future<void> bootstrap({
+  required StructuresApi structuresApi,
+  required StepsGenerationRepository stepsGenerationRepository,
+  required void Function(FlutterErrorDetails) onFatalError,
+  required void Function(Object, StackTrace) onError,
+  required LogTree logTree,
+  required bool sendCrashlyticsReports,
+}) async {
+  FlutterError.onError = onFatalError;
 
   PlatformDispatcher.instance.onError = (error, stack) {
-    log(error.toString(), stackTrace: stack);
+    onError(error, stack);
     return true;
   };
 
-  Bloc.observer = const AppBlocObserver();
+  Fimber.plantTree(logTree);
 
   final structuresRepository =
       StructuresRepository(structuresApi: structuresApi);
-  // Add cross-flavor configuration here
 
-  runApp(App(structuresRepository: structuresRepository));
+  if (sendCrashlyticsReports) {
+    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  }
+
+  runApp(
+    App(
+      structuresRepository: structuresRepository,
+      stepsGenerationRepository: stepsGenerationRepository,
+    ),
+  );
 }

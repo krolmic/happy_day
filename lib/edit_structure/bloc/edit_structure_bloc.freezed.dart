@@ -23,6 +23,11 @@ mixin _$EditStructureEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(Color color) colorChanged,
     required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +37,11 @@ mixin _$EditStructureEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(Color color)? colorChanged,
     TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +51,11 @@ mixin _$EditStructureEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(Color color)? colorChanged,
     TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +66,11 @@ mixin _$EditStructureEvent {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +80,11 @@ mixin _$EditStructureEvent {
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_ColorChanged value)? colorChanged,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +94,11 @@ mixin _$EditStructureEvent {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +171,11 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(Color color) colorChanged,
     required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
   }) {
     return submitted();
   }
@@ -153,6 +188,11 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(Color color)? colorChanged,
     TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
   }) {
     return submitted?.call();
   }
@@ -165,6 +205,11 @@ class _$SubmittedImpl implements _Submitted {
     TResult Function(String description)? descriptionChanged,
     TResult Function(Color color)? colorChanged,
     TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -181,6 +226,11 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
   }) {
     return submitted(this);
   }
@@ -193,6 +243,11 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_ColorChanged value)? colorChanged,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
   }) {
     return submitted?.call(this);
   }
@@ -205,6 +260,11 @@ class _$SubmittedImpl implements _Submitted {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -291,6 +351,11 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(Color color) colorChanged,
     required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
   }) {
     return titleChanged(title);
   }
@@ -303,6 +368,11 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(Color color)? colorChanged,
     TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
   }) {
     return titleChanged?.call(title);
   }
@@ -315,6 +385,11 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function(String description)? descriptionChanged,
     TResult Function(Color color)? colorChanged,
     TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -331,6 +406,11 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
   }) {
     return titleChanged(this);
   }
@@ -343,6 +423,11 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_ColorChanged value)? colorChanged,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
   }) {
     return titleChanged?.call(this);
   }
@@ -355,6 +440,11 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -451,6 +541,11 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(Color color) colorChanged,
     required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
   }) {
     return descriptionChanged(description);
   }
@@ -463,6 +558,11 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(Color color)? colorChanged,
     TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
   }) {
     return descriptionChanged?.call(description);
   }
@@ -475,6 +575,11 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(String description)? descriptionChanged,
     TResult Function(Color color)? colorChanged,
     TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -491,6 +596,11 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
   }) {
     return descriptionChanged(this);
   }
@@ -503,6 +613,11 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_ColorChanged value)? colorChanged,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -515,6 +630,11 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -610,6 +730,11 @@ class _$ColorChangedImpl implements _ColorChanged {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(Color color) colorChanged,
     required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
   }) {
     return colorChanged(color);
   }
@@ -622,6 +747,11 @@ class _$ColorChangedImpl implements _ColorChanged {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(Color color)? colorChanged,
     TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
   }) {
     return colorChanged?.call(color);
   }
@@ -634,6 +764,11 @@ class _$ColorChangedImpl implements _ColorChanged {
     TResult Function(String description)? descriptionChanged,
     TResult Function(Color color)? colorChanged,
     TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -650,6 +785,11 @@ class _$ColorChangedImpl implements _ColorChanged {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
   }) {
     return colorChanged(this);
   }
@@ -662,6 +802,11 @@ class _$ColorChangedImpl implements _ColorChanged {
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_ColorChanged value)? colorChanged,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
   }) {
     return colorChanged?.call(this);
   }
@@ -674,6 +819,11 @@ class _$ColorChangedImpl implements _ColorChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -741,6 +891,11 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(Color color) colorChanged,
     required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
   }) {
     return nextStep();
   }
@@ -753,6 +908,11 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(Color color)? colorChanged,
     TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
   }) {
     return nextStep?.call();
   }
@@ -765,6 +925,11 @@ class _$NextStepImpl implements _NextStep {
     TResult Function(String description)? descriptionChanged,
     TResult Function(Color color)? colorChanged,
     TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
     required TResult orElse(),
   }) {
     if (nextStep != null) {
@@ -781,6 +946,11 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
   }) {
     return nextStep(this);
   }
@@ -793,6 +963,11 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_ColorChanged value)? colorChanged,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
   }) {
     return nextStep?.call(this);
   }
@@ -805,6 +980,11 @@ class _$NextStepImpl implements _NextStep {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
     required TResult orElse(),
   }) {
     if (nextStep != null) {
@@ -819,10 +999,906 @@ abstract class _NextStep implements EditStructureEvent {
 }
 
 /// @nodoc
+abstract class _$$StepChangedImplCopyWith<$Res> {
+  factory _$$StepChangedImplCopyWith(
+          _$StepChangedImpl value, $Res Function(_$StepChangedImpl) then) =
+      __$$StepChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index, String title});
+}
+
+/// @nodoc
+class __$$StepChangedImplCopyWithImpl<$Res>
+    extends _$EditStructureEventCopyWithImpl<$Res, _$StepChangedImpl>
+    implements _$$StepChangedImplCopyWith<$Res> {
+  __$$StepChangedImplCopyWithImpl(
+      _$StepChangedImpl _value, $Res Function(_$StepChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+    Object? title = null,
+  }) {
+    return _then(_$StepChangedImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StepChangedImpl implements _StepChanged {
+  const _$StepChangedImpl(this.index, this.title);
+
+  @override
+  final int index;
+  @override
+  final String title;
+
+  @override
+  String toString() {
+    return 'EditStructureEvent.stepChanged(index: $index, title: $title)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StepChangedImpl &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.title, title) || other.title == title));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index, title);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StepChangedImplCopyWith<_$StepChangedImpl> get copyWith =>
+      __$$StepChangedImplCopyWithImpl<_$StepChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() submitted,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(Color color) colorChanged,
+    required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
+  }) {
+    return stepChanged(index, title);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? submitted,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String description)? descriptionChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
+  }) {
+    return stepChanged?.call(index, title);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? submitted,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(Color color)? colorChanged,
+    TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (stepChanged != null) {
+      return stepChanged(index, title);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
+  }) {
+    return stepChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
+  }) {
+    return stepChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (stepChanged != null) {
+      return stepChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StepChanged implements EditStructureEvent {
+  const factory _StepChanged(final int index, final String title) =
+      _$StepChangedImpl;
+
+  int get index;
+  String get title;
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StepChangedImplCopyWith<_$StepChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StepRemovedImplCopyWith<$Res> {
+  factory _$$StepRemovedImplCopyWith(
+          _$StepRemovedImpl value, $Res Function(_$StepRemovedImpl) then) =
+      __$$StepRemovedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$StepRemovedImplCopyWithImpl<$Res>
+    extends _$EditStructureEventCopyWithImpl<$Res, _$StepRemovedImpl>
+    implements _$$StepRemovedImplCopyWith<$Res> {
+  __$$StepRemovedImplCopyWithImpl(
+      _$StepRemovedImpl _value, $Res Function(_$StepRemovedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$StepRemovedImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StepRemovedImpl implements _StepRemoved {
+  const _$StepRemovedImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'EditStructureEvent.stepRemoved(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StepRemovedImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StepRemovedImplCopyWith<_$StepRemovedImpl> get copyWith =>
+      __$$StepRemovedImplCopyWithImpl<_$StepRemovedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() submitted,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(Color color) colorChanged,
+    required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
+  }) {
+    return stepRemoved(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? submitted,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String description)? descriptionChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
+  }) {
+    return stepRemoved?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? submitted,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(Color color)? colorChanged,
+    TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (stepRemoved != null) {
+      return stepRemoved(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
+  }) {
+    return stepRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
+  }) {
+    return stepRemoved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (stepRemoved != null) {
+      return stepRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StepRemoved implements EditStructureEvent {
+  const factory _StepRemoved(final int index) = _$StepRemovedImpl;
+
+  int get index;
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StepRemovedImplCopyWith<_$StepRemovedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StepAddedImplCopyWith<$Res> {
+  factory _$$StepAddedImplCopyWith(
+          _$StepAddedImpl value, $Res Function(_$StepAddedImpl) then) =
+      __$$StepAddedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StepAddedImplCopyWithImpl<$Res>
+    extends _$EditStructureEventCopyWithImpl<$Res, _$StepAddedImpl>
+    implements _$$StepAddedImplCopyWith<$Res> {
+  __$$StepAddedImplCopyWithImpl(
+      _$StepAddedImpl _value, $Res Function(_$StepAddedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$StepAddedImpl implements _StepAdded {
+  const _$StepAddedImpl();
+
+  @override
+  String toString() {
+    return 'EditStructureEvent.stepAdded()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StepAddedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() submitted,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(Color color) colorChanged,
+    required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
+  }) {
+    return stepAdded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? submitted,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String description)? descriptionChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
+  }) {
+    return stepAdded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? submitted,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(Color color)? colorChanged,
+    TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (stepAdded != null) {
+      return stepAdded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
+  }) {
+    return stepAdded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
+  }) {
+    return stepAdded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (stepAdded != null) {
+      return stepAdded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StepAdded implements EditStructureEvent {
+  const factory _StepAdded() = _$StepAddedImpl;
+}
+
+/// @nodoc
+abstract class _$$StepReorderedImplCopyWith<$Res> {
+  factory _$$StepReorderedImplCopyWith(
+          _$StepReorderedImpl value, $Res Function(_$StepReorderedImpl) then) =
+      __$$StepReorderedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int oldIndex, int newIndex});
+}
+
+/// @nodoc
+class __$$StepReorderedImplCopyWithImpl<$Res>
+    extends _$EditStructureEventCopyWithImpl<$Res, _$StepReorderedImpl>
+    implements _$$StepReorderedImplCopyWith<$Res> {
+  __$$StepReorderedImplCopyWithImpl(
+      _$StepReorderedImpl _value, $Res Function(_$StepReorderedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? oldIndex = null,
+    Object? newIndex = null,
+  }) {
+    return _then(_$StepReorderedImpl(
+      null == oldIndex
+          ? _value.oldIndex
+          : oldIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == newIndex
+          ? _value.newIndex
+          : newIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StepReorderedImpl implements _StepReordered {
+  const _$StepReorderedImpl(this.oldIndex, this.newIndex);
+
+  @override
+  final int oldIndex;
+  @override
+  final int newIndex;
+
+  @override
+  String toString() {
+    return 'EditStructureEvent.stepReordered(oldIndex: $oldIndex, newIndex: $newIndex)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StepReorderedImpl &&
+            (identical(other.oldIndex, oldIndex) ||
+                other.oldIndex == oldIndex) &&
+            (identical(other.newIndex, newIndex) ||
+                other.newIndex == newIndex));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, oldIndex, newIndex);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StepReorderedImplCopyWith<_$StepReorderedImpl> get copyWith =>
+      __$$StepReorderedImplCopyWithImpl<_$StepReorderedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() submitted,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(Color color) colorChanged,
+    required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
+  }) {
+    return stepReordered(oldIndex, newIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? submitted,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String description)? descriptionChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
+  }) {
+    return stepReordered?.call(oldIndex, newIndex);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? submitted,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(Color color)? colorChanged,
+    TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (stepReordered != null) {
+      return stepReordered(oldIndex, newIndex);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
+  }) {
+    return stepReordered(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
+  }) {
+    return stepReordered?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (stepReordered != null) {
+      return stepReordered(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StepReordered implements EditStructureEvent {
+  const factory _StepReordered(final int oldIndex, final int newIndex) =
+      _$StepReorderedImpl;
+
+  int get oldIndex;
+  int get newIndex;
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StepReorderedImplCopyWith<_$StepReorderedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StructureDeletedImplCopyWith<$Res> {
+  factory _$$StructureDeletedImplCopyWith(_$StructureDeletedImpl value,
+          $Res Function(_$StructureDeletedImpl) then) =
+      __$$StructureDeletedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StructureDeletedImplCopyWithImpl<$Res>
+    extends _$EditStructureEventCopyWithImpl<$Res, _$StructureDeletedImpl>
+    implements _$$StructureDeletedImplCopyWith<$Res> {
+  __$$StructureDeletedImplCopyWithImpl(_$StructureDeletedImpl _value,
+      $Res Function(_$StructureDeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$StructureDeletedImpl implements _StructureDeleted {
+  const _$StructureDeletedImpl();
+
+  @override
+  String toString() {
+    return 'EditStructureEvent.structureDeleted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StructureDeletedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() submitted,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(Color color) colorChanged,
+    required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
+  }) {
+    return structureDeleted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? submitted,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String description)? descriptionChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
+  }) {
+    return structureDeleted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? submitted,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(Color color)? colorChanged,
+    TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (structureDeleted != null) {
+      return structureDeleted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
+  }) {
+    return structureDeleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
+  }) {
+    return structureDeleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
+    required TResult orElse(),
+  }) {
+    if (structureDeleted != null) {
+      return structureDeleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StructureDeleted implements EditStructureEvent {
+  const factory _StructureDeleted() = _$StructureDeletedImpl;
+}
+
+/// @nodoc
 mixin _$EditStructureState {
-  EditStructureStatus get status => throw _privateConstructorUsedError;
+  String get structureId => throw _privateConstructorUsedError;
+  EditStructureStatus get editStatus => throw _privateConstructorUsedError;
   StepsGenerationStatus get stepsGenerationStatus =>
       throw _privateConstructorUsedError;
+  StructureDeletionStatus get deletionStatus =>
+      throw _privateConstructorUsedError;
+  String get languageCode => throw _privateConstructorUsedError;
   Structure? get initialStructure => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -843,8 +1919,11 @@ abstract class $EditStructureStateCopyWith<$Res> {
       _$EditStructureStateCopyWithImpl<$Res, EditStructureState>;
   @useResult
   $Res call(
-      {EditStructureStatus status,
+      {String structureId,
+      EditStructureStatus editStatus,
       StepsGenerationStatus stepsGenerationStatus,
+      StructureDeletionStatus deletionStatus,
+      String languageCode,
       Structure? initialStructure,
       String title,
       String description,
@@ -869,8 +1948,11 @@ class _$EditStructureStateCopyWithImpl<$Res, $Val extends EditStructureState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? structureId = null,
+    Object? editStatus = null,
     Object? stepsGenerationStatus = null,
+    Object? deletionStatus = null,
+    Object? languageCode = null,
     Object? initialStructure = freezed,
     Object? title = null,
     Object? description = null,
@@ -878,14 +1960,26 @@ class _$EditStructureStateCopyWithImpl<$Res, $Val extends EditStructureState>
     Object? color = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      structureId: null == structureId
+          ? _value.structureId
+          : structureId // ignore: cast_nullable_to_non_nullable
+              as String,
+      editStatus: null == editStatus
+          ? _value.editStatus
+          : editStatus // ignore: cast_nullable_to_non_nullable
               as EditStructureStatus,
       stepsGenerationStatus: null == stepsGenerationStatus
           ? _value.stepsGenerationStatus
           : stepsGenerationStatus // ignore: cast_nullable_to_non_nullable
               as StepsGenerationStatus,
+      deletionStatus: null == deletionStatus
+          ? _value.deletionStatus
+          : deletionStatus // ignore: cast_nullable_to_non_nullable
+              as StructureDeletionStatus,
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
       initialStructure: freezed == initialStructure
           ? _value.initialStructure
           : initialStructure // ignore: cast_nullable_to_non_nullable
@@ -933,8 +2027,11 @@ abstract class _$$EditStructureStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {EditStructureStatus status,
+      {String structureId,
+      EditStructureStatus editStatus,
       StepsGenerationStatus stepsGenerationStatus,
+      StructureDeletionStatus deletionStatus,
+      String languageCode,
       Structure? initialStructure,
       String title,
       String description,
@@ -958,8 +2055,11 @@ class __$$EditStructureStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? structureId = null,
+    Object? editStatus = null,
     Object? stepsGenerationStatus = null,
+    Object? deletionStatus = null,
+    Object? languageCode = null,
     Object? initialStructure = freezed,
     Object? title = null,
     Object? description = null,
@@ -967,14 +2067,26 @@ class __$$EditStructureStateImplCopyWithImpl<$Res>
     Object? color = null,
   }) {
     return _then(_$EditStructureStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      structureId: null == structureId
+          ? _value.structureId
+          : structureId // ignore: cast_nullable_to_non_nullable
+              as String,
+      editStatus: null == editStatus
+          ? _value.editStatus
+          : editStatus // ignore: cast_nullable_to_non_nullable
               as EditStructureStatus,
       stepsGenerationStatus: null == stepsGenerationStatus
           ? _value.stepsGenerationStatus
           : stepsGenerationStatus // ignore: cast_nullable_to_non_nullable
               as StepsGenerationStatus,
+      deletionStatus: null == deletionStatus
+          ? _value.deletionStatus
+          : deletionStatus // ignore: cast_nullable_to_non_nullable
+              as StructureDeletionStatus,
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
       initialStructure: freezed == initialStructure
           ? _value.initialStructure
           : initialStructure // ignore: cast_nullable_to_non_nullable
@@ -1003,21 +2115,32 @@ class __$$EditStructureStateImplCopyWithImpl<$Res>
 
 class _$EditStructureStateImpl implements _EditStructureState {
   const _$EditStructureStateImpl(
-      {this.status = EditStructureStatus.initial,
+      {required this.structureId,
+      this.editStatus = EditStructureStatus.initial,
       this.stepsGenerationStatus = StepsGenerationStatus.initial,
+      this.deletionStatus = StructureDeletionStatus.initial,
+      this.languageCode = 'en',
       this.initialStructure,
       this.title = '',
       this.description = '',
       final List<StructureStep> steps = const [],
-      this.color = Colors.orange})
+      this.color = Colors.deepPurple})
       : _steps = steps;
 
   @override
+  final String structureId;
+  @override
   @JsonKey()
-  final EditStructureStatus status;
+  final EditStructureStatus editStatus;
   @override
   @JsonKey()
   final StepsGenerationStatus stepsGenerationStatus;
+  @override
+  @JsonKey()
+  final StructureDeletionStatus deletionStatus;
+  @override
+  @JsonKey()
+  final String languageCode;
   @override
   final Structure? initialStructure;
   @override
@@ -1041,7 +2164,7 @@ class _$EditStructureStateImpl implements _EditStructureState {
 
   @override
   String toString() {
-    return 'EditStructureState(status: $status, stepsGenerationStatus: $stepsGenerationStatus, initialStructure: $initialStructure, title: $title, description: $description, steps: $steps, color: $color)';
+    return 'EditStructureState(structureId: $structureId, editStatus: $editStatus, stepsGenerationStatus: $stepsGenerationStatus, deletionStatus: $deletionStatus, languageCode: $languageCode, initialStructure: $initialStructure, title: $title, description: $description, steps: $steps, color: $color)';
   }
 
   @override
@@ -1049,9 +2172,16 @@ class _$EditStructureStateImpl implements _EditStructureState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditStructureStateImpl &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.structureId, structureId) ||
+                other.structureId == structureId) &&
+            (identical(other.editStatus, editStatus) ||
+                other.editStatus == editStatus) &&
             (identical(other.stepsGenerationStatus, stepsGenerationStatus) ||
                 other.stepsGenerationStatus == stepsGenerationStatus) &&
+            (identical(other.deletionStatus, deletionStatus) ||
+                other.deletionStatus == deletionStatus) &&
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode) &&
             (identical(other.initialStructure, initialStructure) ||
                 other.initialStructure == initialStructure) &&
             (identical(other.title, title) || other.title == title) &&
@@ -1064,8 +2194,11 @@ class _$EditStructureStateImpl implements _EditStructureState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      status,
+      structureId,
+      editStatus,
       stepsGenerationStatus,
+      deletionStatus,
+      languageCode,
       initialStructure,
       title,
       description,
@@ -1084,8 +2217,11 @@ class _$EditStructureStateImpl implements _EditStructureState {
 
 abstract class _EditStructureState implements EditStructureState {
   const factory _EditStructureState(
-      {final EditStructureStatus status,
+      {required final String structureId,
+      final EditStructureStatus editStatus,
       final StepsGenerationStatus stepsGenerationStatus,
+      final StructureDeletionStatus deletionStatus,
+      final String languageCode,
       final Structure? initialStructure,
       final String title,
       final String description,
@@ -1093,9 +2229,15 @@ abstract class _EditStructureState implements EditStructureState {
       final Color color}) = _$EditStructureStateImpl;
 
   @override
-  EditStructureStatus get status;
+  String get structureId;
+  @override
+  EditStructureStatus get editStatus;
   @override
   StepsGenerationStatus get stepsGenerationStatus;
+  @override
+  StructureDeletionStatus get deletionStatus;
+  @override
+  String get languageCode;
   @override
   Structure? get initialStructure;
   @override

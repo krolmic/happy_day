@@ -9,6 +9,15 @@ class StepsGenerationClient {
 
   final GenerativeModel _model;
 
+  GenerationConfig get _generationConfig => GenerationConfig(
+        responseMimeType: 'application/json',
+        responseSchema: Schema.object(
+          properties: {
+            'result': Schema.array(items: Schema.string()),
+          },
+        ),
+      );
+
   /// Generates steps for given [structureTitle] and [structureDescription]
   /// in language with code [languageCode].
   Future<String?> generateSteps({
@@ -26,13 +35,18 @@ class StepsGenerationClient {
         '"step 3 next one", "step 4 next one"]}. Do not include the word '
         '"step" and its number in the list items. '
         'Each item should be max. 20 characters long. '
+        "The steps shouldn't include recommendations, only concrete steps "
+        'to execute. '
         'The list should contain max. 15 items, preferably not more than 10, '
         'if there is nothing else specified in the structure description. '
         "Consider given structure description only if it's understandable "
         "and it's related to its name. If the title is not understandable "
         'or steps could not get generated return {"error": "prompt failed"}';
 
-    final response = await _model.generateContent([Content.text(prompt)]);
+    final response = await _model.generateContent(
+      [Content.text(prompt)],
+      generationConfig: _generationConfig,
+    );
 
     return response.text;
   }

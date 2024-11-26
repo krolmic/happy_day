@@ -9,7 +9,16 @@ class LoadingIndicator extends StatelessWidget {
     this.strokeWidth = 2.5,
   });
 
-  factory LoadingIndicator.small() => const LoadingIndicator();
+  factory LoadingIndicator.tiny() {
+    return const LoadingIndicator(
+      width: 18,
+      height: 18,
+      strokeWidth: 1.5,
+    );
+  }
+  factory LoadingIndicator.small() {
+    return const LoadingIndicator();
+  }
 
   final double width;
   final double height;

@@ -19,11 +19,14 @@ class Structure with _$Structure {
   const Structure._();
 
   /// Creates an empty [Structure].
-  factory Structure.empty() => Structure(title: '', id: const Uuid().v4());
+  factory Structure.empty() => Structure(title: '', id: newId);
 
   /// Creates a new [Structure] from a JSON object.
   factory Structure.fromJson(Map<String, Object?> json) =>
       _$StructureFromJson(json);
+
+  /// Creates a new ID for a [Structure].
+  static String get newId => const Uuid().v4();
 
   /// Whether the structure has a description.
   bool get hasDescription => description != null && description!.isNotEmpty;

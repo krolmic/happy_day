@@ -6,7 +6,7 @@ class ColorSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-
+    final theme = Theme.of(context);
     final color = context.select(
       (EditStructureBloc bloc) => bloc.state.color,
     );
@@ -14,7 +14,10 @@ class ColorSelection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Label(text: l10n.editStructureColorLabel),
+        Label(
+          text: l10n.editStructureColorLabel,
+          color: color,
+        ),
         const SizedBox(
           height: 10,
         ),
@@ -28,15 +31,11 @@ class ColorSelection extends StatelessWidget {
                 selectedColor = color;
               },
               customColorSwatchesAndNames: {
-                Colors.amber: 'Amber',
-                Colors.orange: 'Orange',
                 Colors.deepOrange: 'Deep Orange',
                 Colors.red: 'Red',
                 Colors.pink: 'Pink',
-                Colors.cyan: 'Cyan',
                 Colors.blue: 'Blue',
                 Colors.indigo: 'Indigo',
-                Colors.lightGreen: 'Lime',
                 Colors.green: 'Green',
                 Colors.teal: 'Teal',
                 Colors.deepPurpleAccent: 'Deep Purple Accent',
@@ -44,7 +43,6 @@ class ColorSelection extends StatelessWidget {
                 Colors.deepPurple: 'Deep Purple',
                 Colors.brown: 'Brown',
                 Colors.blueGrey: 'Blue Grey',
-                Colors.grey: 'Grey',
               },
               enableShadesSelection: false,
               pickersEnabled: const <ColorPickerType, bool>{
@@ -72,9 +70,9 @@ class ColorSelection extends StatelessWidget {
                 left: 20,
                 right: 20,
               ),
-              title: Label(
-                text: l10n.editStructureSelectColorLabel,
-                isActive: true,
+              title: Text(
+                l10n.editStructureSelectColorLabel,
+                style: theme.textTheme.bodyMedium,
               ),
             );
 

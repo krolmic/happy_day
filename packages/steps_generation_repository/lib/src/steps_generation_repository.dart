@@ -30,7 +30,7 @@ class StepsGenerationRepository {
         throw const StepsGenerationRepositoryException('Response is empty');
       }
 
-      if (jsonDecode(response) case {'items': final List<dynamic> items}) {
+      if (jsonDecode(response) case {'result': final List<dynamic> items}) {
         return List<String>.from(items);
       } else if (jsonDecode(response) case {'error': final String error}) {
         throw StepsGenerationRepositoryException(error);
@@ -61,14 +61,15 @@ class FakeStepsGenerationRepository implements StepsGenerationRepository {
     required String languageCode,
   }) async {
     // ignore: inference_failure_on_instance_creation
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 5));
 
     return [
-      'Step 1',
-      'Step 2',
-      'Step 3',
-      'Step 4',
-      'Step 5',
+      'Meditate',
+      'Stretch for 5 minutes',
+      'Plan your daily goals',
+      'Work 1-3 hours (repeatable)',
+      'Take a break / meditate / move',
+      'Write down next steps',
     ];
   }
 

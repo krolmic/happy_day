@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HappyDayTheme {
   static const primaryColor = Color(0xFF6a61f0);
@@ -8,6 +9,14 @@ class HappyDayTheme {
 
   static ThemeData get theme {
     return ThemeData(
+      textTheme: GoogleFonts.nokoraTextTheme(
+        const TextTheme(
+          headlineMedium: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       colorScheme: ColorScheme.fromSeed(
         seedColor: const Color(0xFF6a61f0),
       ),

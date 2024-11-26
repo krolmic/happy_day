@@ -4,6 +4,8 @@ enum EditStructureStatus { initial, loading, success, failure }
 
 enum StepsGenerationStatus { initial, loading, success, failure }
 
+enum StructureDeletionStatus { initial, loading, success, failure }
+
 extension EditStructureStatusX on EditStructureStatus {
   bool get isLoadingOrSuccess => [
         EditStructureStatus.loading,
@@ -19,17 +21,27 @@ extension StepsGenerationStatusX on StepsGenerationStatus {
   bool get isFailure => this == StepsGenerationStatus.failure;
 }
 
+extension StructureDeletionStatusX on StructureDeletionStatus {
+  bool get isLoading => this == StructureDeletionStatus.loading;
+  bool get isSuccess => this == StructureDeletionStatus.success;
+  bool get isFailure => this == StructureDeletionStatus.failure;
+}
+
 @freezed
 class EditStructureState with _$EditStructureState {
   const factory EditStructureState({
-    @Default(EditStructureStatus.initial) EditStructureStatus status,
+    required String structureId,
+    @Default(EditStructureStatus.initial) EditStructureStatus editStatus,
     @Default(StepsGenerationStatus.initial)
     StepsGenerationStatus stepsGenerationStatus,
+    @Default(StructureDeletionStatus.initial)
+    StructureDeletionStatus deletionStatus,
+    @Default('en') String languageCode,
     Structure? initialStructure,
     @Default('') String title,
     @Default('') String description,
     @Default([]) List<StructureStep> steps,
-    @Default(Colors.orange) Color color,
+    @Default(Colors.deepPurple) Color color,
   }) = _EditStructureState;
 }
 

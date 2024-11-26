@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fimber/flutter_fimber.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
@@ -24,6 +23,11 @@ class StructureDetailsCubit extends Cubit<StructureDetailsState> {
         );
 
   final StructuresRepository _structuresRepository;
+
+  void init() {
+    final steps = _structuresRepository.getSteps(state.structure.id);
+    emit(state.copyWith(steps: steps));
+  }
 
   Future<void> startStructure() async {
     try {
@@ -51,10 +55,10 @@ class StructureDetailsCubit extends Cubit<StructureDetailsState> {
         );
       }
     } catch (e, stackTrace) {
-      log(
-        'Error starting structure',
-        error: e,
-        stackTrace: stackTrace,
+      Fimber.e(
+        'Failed to start structure',
+        ex: e,
+        stacktrace: stackTrace,
       );
 
       emit(
@@ -80,16 +84,17 @@ class StructureDetailsCubit extends Cubit<StructureDetailsState> {
 
         emit(
           state.copyWith(
+            activeStepIndex: 0,
             startStructureStatus: StartStructureStatus.success,
             structureOfADay: null,
           ),
         );
       }
     } catch (e, stackTrace) {
-      log(
-        'Error resetting structure',
-        error: e,
-        stackTrace: stackTrace,
+      Fimber.e(
+        'Failed to reset structure',
+        ex: e,
+        stacktrace: stackTrace,
       );
 
       emit(
@@ -100,7 +105,16 @@ class StructureDetailsCubit extends Cubit<StructureDetailsState> {
     }
   }
 
+  void setActiveStepIndex(int index) {
+    if (index >= 0 && index < state.steps.length) {
+      emit(state.copyWith(activeStepIndex: index));
+    }
+  }
+
   Future<void> completeStep(String stepId) async {
+    if (!state.isStructureStarted) {
+      await startStructure();
+    }
     await _saveStructureOfADayStep(stepId: stepId, isCompleted: true);
   }
 
@@ -143,10 +157,10 @@ class StructureDetailsCubit extends Cubit<StructureDetailsState> {
         );
       }
     } catch (e, stackTrace) {
-      log(
-        'Error saving structure of a day step',
-        error: e,
-        stackTrace: stackTrace,
+      Fimber.e(
+        'Failed to save structure of a day step',
+        ex: e,
+        stacktrace: stackTrace,
       );
 
       emit(

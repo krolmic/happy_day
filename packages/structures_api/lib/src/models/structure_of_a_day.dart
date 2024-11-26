@@ -43,4 +43,7 @@ class StructureOfADay with _$StructureOfADay {
 
   /// Whether the structure of a day is the non-existent one.
   bool get isNone => id == 'none';
+
+  /// Whether the structure of a day is completed.
+  bool get isCompleted => completedStepsIds.length >= stepsIds.length;
 }
