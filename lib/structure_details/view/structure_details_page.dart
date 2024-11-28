@@ -12,6 +12,7 @@ import 'package:intl/intl.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
 
+part 'widgets/header.dart';
 part 'widgets/steps.dart';
 
 class StructureDetailsPage extends StatelessWidget {
@@ -77,6 +78,7 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
   Widget build(BuildContext context) {
     final color = Color(widget.structure.color);
     final theme = Theme.of(context);
+    final surfaceColor = theme.colorScheme.surface;
 
     return MultiBlocListener(
       listeners: [
@@ -109,50 +111,34 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
           child: Stack(
             children: [
               MaxWidth(
-                child: CustomScrollView(
-                  slivers: <Widget>[
-                    SliverToBoxAdapter(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 30,
-                        ),
-                        decoration: BoxDecoration(
-                          color: color.withOpacity(0.25),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              widget.structure.title,
-                              style: theme.textTheme.headlineMedium?.copyWith(
-                                color: color,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 10),
-                            if (widget.structure.hasDescription)
-                              Text(
-                                widget.structure.description!,
-                                style: theme.textTheme.bodyLarge?.copyWith(
-                                  color: color,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                          ],
-                        ),
-                      ),
+                child: Column(
+                  children: [
+                    Header(
+                      structure: widget.structure,
                     ),
-                    SliverPadding(
-                      padding: const EdgeInsets.only(
-                        left: 30,
-                        right: 30,
-                        bottom: 100,
-                      ),
-                      sliver: SliverToBoxAdapter(
-                        child: Steps(
-                          color: color,
-                        ),
+                    Expanded(
+                      child: CustomScrollView(
+                        slivers: <Widget>[
+                          SliverFillRemaining(
+                            child: ShaderMask(
+                              shaderCallback: (Rect bounds) {
+                                return LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    surfaceColor,
+                                    surfaceColor,
+                                    surfaceColor,
+                                    surfaceColor.withOpacity(0),
+                                  ],
+                                  stops: const [0.0, 0.85, 0.95, 1.0],
+                                ).createShader(bounds);
+                              },
+                              blendMode: BlendMode.dstIn,
+                              child: Steps(color: color),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
