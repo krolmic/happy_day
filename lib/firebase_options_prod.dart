@@ -72,5 +72,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'happy-day-prod.firebasestorage.app',
     iosBundleId: 'com.example.verygoodcore.happy-day',
   );
-
 }
