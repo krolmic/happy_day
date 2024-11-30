@@ -29,6 +29,8 @@ dependencies:
   intl: ^0.19.0
   local_storage_structures_api:
     path: packages/local_storage_structures_api
+  onboarding_repository:
+    path: packages/onboarding_repository
   reorderables: ^0.6.0
   shared_preferences: ^2.3.3
   simple_circular_progress_bar: ^1.0.2
