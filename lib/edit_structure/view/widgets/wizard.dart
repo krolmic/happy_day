@@ -1,7 +1,7 @@
 part of '../edit_structure_page.dart';
 
-class Wizard extends StatefulWidget {
-  const Wizard({
+class StructureWizard extends StatefulWidget {
+  const StructureWizard({
     required this.pages,
     required this.onCompleted,
     required this.onNextStep,
@@ -14,10 +14,10 @@ class Wizard extends StatefulWidget {
   final VoidCallback onCompleted;
 
   @override
-  WizardState createState() => WizardState();
+  StructureWizardState createState() => StructureWizardState();
 }
 
-class WizardState extends State<Wizard> {
+class StructureWizardState extends State<StructureWizard> {
   PageController? _controller = PageController();
 
   int currentPage = 0;
@@ -133,7 +133,7 @@ class WizardState extends State<Wizard> {
                   );
                 },
               ),
-              ProgressIndicator(
+              StepsIndicator(
                 dotsCount: widget.pages.length,
                 position: currentPage + 1,
               ),
@@ -170,31 +170,8 @@ class WizardState extends State<Wizard> {
   }
 }
 
-class ProgressIndicator extends StatelessWidget {
-  const ProgressIndicator({
-    required this.dotsCount,
-    required this.position,
-    super.key,
-  });
-
-  final int dotsCount;
-  final int position;
-
-  @override
-  Widget build(BuildContext context) {
-    return StepProgressIndicator(
-      totalSteps: dotsCount,
-      currentStep: position,
-      selectedColor: HappyDayTheme.secondaryColor,
-      unselectedColor: HappyDayTheme.secondaryColorWithTransparency,
-      selectedSize: 2.5,
-      unselectedSize: 2.5,
-    );
-  }
-}
-
-class WizardPage extends StatelessWidget {
-  const WizardPage({
+class StructureWizardPage extends StatelessWidget {
+  const StructureWizardPage({
     required this.child,
     this.floatingActionButton,
     super.key,
