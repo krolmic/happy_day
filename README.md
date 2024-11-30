@@ -18,6 +18,24 @@ This project contains 3 flavors:
 - staging
 - production
 
+Before you run the app you must add projects "happy-day-dev", "happy-day-stg", and "happy-day-prod" to your Firebase console.
+
+Now, install Firebase & FlutterFire CLI and configure projects for each flavor:
+
+```sh
+# Install CLI
+npm install -g firebase-tools
+dart pub global activate flutterfire_cli
+
+# Login to Firebase
+firebase login
+
+# Get projects configuration
+./flutterfire_config.sh dev
+./flutterfire_config.sh stg
+./flutterfire_config.sh prod
+```
+
 To run the desired flavor either use the launch configuration in VSCode/Android Studio or use the following commands:
 
 ```sh
@@ -31,7 +49,11 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 
-_\*Happy Day works on iOS, Android, Web, and Windows._
+_\*Happy Day works on iOS, Android, and Web._
+
+### Troubleshooting
+
+If you are getting an error that says "Failed to list Firebase projects error", run `firebase logout`, then `firebase login`, and try again.
 
 ---
 
