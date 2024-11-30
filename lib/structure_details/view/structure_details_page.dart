@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:happy_day/l10n/l10n.dart';
 import 'package:happy_day/shared/router/routes_names.dart';
 import 'package:happy_day/shared/toastification.dart';
-import 'package:happy_day/shared/widgets/max_width.dart';
 import 'package:happy_day/structure_details/structure_details.dart';
 import 'package:intl/intl.dart';
 import 'package:structures_api/structures_api.dart';
@@ -110,39 +109,37 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
         body: SafeArea(
           child: Stack(
             children: [
-              MaxWidth(
-                child: Column(
-                  children: [
-                    Header(
-                      structure: widget.structure,
-                    ),
-                    Expanded(
-                      child: CustomScrollView(
-                        slivers: <Widget>[
-                          SliverFillRemaining(
-                            child: ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    surfaceColor,
-                                    surfaceColor,
-                                    surfaceColor,
-                                    surfaceColor.withOpacity(0),
-                                  ],
-                                  stops: const [0.0, 0.85, 0.95, 1.0],
-                                ).createShader(bounds);
-                              },
-                              blendMode: BlendMode.dstIn,
-                              child: Steps(color: color),
-                            ),
+              Column(
+                children: [
+                  Header(
+                    structure: widget.structure,
+                  ),
+                  Expanded(
+                    child: CustomScrollView(
+                      slivers: <Widget>[
+                        SliverFillRemaining(
+                          child: ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  surfaceColor,
+                                  surfaceColor,
+                                  surfaceColor,
+                                  surfaceColor.withOpacity(0),
+                                ],
+                                stops: const [0.0, 0.85, 0.95, 1.0],
+                              ).createShader(bounds);
+                            },
+                            blendMode: BlendMode.dstIn,
+                            child: Steps(color: color),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Align(
                 alignment: Alignment.topLeft,
