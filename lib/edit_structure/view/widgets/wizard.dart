@@ -207,9 +207,6 @@ class WizardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-      constraints: const BoxConstraints(
-        maxWidth: maxViewWidth,
-      ),
       child: Stack(
         children: [
           SingleChildScrollView(

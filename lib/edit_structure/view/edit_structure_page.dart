@@ -7,12 +7,10 @@ import 'package:go_router/go_router.dart';
 import 'package:happy_day/daily_structures/daily_structures.dart';
 import 'package:happy_day/edit_structure/edit_structure.dart';
 import 'package:happy_day/l10n/l10n.dart';
-import 'package:happy_day/shared/layout.dart';
 import 'package:happy_day/shared/router/routes_names.dart';
 import 'package:happy_day/shared/theme.dart';
 import 'package:happy_day/shared/toastification.dart';
 import 'package:happy_day/shared/widgets/loading_indicator.dart';
-import 'package:happy_day/shared/widgets/max_width.dart';
 import 'package:reorderables/reorderables.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -128,49 +126,46 @@ class EditStructureView extends StatelessWidget {
           child: Wizard(
             pages: [
               WizardPage(
-                child: MaxWidth(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child:
-                            BlocBuilder<EditStructureBloc, EditStructureState>(
-                          buildWhen: (previous, current) =>
-                              previous.color != current.color,
-                          builder: (context, state) {
-                            return TitleField(color: state.color);
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      BlocBuilder<EditStructureBloc, EditStructureState>(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: BlocBuilder<EditStructureBloc, EditStructureState>(
                         buildWhen: (previous, current) =>
                             previous.color != current.color,
                         builder: (context, state) {
-                          return DescriptionField(color: state.color);
+                          return TitleField(color: state.color);
                         },
                       ),
-                      const SizedBox(
-                        height: 30,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    BlocBuilder<EditStructureBloc, EditStructureState>(
+                      buildWhen: (previous, current) =>
+                          previous.color != current.color,
+                      builder: (context, state) {
+                        return DescriptionField(color: state.color);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const IntrinsicHeight(
+                      child: Row(
+                        children: [
+                          Flexible(
+                            child: Preview(),
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          ColorSelection(),
+                        ],
                       ),
-                      const IntrinsicHeight(
-                        child: Row(
-                          children: [
-                            Flexible(
-                              child: Preview(),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            ColorSelection(),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               WizardPage(
@@ -195,16 +190,14 @@ class EditStructureView extends StatelessWidget {
                     );
                   },
                 ),
-                child: MaxWidth(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: BlocBuilder<EditStructureBloc, EditStructureState>(
-                      buildWhen: (previous, current) =>
-                          previous.color != current.color,
-                      builder: (context, state) {
-                        return Steps(stepsColor: state.color);
-                      },
-                    ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: BlocBuilder<EditStructureBloc, EditStructureState>(
+                    buildWhen: (previous, current) =>
+                        previous.color != current.color,
+                    builder: (context, state) {
+                      return Steps(stepsColor: state.color);
+                    },
                   ),
                 ),
               ),

@@ -13,34 +13,37 @@ class Header extends StatelessWidget {
     final theme = Theme.of(context);
     final color = Color(structure.color);
 
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 30,
-      ),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.25),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            structure.title,
-            style: theme.textTheme.headlineMedium?.copyWith(
-              color: color,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 10),
-          if (structure.hasDescription)
+    return SizedBox(
+      width: double.infinity,
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 15,
+          vertical: 30,
+        ),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.25),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Text(
-              structure.description!,
-              style: theme.textTheme.bodyLarge?.copyWith(
+              structure.title,
+              style: theme.textTheme.headlineMedium?.copyWith(
                 color: color,
               ),
               textAlign: TextAlign.center,
             ),
-        ],
+            const SizedBox(height: 10),
+            if (structure.hasDescription)
+              Text(
+                structure.description!,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: color,
+                ),
+                textAlign: TextAlign.center,
+              ),
+          ],
+        ),
       ),
     );
   }
