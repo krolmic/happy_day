@@ -42,7 +42,6 @@ class OnboardingPage extends StatelessWidget {
                       children: [
                         const Icon(
                           Icons.arrow_forward,
-                          color: Colors.white,
                         ),
                         const SizedBox(width: 10),
                         Text(l10n.onboardingButtonLabel),
