@@ -118,7 +118,7 @@ class DailyStructuresContent extends StatelessWidget {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: const EdgeInsets.all(10),
           sliver: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
             buildWhen: (previous, current) =>
                 previous.structuresOfADay != current.structuresOfADay ||

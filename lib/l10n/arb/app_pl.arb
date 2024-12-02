@@ -1,6 +1,13 @@
 {
     "@@locale": "pl",
     "errorMessage": "Wystąpił błąd",
+    "onboardingButtonLabel": "Rozpoczynamy",
+    "onboardingHeadingAdd": "Twórz struktury",
+    "onboardingDescriptionAdd": "Zacznij od zaprojektowania codziennej struktury dopasowanej do twojego stylu życia i celów.",
+    "onboardingHeadingGenerate": "Pozwól, by AI poprowadziło",
+    "onboardingDescriptionGenerate": "Uprość planowanie dzięki sugestiom opartym na sztucznej inteligencji, dopasowanym specjalnie do ciebie.",
+    "onboardingHeadingTrack": "Buduj nawyki, które zostaną",
+    "onboardingDescriptionTrack": "Śledź swoje postępy, bądź konsekwentny i łatwo realizuj zadania.",
     "editStructureAddAppBarTitle": "Dodaj strukturę",
     "editStructureTitleLabel": "Tytuł",
     "editStructureTitleHint": "Wymagana nazwa struktury",

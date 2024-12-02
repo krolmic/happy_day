@@ -1,6 +1,13 @@
 {
     "@@locale": "de",
     "errorMessage": "Ein Fehler ist aufgetreten",
+    "onboardingButtonLabel": "Los geht's",
+    "onboardingHeadingAdd": "Strukturen erstellen",
+    "onboardingDescriptionAdd": "Beginne damit, eine tägliche Struktur zu gestalten, die zu deinem Lebensstil und deinen Zielen passt.",
+    "onboardingHeadingGenerate": "Lass die KI den Weg weisen",
+    "onboardingDescriptionGenerate": "Vereinfache die Planung mit KI-gestützten Vorschlägen, die genau zu dir passen.",
+    "onboardingHeadingTrack": "Gewohnheiten aufbauen, die bleiben",
+    "onboardingDescriptionTrack": "Verfolge deinen Fortschritt, bleib konsequent und erledige Aufgaben mühelos.",
     "editStructureAddAppBarTitle": "Neue Struktur",
     "editStructureTitleLabel": "Titel",
     "editStructureTitleHint": "Pflichtfeld, Titel der Struktur",

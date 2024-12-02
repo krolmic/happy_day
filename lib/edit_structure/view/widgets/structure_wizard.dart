@@ -18,22 +18,21 @@ class StructureWizard extends StatefulWidget {
 }
 
 class StructureWizardState extends State<StructureWizard> {
-  PageController? _controller = PageController();
+  final PageController _controller = PageController();
 
   int currentPage = 0;
 
   @override
   void dispose() {
-    _controller!.dispose();
-    _controller = null;
+    _controller.dispose();
     super.dispose();
   }
 
   Future<void>? switchToPage(int page) {
-    _controller!.animateToPage(
+    _controller.animateToPage(
       page,
       duration: const Duration(milliseconds: 300),
-      curve: Curves.ease,
+      curve: Curves.easeInOut,
     );
 
     return null;
@@ -134,8 +133,9 @@ class StructureWizardState extends State<StructureWizard> {
                 },
               ),
               StepsIndicator(
-                dotsCount: widget.pages.length,
-                position: currentPage + 1,
+                stepsCount: widget.pages.length,
+                currentStep: currentPage + 1,
+                selectCompletedSteps: true,
               ),
               BlocBuilder<EditStructureBloc, EditStructureState>(
                 buildWhen: (previous, current) =>
@@ -183,7 +183,7 @@ class StructureWizardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
       child: Stack(
         children: [
           SingleChildScrollView(

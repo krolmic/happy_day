@@ -1,6 +1,13 @@
 {
     "@@locale": "en",
     "errorMessage": "An error occurred",
+    "onboardingButtonLabel": "Get started",
+    "onboardingHeadingAdd": "Create Structures",
+    "onboardingDescriptionAdd": "Start by designing a daily structure that suits your lifestyle and goals.",
+    "onboardingHeadingGenerate": "Let AI Light the Way",
+    "onboardingDescriptionGenerate": "Simplify planning with AI-powered suggestions tailored just for you.",
+    "onboardingHeadingTrack": "Build Habits That Stick",
+    "onboardingDescriptionTrack": "Track your progress, stay consistent, and complete tasks with ease.",
     "editStructureAddAppBarTitle": "New Structure",
     "editStructureTitleLabel": "Title",
     "editStructureTitleHint": "Required structure name",

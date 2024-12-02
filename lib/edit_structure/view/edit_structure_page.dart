@@ -24,8 +24,8 @@ part 'widgets/description_field.dart';
 part 'widgets/label.dart';
 part 'widgets/preview.dart';
 part 'widgets/steps.dart';
+part 'widgets/structure_wizard.dart';
 part 'widgets/title_field.dart';
-part 'widgets/wizard.dart';
 
 class EditStructurePage extends StatelessWidget {
   const EditStructurePage({required this.initialStructure, super.key});

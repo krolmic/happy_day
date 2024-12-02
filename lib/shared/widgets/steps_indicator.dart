@@ -4,21 +4,29 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class StepsIndicator extends StatelessWidget {
   const StepsIndicator({
-    required this.dotsCount,
-    required this.position,
+    required this.stepsCount,
+    required this.currentStep,
+    this.selectCompletedSteps = false,
     super.key,
   });
 
-  final int dotsCount;
-  final int position;
+  final int stepsCount;
+  final int currentStep;
+  final bool selectCompletedSteps;
 
   @override
   Widget build(BuildContext context) {
     return StepProgressIndicator(
-      totalSteps: dotsCount,
-      currentStep: position,
-      selectedColor: HappyDayTheme.secondaryColor,
-      unselectedColor: HappyDayTheme.secondaryColorWithTransparency,
+      totalSteps: stepsCount,
+      currentStep: currentStep,
+      customColor: (index) => selectCompletedSteps
+          ? index + 1 <= currentStep
+              ? HappyDayTheme.secondaryColor
+              : HappyDayTheme.secondaryColorWithTransparency
+          : index + 1 == currentStep
+              ? HappyDayTheme.secondaryColor
+              : HappyDayTheme.secondaryColorWithTransparency,
+      size: 5,
       selectedSize: 2.5,
       unselectedSize: 2.5,
     );

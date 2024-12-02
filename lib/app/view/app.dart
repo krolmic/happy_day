@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:happy_day/l10n/l10n.dart';
+import 'package:happy_day/onboarding/cubit/onboarding_cubit.dart';
 import 'package:happy_day/shared/router/router.dart';
 import 'package:happy_day/shared/theme.dart';
+import 'package:onboarding_repository/onboarding_repository.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_repository/structures_repository.dart';
 import 'package:toastification/toastification.dart';
@@ -11,11 +13,13 @@ class App extends StatelessWidget {
   const App({
     required this.structuresRepository,
     required this.stepsGenerationRepository,
+    required this.onboardingRepository,
     super.key,
   });
 
   final StructuresRepository structuresRepository;
   final StepsGenerationRepository stepsGenerationRepository;
+  final OnboardingRepository onboardingRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +31,16 @@ class App extends StatelessWidget {
         RepositoryProvider.value(
           value: stepsGenerationRepository,
         ),
+        RepositoryProvider.value(
+          value: onboardingRepository,
+        ),
       ],
-      child: const AppView(),
+      child: BlocProvider(
+        create: (context) => OnboardingCubit(
+          onboardingRepository: context.read<OnboardingRepository>(),
+        )..init(),
+        child: const AppView(),
+      ),
     );
   }
 }

@@ -7,14 +7,21 @@ import 'package:happy_day/bootstrap.dart';
 import 'package:happy_day/firebase_options_stg.dart';
 import 'package:happy_day/shared/logging.dart';
 import 'package:local_storage_structures_api/local_storage_structures_api.dart';
+import 'package:onboarding_repository/onboarding_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  final onboardingRepository = OnboardingRepository(
+    sharedPreferences: sharedPreferences,
+  );
+
   final structuresApi = LocalStorageStructuresApi(
-    plugin: await SharedPreferences.getInstance(),
+    plugin: sharedPreferences,
   );
 
   Bloc.observer = const LoggingBlocObserver();
@@ -34,6 +41,7 @@ Future<void> main() async {
   return bootstrap(
     structuresApi: structuresApi,
     stepsGenerationRepository: stepsGenerationRepository,
+    onboardingRepository: onboardingRepository,
     onFatalError: FirebaseCrashlytics.instance.recordFlutterFatalError,
     onError: FirebaseCrashlytics.instance.recordError,
     logTree: logTree,
