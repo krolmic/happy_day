@@ -1,6 +1,13 @@
 {
     "@@locale": "es",
     "errorMessage": "Se ha producido un error",
+    "onboardingButtonLabel": "Empezar",
+    "onboardingHeadingAdd": "Crear estructuras",
+    "onboardingDescriptionAdd": "Empieza diseñando una estructura diaria que se adapte a tu estilo de vida y objetivos.",
+    "onboardingHeadingGenerate": "Deja que la IA te guíe",
+    "onboardingDescriptionGenerate": "Simplifica la planificación con sugerencias impulsadas por IA hechas para ti.",
+    "onboardingHeadingTrack": "Construye hábitos que perduren",
+    "onboardingDescriptionTrack": "Sigue tu progreso, mantente constante y completa tareas con facilidad.",
     "editStructureAddAppBarTitle": "Añadir estructura",
     "editStructureTitleLabel": "Título",
     "editStructureTitleHint": "Obligatorio, nombre de la estructura",

@@ -11,9 +11,9 @@ import 'package:happy_day/shared/router/routes_names.dart';
 import 'package:happy_day/shared/theme.dart';
 import 'package:happy_day/shared/toastification.dart';
 import 'package:happy_day/shared/widgets/loading_indicator.dart';
+import 'package:happy_day/shared/widgets/steps_indicator.dart';
 import 'package:reorderables/reorderables.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
@@ -24,8 +24,8 @@ part 'widgets/description_field.dart';
 part 'widgets/label.dart';
 part 'widgets/preview.dart';
 part 'widgets/steps.dart';
+part 'widgets/structure_wizard.dart';
 part 'widgets/title_field.dart';
-part 'widgets/wizard.dart';
 
 class EditStructurePage extends StatelessWidget {
   const EditStructurePage({required this.initialStructure, super.key});
@@ -123,9 +123,9 @@ class EditStructureView extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         appBar: buildAppBar(),
         body: SafeArea(
-          child: Wizard(
+          child: StructureWizard(
             pages: [
-              WizardPage(
+              StructureWizardPage(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -168,7 +168,7 @@ class EditStructureView extends StatelessWidget {
                   ],
                 ),
               ),
-              WizardPage(
+              StructureWizardPage(
                 floatingActionButton:
                     BlocBuilder<EditStructureBloc, EditStructureState>(
                   buildWhen: (previous, current) =>

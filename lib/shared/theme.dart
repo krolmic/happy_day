@@ -40,6 +40,15 @@ class HappyDayTheme {
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
       ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          backgroundColor: primaryColor,
+          foregroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
       useMaterial3: true,
     );
   }

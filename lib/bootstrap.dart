@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_fimber/flutter_fimber.dart';
 import 'package:happy_day/app/view/app.dart';
+import 'package:onboarding_repository/onboarding_repository.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
@@ -10,6 +11,7 @@ import 'package:structures_repository/structures_repository.dart';
 Future<void> bootstrap({
   required StructuresApi structuresApi,
   required StepsGenerationRepository stepsGenerationRepository,
+  required OnboardingRepository onboardingRepository,
   required void Function(FlutterErrorDetails) onFatalError,
   required void Function(Object, StackTrace) onError,
   required LogTree logTree,
@@ -35,6 +37,7 @@ Future<void> bootstrap({
     App(
       structuresRepository: structuresRepository,
       stepsGenerationRepository: stepsGenerationRepository,
+      onboardingRepository: onboardingRepository,
     ),
   );
 }

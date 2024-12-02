@@ -1,7 +1,7 @@
 part of '../edit_structure_page.dart';
 
-class Wizard extends StatefulWidget {
-  const Wizard({
+class StructureWizard extends StatefulWidget {
+  const StructureWizard({
     required this.pages,
     required this.onCompleted,
     required this.onNextStep,
@@ -14,26 +14,25 @@ class Wizard extends StatefulWidget {
   final VoidCallback onCompleted;
 
   @override
-  WizardState createState() => WizardState();
+  StructureWizardState createState() => StructureWizardState();
 }
 
-class WizardState extends State<Wizard> {
-  PageController? _controller = PageController();
+class StructureWizardState extends State<StructureWizard> {
+  final PageController _controller = PageController();
 
   int currentPage = 0;
 
   @override
   void dispose() {
-    _controller!.dispose();
-    _controller = null;
+    _controller.dispose();
     super.dispose();
   }
 
   Future<void>? switchToPage(int page) {
-    _controller!.animateToPage(
+    _controller.animateToPage(
       page,
       duration: const Duration(milliseconds: 300),
-      curve: Curves.ease,
+      curve: Curves.easeInOut,
     );
 
     return null;
@@ -133,9 +132,10 @@ class WizardState extends State<Wizard> {
                   );
                 },
               ),
-              ProgressIndicator(
-                dotsCount: widget.pages.length,
-                position: currentPage + 1,
+              StepsIndicator(
+                stepsCount: widget.pages.length,
+                currentStep: currentPage + 1,
+                selectCompletedSteps: true,
               ),
               BlocBuilder<EditStructureBloc, EditStructureState>(
                 buildWhen: (previous, current) =>
@@ -170,31 +170,8 @@ class WizardState extends State<Wizard> {
   }
 }
 
-class ProgressIndicator extends StatelessWidget {
-  const ProgressIndicator({
-    required this.dotsCount,
-    required this.position,
-    super.key,
-  });
-
-  final int dotsCount;
-  final int position;
-
-  @override
-  Widget build(BuildContext context) {
-    return StepProgressIndicator(
-      totalSteps: dotsCount,
-      currentStep: position,
-      selectedColor: HappyDayTheme.secondaryColor,
-      unselectedColor: HappyDayTheme.secondaryColorWithTransparency,
-      selectedSize: 2.5,
-      unselectedSize: 2.5,
-    );
-  }
-}
-
-class WizardPage extends StatelessWidget {
-  const WizardPage({
+class StructureWizardPage extends StatelessWidget {
+  const StructureWizardPage({
     required this.child,
     this.floatingActionButton,
     super.key,
@@ -206,7 +183,7 @@ class WizardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
       child: Stack(
         children: [
           SingleChildScrollView(
