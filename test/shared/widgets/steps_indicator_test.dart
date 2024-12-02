@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:happy_day/shared/theme.dart';
 import 'package:happy_day/shared/widgets/steps_indicator.dart';
@@ -48,14 +47,13 @@ void main() {
       );
 
       // Test that step 2 is highlighted with secondary color
-      final colorForCurrentStep = 
-          indicator.customColor?.call(currentStep - 1);
+      final colorForCurrentStep = indicator.customColor?.call(currentStep - 1);
       expect(colorForCurrentStep, HappyDayTheme.secondaryColor);
 
       // Test that other steps are not highlighted
       final colorForOtherStep = indicator.customColor?.call(0);
       expect(
-        colorForOtherStep, 
+        colorForOtherStep,
         HappyDayTheme.secondaryColorWithTransparency,
       );
     });
