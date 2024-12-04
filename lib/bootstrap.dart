@@ -7,6 +7,7 @@ import 'package:onboarding_repository/onboarding_repository.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
+import 'package:wiredash/wiredash.dart';
 
 Future<void> bootstrap({
   required StructuresApi structuresApi,
@@ -16,6 +17,7 @@ Future<void> bootstrap({
   required void Function(Object, StackTrace) onError,
   required LogTree logTree,
   required bool sendCrashlyticsReports,
+  required bool showFeedbackButton,
 }) async {
   FlutterError.onError = onFatalError;
 
@@ -33,11 +35,19 @@ Future<void> bootstrap({
     await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
   }
 
+  const wiredashProjectId = String.fromEnvironment('WIREDASH_PROJECT_ID');
+  const wiredashSecret = String.fromEnvironment('WIREDASH_SECRET');
+
   runApp(
-    App(
-      structuresRepository: structuresRepository,
-      stepsGenerationRepository: stepsGenerationRepository,
-      onboardingRepository: onboardingRepository,
+    Wiredash(
+      projectId: wiredashProjectId,
+      secret: wiredashSecret,
+      child: App(
+        structuresRepository: structuresRepository,
+        stepsGenerationRepository: stepsGenerationRepository,
+        onboardingRepository: onboardingRepository,
+        showFeedbackButton: showFeedbackButton,
+      ),
     ),
   );
 }

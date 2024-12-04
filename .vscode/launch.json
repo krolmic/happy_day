@@ -13,7 +13,11 @@
         "--flavor",
         "development",
         "--target",
-        "lib/main_development.dart"
+        "lib/main_development.dart",
+        "--dart-define",
+        "WIREDASH_PROJECT_ID=${env:WIREDASH_PROJECT_ID_DEV}",
+        "--dart-define",
+        "WIREDASH_SECRET=${env:WIREDASH_SECRET_DEV}",
       ]
     },
     {
@@ -25,7 +29,11 @@
         "--flavor",
         "staging",
         "--target",
-        "lib/main_staging.dart"
+        "lib/main_staging.dart",
+        "--dart-define",
+        "WIREDASH_PROJECT_ID=${env:WIREDASH_PROJECT_ID_STG}",
+        "--dart-define",
+        "WIREDASH_SECRET=${env:WIREDASH_SECRET_STG}",
       ]
     },
     {
@@ -37,7 +45,11 @@
         "--flavor",
         "production",
         "--target",
-        "lib/main_production.dart"
+        "lib/main_production.dart",
+        "--dart-define",
+        "WIREDASH_PROJECT_ID=${env:WIREDASH_PROJECT_ID_PROD}",
+        "--dart-define",
+        "WIREDASH_SECRET=${env:WIREDASH_SECRET_PROD}",
       ]
     }
   ]

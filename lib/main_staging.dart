@@ -46,5 +46,6 @@ Future<void> main() async {
     onError: FirebaseCrashlytics.instance.recordError,
     logTree: logTree,
     sendCrashlyticsReports: true,
+    showFeedbackButton: true,
   );
 }
