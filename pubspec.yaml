@@ -44,6 +44,7 @@ dependencies:
   structures_repository:
     path: packages/structures_repository
   toastification: ^2.3.0
+  wiredash: ^2.3.0
 
 dev_dependencies:
   bloc_test: ^9.1.7
