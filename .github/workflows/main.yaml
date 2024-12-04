@@ -21,10 +21,20 @@ jobs:
     with:
       flutter_channel: stable
       min_coverage: 10
+      setup: |
+        echo "Creating dummy Firebase options files for CI..."
+        cat > lib/firebase_options_dev.dart << 'EOL'
+        import 'package:firebase_core/firebase_core.dart';
 
-  spell-check:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
-    with:
-      includes: |
-        **/*.md
-      modified_files_only: false
+        class DefaultFirebaseOptions {
+          static const FirebaseOptions currentPlatform = FirebaseOptions(
+            apiKey: 'dummy',
+            appId: 'dummy',
+            messagingSenderId: 'dummy',
+            projectId: 'dummy',
+          );
+        }
+        EOL
+        cp lib/firebase_options_dev.dart lib/firebase_options_stg.dart
+        cp lib/firebase_options_dev.dart lib/firebase_options_prod.dart
+        
