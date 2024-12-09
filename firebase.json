@@ -50,6 +50,18 @@
                         "appId": "1:355750949707:ios:c27847143509e6e4982ece",
                         "uploadDebugSymbols": true,
                         "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
+                    },
+                    "Release-production": {
+                        "projectId": "happy-day-prod",
+                        "appId": "1:355750949707:ios:c27847143509e6e4982ece",
+                        "uploadDebugSymbols": true,
+                        "fileOutput": "ios/flavors/production/GoogleService-Info.plist"
+                    },
+                    "Release-staging": {
+                        "projectId": "happy-day-stg",
+                        "appId": "1:881917110490:ios:5be7202e7dbd36a93edde3",
+                        "uploadDebugSymbols": true,
+                        "fileOutput": "ios/flavors/staging/GoogleService-Info.plist"
                     }
                 }
             },
