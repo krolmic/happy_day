@@ -49,15 +49,27 @@ dev_dependencies:
   bloc_test: ^9.1.7
   build_runner: ^2.4.13
   flutter_gen_runner: ^5.8.0
+  flutter_launcher_icons: ^0.14.2
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
   mocktail: ^1.0.4
   very_good_analysis: ^6.0.0
 
+flutter_launcher_icons:
+  android: true
+  ios: true
+  web:
+    generate: true
+  image_path: "assets/app_icon/app-icon.png"
+  adaptive_icon_background: "assets/app_icon/app-icon-background.png"
+  adaptive_icon_foreground: "assets/app_icon/app-icon-foreground.png"
+  remove_alpha_ios: true
+
 flutter:
   uses-material-design: true
   generate: true
 
   assets:
+    - assets/app_icon/
     - assets/vectors/

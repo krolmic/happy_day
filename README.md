@@ -1,4 +1,4 @@
-# Happy Day
+# Happy
 
 ![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
@@ -49,7 +49,7 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 
-_\*Happy Day works on iOS, Android, and Web._
+_\*Happy works on iOS, Android, and Web._
 
 ### Troubleshooting
 
