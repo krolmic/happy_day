@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:happy_day/daily_structures/daily_structures.dart';
 import 'package:happy_day/l10n/l10n.dart';
+import 'package:happy_day/shared/extensions/structure.dart';
 import 'package:happy_day/shared/router/router.dart';
 import 'package:happy_day/shared/router/routes_names.dart';
 import 'package:happy_day/shared/theme.dart';

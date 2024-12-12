@@ -11,7 +11,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = Color(structure.color);
+    final color = structure.color;
 
     return SizedBox(
       width: double.infinity,
@@ -21,7 +21,7 @@ class Header extends StatelessWidget {
           vertical: 30,
         ),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.25),
+          color: color.withValues(alpha: 0.25),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

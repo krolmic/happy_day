@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fimber/flutter_fimber.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:happy_day/shared/extensions/structure.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
@@ -25,7 +26,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
             title: initialStructure?.title ?? '',
             description: initialStructure?.description ?? '',
             color: initialStructure != null
-                ? Color(initialStructure.color)
+                ? initialStructure.color
                 : Colors.deepPurple,
             steps: initialStructure != null
                 ? structuresRepository.getSteps(initialStructure.id)
@@ -120,7 +121,9 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
       title: state.title,
       description: state.description,
       stepsIds: state.steps.map((step) => step.id).toList(),
-      color: state.color.value,
+      colorRed: (state.color.r * 255).toInt(),
+      colorGreen: (state.color.g * 255).toInt(),
+      colorBlue: (state.color.b * 255).toInt(),
     );
 
     try {
