@@ -177,8 +177,9 @@ class EditStructureView extends StatelessWidget {
                       previous.color != current.color,
                   builder: (context, state) {
                     final isEnabled = !state.stepsGenerationStatus.isLoading;
-                    final color =
-                        isEnabled ? state.color : state.color.withOpacity(0.3);
+                    final color = isEnabled
+                        ? state.color
+                        : state.color.withValues(alpha: 0.3);
 
                     return FloatingActionButton(
                       backgroundColor: color,

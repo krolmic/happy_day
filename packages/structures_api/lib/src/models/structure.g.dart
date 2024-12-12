@@ -15,7 +15,9 @@ _$StructureImpl _$$StructureImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       description: json['description'] as String?,
-      color: (json['color'] as num?)?.toInt() ?? 0xff3f51b5,
+      colorRed: (json['colorRed'] as num?)?.toInt() ?? 103,
+      colorGreen: (json['colorGreen'] as num?)?.toInt() ?? 58,
+      colorBlue: (json['colorBlue'] as num?)?.toInt() ?? 183,
     );
 
 Map<String, dynamic> _$$StructureImplToJson(_$StructureImpl instance) =>
@@ -24,5 +26,7 @@ Map<String, dynamic> _$$StructureImplToJson(_$StructureImpl instance) =>
       'title': instance.title,
       'stepsIds': instance.stepsIds,
       'description': instance.description,
-      'color': instance.color,
+      'colorRed': instance.colorRed,
+      'colorGreen': instance.colorGreen,
+      'colorBlue': instance.colorBlue,
     };

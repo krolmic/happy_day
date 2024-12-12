@@ -31,10 +31,10 @@ class DailyStructure extends StatelessWidget {
     final buildAddIconButton = !isStarted && !buildCheckIconButton;
     final buildIconButton = buildCheckIconButton || buildAddIconButton;
 
-    final color = Color(structure.color);
+    final color = structure.color;
 
     return ListTile(
-      tileColor: color.withOpacity(0.25),
+      tileColor: color.withValues(alpha: 0.25),
       contentPadding: const EdgeInsets.symmetric(horizontal: 15),
       onTap: () {
         if (isDisabled) return;
@@ -108,7 +108,7 @@ class _StructureIconButton extends StatelessWidget {
     return IconButton(
       style: IconButton.styleFrom(
         backgroundColor: theme.colorScheme.surface,
-        foregroundColor: Color(structure.color),
+        foregroundColor: structure.color,
       ),
       onPressed: () {
         if (isDisabled) return;
@@ -184,13 +184,13 @@ class _StructureProgressState extends State<_StructureProgress> {
       margin: const EdgeInsets.all(1),
       child: SimpleCircularProgressBar(
         backColor: theme.colorScheme.surface,
-        progressColors: [widget.color.withOpacity(0.75)],
+        progressColors: [widget.color.withValues(alpha: 0.75)],
         animationDuration: 1,
         valueNotifier: _progressNotifier,
         maxValue: widget.totalStepsCount.toDouble(),
         backStrokeWidth: 4,
         progressStrokeWidth: 4,
-        fullProgressColor: widget.color.withOpacity(0.75),
+        fullProgressColor: widget.color.withValues(alpha: 0.75),
         size: 50,
         mergeMode: true,
         onGetText: (double value) {

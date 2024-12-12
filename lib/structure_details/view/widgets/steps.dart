@@ -28,7 +28,7 @@ class Steps extends StatelessWidget {
               if (states.contains(WidgetState.selected)) {
                 return color;
               }
-              return color.withOpacity(0.3);
+              return color.withValues(alpha: 0.3);
             },
           ),
           currentStep: state.activeStepIndex,
@@ -126,15 +126,15 @@ class Steps extends StatelessWidget {
                 title: Text(step.title),
                 stepStyle: StepStyle(
                   indexStyle: theme.textTheme.bodyMedium?.copyWith(
-                    color: isActive ? color : color.withOpacity(0.3),
+                    color: isActive ? color : color.withValues(alpha: 0.3),
                   ),
                   border: Border.all(
-                    color: isActive ? color : color.withOpacity(0.3),
+                    color: isActive ? color : color.withValues(alpha: 0.3),
                   ),
                   color: isCompleted
                       ? color
                       : isActive
-                          ? color.withOpacity(0.1)
+                          ? color.withValues(alpha: 0.1)
                           : theme.colorScheme.surface,
                 ),
               );

@@ -3,9 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HappyDayTheme {
   static const primaryColor = Color(0xFF6a61f0);
-  static Color primaryColorWithTransparency = primaryColor.withOpacity(0.1);
+  static Color primaryColorWithTransparency =
+      primaryColor.withValues(alpha: 0.1);
   static const secondaryColor = Color(0xFF282828);
-  static Color secondaryColorWithTransparency = secondaryColor.withOpacity(0.3);
+  static Color secondaryColorWithTransparency =
+      secondaryColor.withValues(alpha: 0.3);
 
   static ThemeData get theme {
     return ThemeData(

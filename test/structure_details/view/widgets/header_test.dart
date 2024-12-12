@@ -14,7 +14,9 @@ void main() {
         id: '1',
         title: 'Test Structure',
         description: 'Test Description',
-        color: Colors.blue.value,
+        colorRed: 255,
+        colorGreen: 0,
+        colorBlue: 0,
       );
     });
 
@@ -45,7 +47,12 @@ void main() {
     });
 
     testWidgets('applies correct color from structure', (tester) async {
-      final color = Color(structure.color);
+      final color = Color.fromARGB(
+        255,
+        structure.colorRed,
+        structure.colorGreen,
+        structure.colorBlue,
+      );
 
       await tester.pumpScaffold(
         Header(structure: structure),
@@ -55,8 +62,8 @@ void main() {
       final boxDecoration = container.decoration! as BoxDecoration;
 
       expect(
-        boxDecoration.color?.value,
-        equals(color.withOpacity(0.25).value),
+        boxDecoration.color?.r,
+        equals(color.withValues(alpha: 0.25).r),
       );
 
       final titleText = tester.widget<Text>(
@@ -64,8 +71,8 @@ void main() {
       );
 
       expect(
-        (titleText.style?.color ?? Colors.black).value,
-        equals(color.value),
+        (titleText.style?.color ?? Colors.black).r,
+        equals(color.r),
       );
     });
   });

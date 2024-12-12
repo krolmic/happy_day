@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:happy_day/l10n/l10n.dart';
+import 'package:happy_day/shared/extensions/structure.dart';
 import 'package:happy_day/shared/router/routes_names.dart';
 import 'package:happy_day/shared/toastification.dart';
 import 'package:happy_day/structure_details/structure_details.dart';
@@ -75,7 +76,7 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    final color = Color(widget.structure.color);
+    final color = widget.structure.color;
     final theme = Theme.of(context);
     final surfaceColor = theme.colorScheme.surface;
 
@@ -127,7 +128,7 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
                                   surfaceColor,
                                   surfaceColor,
                                   surfaceColor,
-                                  surfaceColor.withOpacity(0),
+                                  surfaceColor.withValues(alpha: 0),
                                 ],
                                 stops: const [0.0, 0.85, 0.95, 1.0],
                               ).createShader(bounds);
@@ -148,10 +149,10 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
                   blastDirection: 0,
                   emissionFrequency: 0.5,
                   colors: [
-                    color.withOpacity(0.1),
-                    color.withOpacity(0.25),
-                    color.withOpacity(0.5),
-                    color.withOpacity(0.75),
+                    color.withValues(alpha: 0.1),
+                    color.withValues(alpha: 0.25),
+                    color.withValues(alpha: 0.5),
+                    color.withValues(alpha: 0.75),
                     color,
                   ],
                 ),
@@ -245,7 +246,7 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
           opacity: isBuild ? 1 : 0,
           duration: const Duration(milliseconds: 200),
           child: FloatingActionButton(
-            backgroundColor: Color(widget.structure.color),
+            backgroundColor: widget.structure.color,
             elevation: 0,
             onPressed: () {
               if (!state.isCurrentStepCompleted) {

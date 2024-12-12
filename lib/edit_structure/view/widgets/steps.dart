@@ -167,7 +167,7 @@ class StepsItem extends StatelessWidget {
             );
       },
       child: ListTile(
-        tileColor: stepsColor.withOpacity(0.1),
+        tileColor: stepsColor.withValues(alpha: 0.1),
         leading: CircleAvatar(
           backgroundColor: stepsColor,
           child: Text(
@@ -194,7 +194,7 @@ class StepsItem extends StatelessWidget {
               borderSide: BorderSide(color: stepsColor),
             ),
             filled: true,
-            fillColor: theme.colorScheme.surface.withOpacity(0.75),
+            fillColor: theme.colorScheme.surface.withValues(alpha: 0.75),
             counterText: '',
             focusColor: Colors.transparent,
             hoverColor: Colors.transparent,

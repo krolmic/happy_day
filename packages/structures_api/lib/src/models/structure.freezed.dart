@@ -24,7 +24,9 @@ mixin _$Structure {
   String get title => throw _privateConstructorUsedError;
   List<String> get stepsIds => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  int get color => throw _privateConstructorUsedError;
+  int get colorRed => throw _privateConstructorUsedError;
+  int get colorGreen => throw _privateConstructorUsedError;
+  int get colorBlue => throw _privateConstructorUsedError;
 
   /// Serializes this Structure to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +48,9 @@ abstract class $StructureCopyWith<$Res> {
       String title,
       List<String> stepsIds,
       String? description,
-      int color});
+      int colorRed,
+      int colorGreen,
+      int colorBlue});
 }
 
 /// @nodoc
@@ -68,7 +72,9 @@ class _$StructureCopyWithImpl<$Res, $Val extends Structure>
     Object? title = null,
     Object? stepsIds = null,
     Object? description = freezed,
-    Object? color = null,
+    Object? colorRed = null,
+    Object? colorGreen = null,
+    Object? colorBlue = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -87,9 +93,17 @@ class _$StructureCopyWithImpl<$Res, $Val extends Structure>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
+      colorRed: null == colorRed
+          ? _value.colorRed
+          : colorRed // ignore: cast_nullable_to_non_nullable
+              as int,
+      colorGreen: null == colorGreen
+          ? _value.colorGreen
+          : colorGreen // ignore: cast_nullable_to_non_nullable
+              as int,
+      colorBlue: null == colorBlue
+          ? _value.colorBlue
+          : colorBlue // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -108,7 +122,9 @@ abstract class _$$StructureImplCopyWith<$Res>
       String title,
       List<String> stepsIds,
       String? description,
-      int color});
+      int colorRed,
+      int colorGreen,
+      int colorBlue});
 }
 
 /// @nodoc
@@ -128,7 +144,9 @@ class __$$StructureImplCopyWithImpl<$Res>
     Object? title = null,
     Object? stepsIds = null,
     Object? description = freezed,
-    Object? color = null,
+    Object? colorRed = null,
+    Object? colorGreen = null,
+    Object? colorBlue = null,
   }) {
     return _then(_$StructureImpl(
       id: null == id
@@ -147,9 +165,17 @@ class __$$StructureImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
+      colorRed: null == colorRed
+          ? _value.colorRed
+          : colorRed // ignore: cast_nullable_to_non_nullable
+              as int,
+      colorGreen: null == colorGreen
+          ? _value.colorGreen
+          : colorGreen // ignore: cast_nullable_to_non_nullable
+              as int,
+      colorBlue: null == colorBlue
+          ? _value.colorBlue
+          : colorBlue // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -163,7 +189,9 @@ class _$StructureImpl extends _Structure {
       required this.title,
       final List<String> stepsIds = const [],
       this.description,
-      this.color = 0xff3f51b5})
+      this.colorRed = 103,
+      this.colorGreen = 58,
+      this.colorBlue = 183})
       : _stepsIds = stepsIds,
         super._();
 
@@ -187,11 +215,17 @@ class _$StructureImpl extends _Structure {
   final String? description;
   @override
   @JsonKey()
-  final int color;
+  final int colorRed;
+  @override
+  @JsonKey()
+  final int colorGreen;
+  @override
+  @JsonKey()
+  final int colorBlue;
 
   @override
   String toString() {
-    return 'Structure(id: $id, title: $title, stepsIds: $stepsIds, description: $description, color: $color)';
+    return 'Structure(id: $id, title: $title, stepsIds: $stepsIds, description: $description, colorRed: $colorRed, colorGreen: $colorGreen, colorBlue: $colorBlue)';
   }
 
   @override
@@ -204,13 +238,25 @@ class _$StructureImpl extends _Structure {
             const DeepCollectionEquality().equals(other._stepsIds, _stepsIds) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.color, color) || other.color == color));
+            (identical(other.colorRed, colorRed) ||
+                other.colorRed == colorRed) &&
+            (identical(other.colorGreen, colorGreen) ||
+                other.colorGreen == colorGreen) &&
+            (identical(other.colorBlue, colorBlue) ||
+                other.colorBlue == colorBlue));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title,
-      const DeepCollectionEquality().hash(_stepsIds), description, color);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      const DeepCollectionEquality().hash(_stepsIds),
+      description,
+      colorRed,
+      colorGreen,
+      colorBlue);
 
   /// Create a copy of Structure
   /// with the given fields replaced by the non-null parameter values.
@@ -234,7 +280,9 @@ abstract class _Structure extends Structure {
       required final String title,
       final List<String> stepsIds,
       final String? description,
-      final int color}) = _$StructureImpl;
+      final int colorRed,
+      final int colorGreen,
+      final int colorBlue}) = _$StructureImpl;
   _Structure._() : super._();
 
   factory _Structure.fromJson(Map<String, dynamic> json) =
@@ -249,7 +297,11 @@ abstract class _Structure extends Structure {
   @override
   String? get description;
   @override
-  int get color;
+  int get colorRed;
+  @override
+  int get colorGreen;
+  @override
+  int get colorBlue;
 
   /// Create a copy of Structure
   /// with the given fields replaced by the non-null parameter values.

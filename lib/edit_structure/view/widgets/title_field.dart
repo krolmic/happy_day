@@ -33,10 +33,10 @@ class TitleField extends StatelessWidget {
           borderSide: BorderSide(color: color),
         ),
         filled: true,
-        fillColor: color.withOpacity(0.025),
+        fillColor: color.withValues(alpha: 0.025),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: l10n.editStructureTitleHint,
-        hintStyle: TextStyle(color: color.withOpacity(0.5)),
+        hintStyle: TextStyle(color: color.withValues(alpha: 0.5)),
       ),
       maxLength: 50,
       inputFormatters: [

@@ -13,7 +13,9 @@ class Structure with _$Structure {
     required String title,
     @Default([]) List<String> stepsIds,
     String? description,
-    @Default(0xff3f51b5) int color,
+    @Default(103) int colorRed,
+    @Default(58) int colorGreen,
+    @Default(183) int colorBlue,
   }) = _Structure;
 
   const Structure._();
