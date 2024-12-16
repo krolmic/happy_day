@@ -74,6 +74,18 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
     super.dispose();
   }
 
+  Path drawCircleConfetti(Size size) {
+    final radius = size.width / 3;
+    final path = Path()
+      ..addOval(
+        Rect.fromCircle(
+          center: Offset(radius, radius),
+          radius: radius,
+        ),
+      );
+    return path;
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = widget.structure.color;
@@ -146,6 +158,7 @@ class _StructureDetailsViewState extends State<StructureDetailsView> {
                 alignment: Alignment.topLeft,
                 child: ConfettiWidget(
                   confettiController: _confettiController,
+                  createParticlePath: drawCircleConfetti,
                   blastDirection: 0,
                   emissionFrequency: 0.5,
                   colors: [
