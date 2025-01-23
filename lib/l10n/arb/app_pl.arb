@@ -28,5 +28,10 @@
     "resetStructure": "Zresetuj strukturę",
     "editStructure": "Edytuj strukturę",
     "complete": "Ukończ",
-    "undo": "Cofnij"
+    "undo": "Cofnij",
+    "settings": "Ustawienia",
+    "sendFeedback": "Prześlij twoją opinie",
+    "contactSupport": "Kontakt z supportem",
+    "privacyPolicy": "Polityka prywatności",
+    "termsOfService": "Warunki korzystania"
 }

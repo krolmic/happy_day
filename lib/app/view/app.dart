@@ -1,3 +1,4 @@
+import 'package:email_repository/email_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:happy_day/l10n/l10n.dart';
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
     required this.structuresRepository,
     required this.stepsGenerationRepository,
     required this.onboardingRepository,
+    required this.emailRepository,
     required this.showFeedbackButton,
     super.key,
   });
@@ -22,7 +24,9 @@ class App extends StatelessWidget {
   final StructuresRepository structuresRepository;
   final StepsGenerationRepository stepsGenerationRepository;
   final OnboardingRepository onboardingRepository;
+  final EmailRepository emailRepository;
   final bool showFeedbackButton;
+
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
@@ -35,6 +39,9 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider.value(
           value: onboardingRepository,
+        ),
+        RepositoryProvider.value(
+          value: emailRepository,
         ),
       ],
       child: BlocProvider(

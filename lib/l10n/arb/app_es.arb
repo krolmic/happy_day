@@ -28,5 +28,10 @@
     "resetStructure": "Restablecer estructura",
     "editStructure": "Editar estructura",
     "complete": "Completar",
-    "undo": "Deshacer"
+    "undo": "Deshacer",
+    "settings": "Ajustes",
+    "sendFeedback": "Enviar feedback",
+    "contactSupport": "Contactar con el soporte",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Condiciones del servicio"
 }

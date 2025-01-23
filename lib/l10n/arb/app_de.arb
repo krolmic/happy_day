@@ -28,5 +28,10 @@
     "resetStructure": "Struktur zurücksetzen",
     "editStructure": "Struktur bearbeiten",
     "complete": "Weiter",
-    "undo": "Zurück"
+    "undo": "Zurück",
+    "settings": "Einstellungen",
+    "sendFeedback": "Teile dein Feedback",
+    "contactSupport": "Kontaktiere Support",
+    "privacyPolicy": "Datenschutz",
+    "termsOfService": "Nutzungsbedingungen"
 }
