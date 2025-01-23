@@ -1,3 +1,4 @@
+import 'package:email_repository/email_repository.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -30,6 +31,7 @@ Future<void> bootstrap({
 
   final structuresRepository =
       StructuresRepository(structuresApi: structuresApi);
+  const emailRepository = EmailRepository();
 
   if (sendCrashlyticsReports) {
     await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
@@ -46,6 +48,7 @@ Future<void> bootstrap({
         structuresRepository: structuresRepository,
         stepsGenerationRepository: stepsGenerationRepository,
         onboardingRepository: onboardingRepository,
+        emailRepository: emailRepository,
         showFeedbackButton: showFeedbackButton,
       ),
     ),

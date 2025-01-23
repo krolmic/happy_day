@@ -60,6 +60,14 @@ class DailyStructuresView extends StatelessWidget {
         ),
       ],
       child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () => context.pushNamed(RoutesNames.settings),
+              icon: const Icon(Icons.settings_outlined),
+            ),
+          ],
+        ),
         body: const SafeArea(
           child: DailyStructuresContent(),
         ),

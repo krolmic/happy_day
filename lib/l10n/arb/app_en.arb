@@ -28,5 +28,10 @@
     "resetStructure": "Reset Structure",
     "editStructure": "Edit Structure",
     "complete": "Complete",
-    "undo": "Undo"
+    "undo": "Undo",
+    "settings": "Settings",
+    "sendFeedback": "Send Feedback",
+    "contactSupport": "Contact Support",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms and Conditions"
 }
