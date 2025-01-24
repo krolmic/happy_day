@@ -18,7 +18,6 @@ Future<void> bootstrap({
   required void Function(Object, StackTrace) onError,
   required LogTree logTree,
   required bool sendCrashlyticsReports,
-  required bool showFeedbackButton,
 }) async {
   FlutterError.onError = onFatalError;
 
@@ -49,7 +48,6 @@ Future<void> bootstrap({
         stepsGenerationRepository: stepsGenerationRepository,
         onboardingRepository: onboardingRepository,
         emailRepository: emailRepository,
-        showFeedbackButton: showFeedbackButton,
       ),
     ),
   );

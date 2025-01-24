@@ -46,6 +46,5 @@ Future<void> main() async {
     },
     logTree: logTree,
     sendCrashlyticsReports: false,
-    showFeedbackButton: true,
   );
 }

@@ -5,7 +5,6 @@ import 'package:happy_day/l10n/l10n.dart';
 import 'package:happy_day/onboarding/cubit/onboarding_cubit.dart';
 import 'package:happy_day/shared/router/router.dart';
 import 'package:happy_day/shared/theme.dart';
-import 'package:happy_day/shared/widgets/feedback_button.dart';
 import 'package:onboarding_repository/onboarding_repository.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_repository/structures_repository.dart';
@@ -17,7 +16,6 @@ class App extends StatelessWidget {
     required this.stepsGenerationRepository,
     required this.onboardingRepository,
     required this.emailRepository,
-    required this.showFeedbackButton,
     super.key,
   });
 
@@ -25,7 +23,6 @@ class App extends StatelessWidget {
   final StepsGenerationRepository stepsGenerationRepository;
   final OnboardingRepository onboardingRepository;
   final EmailRepository emailRepository;
-  final bool showFeedbackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +45,7 @@ class App extends StatelessWidget {
         create: (context) => OnboardingCubit(
           onboardingRepository: context.read<OnboardingRepository>(),
         )..init(),
-        child: AppView(
-          showFeedbackButton: showFeedbackButton,
-        ),
+        child: const AppView(),
       ),
     );
   }
@@ -58,11 +53,8 @@ class App extends StatelessWidget {
 
 class AppView extends StatelessWidget {
   const AppView({
-    required this.showFeedbackButton,
     super.key,
   });
-
-  final bool showFeedbackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -73,22 +65,6 @@ class AppView extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         routerConfig: goRouter,
-        builder: (context, child) {
-          if (showFeedbackButton) {
-            return Stack(
-              children: [
-                child!,
-                const Positioned(
-                  bottom: 45,
-                  right: 80,
-                  child: FeedbackButton(),
-                ),
-              ],
-            );
-          } else {
-            return child!;
-          }
-        },
       ),
     );
   }
