@@ -33,5 +33,13 @@
     "sendFeedback": "Prześlij twoją opinie",
     "contactSupport": "Kontakt z supportem",
     "privacyPolicy": "Polityka prywatności",
-    "termsOfService": "Warunki korzystania"
+    "termsOfService": "Warunki korzystania",
+    "weekDays": "Dni tygodnia",
+    "mondayShort": "Po",
+    "tuesdayShort": "Wt",
+    "wednesdayShort": "Sr",
+    "thursdayShort": "Cz",
+    "fridayShort": "Pi",
+    "saturdayShort": "So",
+    "sundayShort": "Ni"
 }

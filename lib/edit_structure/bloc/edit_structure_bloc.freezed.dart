@@ -28,6 +28,7 @@ mixin _$EditStructureEvent {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +43,7 @@ mixin _$EditStructureEvent {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +58,7 @@ mixin _$EditStructureEvent {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +74,7 @@ mixin _$EditStructureEvent {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +89,7 @@ mixin _$EditStructureEvent {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +104,7 @@ mixin _$EditStructureEvent {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -176,6 +182,7 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return submitted();
   }
@@ -193,6 +200,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return submitted?.call();
   }
@@ -210,6 +218,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -231,6 +240,7 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return submitted(this);
   }
@@ -248,6 +258,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return submitted?.call(this);
   }
@@ -265,6 +276,7 @@ class _$SubmittedImpl implements _Submitted {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -356,6 +368,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return titleChanged(title);
   }
@@ -373,6 +386,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return titleChanged?.call(title);
   }
@@ -390,6 +404,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -411,6 +426,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return titleChanged(this);
   }
@@ -428,6 +444,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return titleChanged?.call(this);
   }
@@ -445,6 +462,7 @@ class _$TitleChangedImpl implements _TitleChanged {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -546,6 +564,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return descriptionChanged(description);
   }
@@ -563,6 +582,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return descriptionChanged?.call(description);
   }
@@ -580,6 +600,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -601,6 +622,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return descriptionChanged(this);
   }
@@ -618,6 +640,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -635,6 +658,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -735,6 +759,7 @@ class _$ColorChangedImpl implements _ColorChanged {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return colorChanged(color);
   }
@@ -752,6 +777,7 @@ class _$ColorChangedImpl implements _ColorChanged {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return colorChanged?.call(color);
   }
@@ -769,6 +795,7 @@ class _$ColorChangedImpl implements _ColorChanged {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -790,6 +817,7 @@ class _$ColorChangedImpl implements _ColorChanged {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return colorChanged(this);
   }
@@ -807,6 +835,7 @@ class _$ColorChangedImpl implements _ColorChanged {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return colorChanged?.call(this);
   }
@@ -824,6 +853,7 @@ class _$ColorChangedImpl implements _ColorChanged {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -896,6 +926,7 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return nextStep();
   }
@@ -913,6 +944,7 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return nextStep?.call();
   }
@@ -930,6 +962,7 @@ class _$NextStepImpl implements _NextStep {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (nextStep != null) {
@@ -951,6 +984,7 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return nextStep(this);
   }
@@ -968,6 +1002,7 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return nextStep?.call(this);
   }
@@ -985,6 +1020,7 @@ class _$NextStepImpl implements _NextStep {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (nextStep != null) {
@@ -1084,6 +1120,7 @@ class _$StepChangedImpl implements _StepChanged {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return stepChanged(index, title);
   }
@@ -1101,6 +1138,7 @@ class _$StepChangedImpl implements _StepChanged {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return stepChanged?.call(index, title);
   }
@@ -1118,6 +1156,7 @@ class _$StepChangedImpl implements _StepChanged {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (stepChanged != null) {
@@ -1139,6 +1178,7 @@ class _$StepChangedImpl implements _StepChanged {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return stepChanged(this);
   }
@@ -1156,6 +1196,7 @@ class _$StepChangedImpl implements _StepChanged {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return stepChanged?.call(this);
   }
@@ -1173,6 +1214,7 @@ class _$StepChangedImpl implements _StepChanged {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (stepChanged != null) {
@@ -1274,6 +1316,7 @@ class _$StepRemovedImpl implements _StepRemoved {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return stepRemoved(index);
   }
@@ -1291,6 +1334,7 @@ class _$StepRemovedImpl implements _StepRemoved {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return stepRemoved?.call(index);
   }
@@ -1308,6 +1352,7 @@ class _$StepRemovedImpl implements _StepRemoved {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (stepRemoved != null) {
@@ -1329,6 +1374,7 @@ class _$StepRemovedImpl implements _StepRemoved {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return stepRemoved(this);
   }
@@ -1346,6 +1392,7 @@ class _$StepRemovedImpl implements _StepRemoved {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return stepRemoved?.call(this);
   }
@@ -1363,6 +1410,7 @@ class _$StepRemovedImpl implements _StepRemoved {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (stepRemoved != null) {
@@ -1435,6 +1483,7 @@ class _$StepAddedImpl implements _StepAdded {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return stepAdded();
   }
@@ -1452,6 +1501,7 @@ class _$StepAddedImpl implements _StepAdded {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return stepAdded?.call();
   }
@@ -1469,6 +1519,7 @@ class _$StepAddedImpl implements _StepAdded {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (stepAdded != null) {
@@ -1490,6 +1541,7 @@ class _$StepAddedImpl implements _StepAdded {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return stepAdded(this);
   }
@@ -1507,6 +1559,7 @@ class _$StepAddedImpl implements _StepAdded {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return stepAdded?.call(this);
   }
@@ -1524,6 +1577,7 @@ class _$StepAddedImpl implements _StepAdded {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (stepAdded != null) {
@@ -1625,6 +1679,7 @@ class _$StepReorderedImpl implements _StepReordered {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return stepReordered(oldIndex, newIndex);
   }
@@ -1642,6 +1697,7 @@ class _$StepReorderedImpl implements _StepReordered {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return stepReordered?.call(oldIndex, newIndex);
   }
@@ -1659,6 +1715,7 @@ class _$StepReorderedImpl implements _StepReordered {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (stepReordered != null) {
@@ -1680,6 +1737,7 @@ class _$StepReorderedImpl implements _StepReordered {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return stepReordered(this);
   }
@@ -1697,6 +1755,7 @@ class _$StepReorderedImpl implements _StepReordered {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return stepReordered?.call(this);
   }
@@ -1714,6 +1773,7 @@ class _$StepReorderedImpl implements _StepReordered {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (stepReordered != null) {
@@ -1788,6 +1848,7 @@ class _$StructureDeletedImpl implements _StructureDeleted {
     required TResult Function() stepAdded,
     required TResult Function(int oldIndex, int newIndex) stepReordered,
     required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
   }) {
     return structureDeleted();
   }
@@ -1805,6 +1866,7 @@ class _$StructureDeletedImpl implements _StructureDeleted {
     TResult? Function()? stepAdded,
     TResult? Function(int oldIndex, int newIndex)? stepReordered,
     TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
   }) {
     return structureDeleted?.call();
   }
@@ -1822,6 +1884,7 @@ class _$StructureDeletedImpl implements _StructureDeleted {
     TResult Function()? stepAdded,
     TResult Function(int oldIndex, int newIndex)? stepReordered,
     TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (structureDeleted != null) {
@@ -1843,6 +1906,7 @@ class _$StructureDeletedImpl implements _StructureDeleted {
     required TResult Function(_StepAdded value) stepAdded,
     required TResult Function(_StepReordered value) stepReordered,
     required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
   }) {
     return structureDeleted(this);
   }
@@ -1860,6 +1924,7 @@ class _$StructureDeletedImpl implements _StructureDeleted {
     TResult? Function(_StepAdded value)? stepAdded,
     TResult? Function(_StepReordered value)? stepReordered,
     TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
   }) {
     return structureDeleted?.call(this);
   }
@@ -1877,6 +1942,7 @@ class _$StructureDeletedImpl implements _StructureDeleted {
     TResult Function(_StepAdded value)? stepAdded,
     TResult Function(_StepReordered value)? stepReordered,
     TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
     required TResult orElse(),
   }) {
     if (structureDeleted != null) {
@@ -1888,6 +1954,201 @@ class _$StructureDeletedImpl implements _StructureDeleted {
 
 abstract class _StructureDeleted implements EditStructureEvent {
   const factory _StructureDeleted() = _$StructureDeletedImpl;
+}
+
+/// @nodoc
+abstract class _$$WeekDayTriggeredImplCopyWith<$Res> {
+  factory _$$WeekDayTriggeredImplCopyWith(_$WeekDayTriggeredImpl value,
+          $Res Function(_$WeekDayTriggeredImpl) then) =
+      __$$WeekDayTriggeredImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$WeekDayTriggeredImplCopyWithImpl<$Res>
+    extends _$EditStructureEventCopyWithImpl<$Res, _$WeekDayTriggeredImpl>
+    implements _$$WeekDayTriggeredImplCopyWith<$Res> {
+  __$$WeekDayTriggeredImplCopyWithImpl(_$WeekDayTriggeredImpl _value,
+      $Res Function(_$WeekDayTriggeredImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$WeekDayTriggeredImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$WeekDayTriggeredImpl implements _WeekDayTriggered {
+  const _$WeekDayTriggeredImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'EditStructureEvent.weekDayTriggered(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WeekDayTriggeredImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WeekDayTriggeredImplCopyWith<_$WeekDayTriggeredImpl> get copyWith =>
+      __$$WeekDayTriggeredImplCopyWithImpl<_$WeekDayTriggeredImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() submitted,
+    required TResult Function(String title) titleChanged,
+    required TResult Function(String description) descriptionChanged,
+    required TResult Function(Color color) colorChanged,
+    required TResult Function() nextStep,
+    required TResult Function(int index, String title) stepChanged,
+    required TResult Function(int index) stepRemoved,
+    required TResult Function() stepAdded,
+    required TResult Function(int oldIndex, int newIndex) stepReordered,
+    required TResult Function() structureDeleted,
+    required TResult Function(int index) weekDayTriggered,
+  }) {
+    return weekDayTriggered(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? submitted,
+    TResult? Function(String title)? titleChanged,
+    TResult? Function(String description)? descriptionChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function()? nextStep,
+    TResult? Function(int index, String title)? stepChanged,
+    TResult? Function(int index)? stepRemoved,
+    TResult? Function()? stepAdded,
+    TResult? Function(int oldIndex, int newIndex)? stepReordered,
+    TResult? Function()? structureDeleted,
+    TResult? Function(int index)? weekDayTriggered,
+  }) {
+    return weekDayTriggered?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? submitted,
+    TResult Function(String title)? titleChanged,
+    TResult Function(String description)? descriptionChanged,
+    TResult Function(Color color)? colorChanged,
+    TResult Function()? nextStep,
+    TResult Function(int index, String title)? stepChanged,
+    TResult Function(int index)? stepRemoved,
+    TResult Function()? stepAdded,
+    TResult Function(int oldIndex, int newIndex)? stepReordered,
+    TResult Function()? structureDeleted,
+    TResult Function(int index)? weekDayTriggered,
+    required TResult orElse(),
+  }) {
+    if (weekDayTriggered != null) {
+      return weekDayTriggered(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_StepChanged value) stepChanged,
+    required TResult Function(_StepRemoved value) stepRemoved,
+    required TResult Function(_StepAdded value) stepAdded,
+    required TResult Function(_StepReordered value) stepReordered,
+    required TResult Function(_StructureDeleted value) structureDeleted,
+    required TResult Function(_WeekDayTriggered value) weekDayTriggered,
+  }) {
+    return weekDayTriggered(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_StepChanged value)? stepChanged,
+    TResult? Function(_StepRemoved value)? stepRemoved,
+    TResult? Function(_StepAdded value)? stepAdded,
+    TResult? Function(_StepReordered value)? stepReordered,
+    TResult? Function(_StructureDeleted value)? structureDeleted,
+    TResult? Function(_WeekDayTriggered value)? weekDayTriggered,
+  }) {
+    return weekDayTriggered?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_StepChanged value)? stepChanged,
+    TResult Function(_StepRemoved value)? stepRemoved,
+    TResult Function(_StepAdded value)? stepAdded,
+    TResult Function(_StepReordered value)? stepReordered,
+    TResult Function(_StructureDeleted value)? structureDeleted,
+    TResult Function(_WeekDayTriggered value)? weekDayTriggered,
+    required TResult orElse(),
+  }) {
+    if (weekDayTriggered != null) {
+      return weekDayTriggered(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WeekDayTriggered implements EditStructureEvent {
+  const factory _WeekDayTriggered(final int index) = _$WeekDayTriggeredImpl;
+
+  int get index;
+
+  /// Create a copy of EditStructureEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WeekDayTriggeredImplCopyWith<_$WeekDayTriggeredImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1904,6 +2165,7 @@ mixin _$EditStructureState {
   String get description => throw _privateConstructorUsedError;
   List<StructureStep> get steps => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
+  List<bool> get weekDays => throw _privateConstructorUsedError;
 
   /// Create a copy of EditStructureState
   /// with the given fields replaced by the non-null parameter values.
@@ -1928,7 +2190,8 @@ abstract class $EditStructureStateCopyWith<$Res> {
       String title,
       String description,
       List<StructureStep> steps,
-      Color color});
+      Color color,
+      List<bool> weekDays});
 
   $StructureCopyWith<$Res>? get initialStructure;
 }
@@ -1958,6 +2221,7 @@ class _$EditStructureStateCopyWithImpl<$Res, $Val extends EditStructureState>
     Object? description = null,
     Object? steps = null,
     Object? color = null,
+    Object? weekDays = null,
   }) {
     return _then(_value.copyWith(
       structureId: null == structureId
@@ -2000,6 +2264,10 @@ class _$EditStructureStateCopyWithImpl<$Res, $Val extends EditStructureState>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color,
+      weekDays: null == weekDays
+          ? _value.weekDays
+          : weekDays // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
     ) as $Val);
   }
 
@@ -2036,7 +2304,8 @@ abstract class _$$EditStructureStateImplCopyWith<$Res>
       String title,
       String description,
       List<StructureStep> steps,
-      Color color});
+      Color color,
+      List<bool> weekDays});
 
   @override
   $StructureCopyWith<$Res>? get initialStructure;
@@ -2065,6 +2334,7 @@ class __$$EditStructureStateImplCopyWithImpl<$Res>
     Object? description = null,
     Object? steps = null,
     Object? color = null,
+    Object? weekDays = null,
   }) {
     return _then(_$EditStructureStateImpl(
       structureId: null == structureId
@@ -2107,6 +2377,10 @@ class __$$EditStructureStateImplCopyWithImpl<$Res>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color,
+      weekDays: null == weekDays
+          ? _value._weekDays
+          : weekDays // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
     ));
   }
 }
@@ -2124,8 +2398,18 @@ class _$EditStructureStateImpl implements _EditStructureState {
       this.title = '',
       this.description = '',
       final List<StructureStep> steps = const [],
-      this.color = Colors.deepPurple})
-      : _steps = steps;
+      this.color = Colors.deepPurple,
+      final List<bool> weekDays = const [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ]})
+      : _steps = steps,
+        _weekDays = weekDays;
 
   @override
   final String structureId;
@@ -2161,10 +2445,18 @@ class _$EditStructureStateImpl implements _EditStructureState {
   @override
   @JsonKey()
   final Color color;
+  final List<bool> _weekDays;
+  @override
+  @JsonKey()
+  List<bool> get weekDays {
+    if (_weekDays is EqualUnmodifiableListView) return _weekDays;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_weekDays);
+  }
 
   @override
   String toString() {
-    return 'EditStructureState(structureId: $structureId, editStatus: $editStatus, stepsGenerationStatus: $stepsGenerationStatus, deletionStatus: $deletionStatus, languageCode: $languageCode, initialStructure: $initialStructure, title: $title, description: $description, steps: $steps, color: $color)';
+    return 'EditStructureState(structureId: $structureId, editStatus: $editStatus, stepsGenerationStatus: $stepsGenerationStatus, deletionStatus: $deletionStatus, languageCode: $languageCode, initialStructure: $initialStructure, title: $title, description: $description, steps: $steps, color: $color, weekDays: $weekDays)';
   }
 
   @override
@@ -2188,7 +2480,8 @@ class _$EditStructureStateImpl implements _EditStructureState {
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality().equals(other._steps, _steps) &&
-            (identical(other.color, color) || other.color == color));
+            (identical(other.color, color) || other.color == color) &&
+            const DeepCollectionEquality().equals(other._weekDays, _weekDays));
   }
 
   @override
@@ -2203,7 +2496,8 @@ class _$EditStructureStateImpl implements _EditStructureState {
       title,
       description,
       const DeepCollectionEquality().hash(_steps),
-      color);
+      color,
+      const DeepCollectionEquality().hash(_weekDays));
 
   /// Create a copy of EditStructureState
   /// with the given fields replaced by the non-null parameter values.
@@ -2226,7 +2520,8 @@ abstract class _EditStructureState implements EditStructureState {
       final String title,
       final String description,
       final List<StructureStep> steps,
-      final Color color}) = _$EditStructureStateImpl;
+      final Color color,
+      final List<bool> weekDays}) = _$EditStructureStateImpl;
 
   @override
   String get structureId;
@@ -2248,6 +2543,8 @@ abstract class _EditStructureState implements EditStructureState {
   List<StructureStep> get steps;
   @override
   Color get color;
+  @override
+  List<bool> get weekDays;
 
   /// Create a copy of EditStructureState
   /// with the given fields replaced by the non-null parameter values.

@@ -33,5 +33,13 @@
     "sendFeedback": "Send Feedback",
     "contactSupport": "Contact Support",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms and Conditions"
+    "termsOfService": "Terms and Conditions",
+    "weekDays": "Weekdays",
+    "mondayShort": "Mo",
+    "tuesdayShort": "Tu",
+    "wednesdayShort": "We",
+    "thursdayShort": "Th",
+    "fridayShort": "Fr",
+    "saturdayShort": "Sa",
+    "sundayShort": "Su"
 }

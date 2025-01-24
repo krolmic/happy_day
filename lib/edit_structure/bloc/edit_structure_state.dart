@@ -42,6 +42,7 @@ class EditStructureState with _$EditStructureState {
     @Default('') String description,
     @Default([]) List<StructureStep> steps,
     @Default(Colors.deepPurple) Color color,
+    @Default([true, true, true, true, true, false, false]) List<bool> weekDays,
   }) = _EditStructureState;
 }
 

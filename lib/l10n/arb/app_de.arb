@@ -33,5 +33,13 @@
     "sendFeedback": "Teile dein Feedback",
     "contactSupport": "Kontaktiere Support",
     "privacyPolicy": "Datenschutz",
-    "termsOfService": "Nutzungsbedingungen"
+    "termsOfService": "Nutzungsbedingungen",
+    "weekDays": "Wochenstage",
+    "mondayShort": "Mo",
+    "tuesdayShort": "Di",
+    "wednesdayShort": "Mi",
+    "thursdayShort": "Do",
+    "fridayShort": "Fr",
+    "saturdayShort": "Sa",
+    "sundayShort": "So"
 }

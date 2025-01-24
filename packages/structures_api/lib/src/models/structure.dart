@@ -16,6 +16,16 @@ class Structure with _$Structure {
     @Default(103) int colorRed,
     @Default(58) int colorGreen,
     @Default(183) int colorBlue,
+    @Default([
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+    ])
+    List<bool> weekDays,
   }) = _Structure;
 
   const Structure._();
