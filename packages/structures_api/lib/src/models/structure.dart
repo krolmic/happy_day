@@ -42,4 +42,7 @@ class Structure with _$Structure {
 
   /// Whether the structure has a description.
   bool get hasDescription => description != null && description!.isNotEmpty;
+
+  /// Whether the given weekday is assigned to the structure.
+  bool isAssignedToWeekDay(int weekDayIndex) => weekDays[weekDayIndex];
 }

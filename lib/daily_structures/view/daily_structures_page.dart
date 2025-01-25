@@ -26,6 +26,7 @@ class DailyStructuresPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => DailyStructuresCubit(
         structuresRepository: context.read<StructuresRepository>(),
+        structureAvailabilityService: const StructureAvailabilityService(),
       )..init(),
       child: const DailyStructuresView(),
     );
@@ -86,6 +87,8 @@ class DailyStructuresContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<DailyStructuresCubit>();
+
     return CustomScrollView(
       slivers: <Widget>[
         SliverPersistentHeader(
@@ -130,6 +133,7 @@ class DailyStructuresContent extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           sliver: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
             buildWhen: (previous, current) =>
+                previous.date != current.date ||
                 previous.structuresOfADay != current.structuresOfADay ||
                 previous.structures != current.structures ||
                 previous.structuresStatus != current.structuresStatus ||
@@ -138,7 +142,7 @@ class DailyStructuresContent extends StatelessWidget {
             builder: (context, state) {
               return DailyStructures(
                 isLoading: state.isInitialOrLoading,
-                structures: state.structures,
+                structures: cubit.getSortedStructures(),
                 structuresOfADay: state.structuresOfADay,
               );
             },

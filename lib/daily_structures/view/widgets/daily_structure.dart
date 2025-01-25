@@ -6,12 +6,14 @@ class DailyStructure extends StatelessWidget {
     required this.date,
     this.structureOfADay,
     this.isDisabled = false,
+    this.isEditableOnly = false,
     super.key,
   });
 
   final Structure structure;
   final StructureOfADay? structureOfADay;
   final bool isDisabled;
+  final bool isEditableOnly;
   final DateTime date;
 
   @override
@@ -39,14 +41,21 @@ class DailyStructure extends StatelessWidget {
       onTap: () {
         if (isDisabled) return;
 
-        context.pushNamed(
-          RoutesNames.structureDetails,
-          extra: StructureDetailsRouteParameters(
-            structure: structure,
-            date: date,
-            structureOfADay: structureOfADay,
-          ),
-        );
+        if (isEditableOnly) {
+          context.pushNamed(
+            RoutesNames.editStructure,
+            extra: structure,
+          );
+        } else {
+          context.pushNamed(
+            RoutesNames.structureDetails,
+            extra: StructureDetailsRouteParameters(
+              structure: structure,
+              date: date,
+              structureOfADay: structureOfADay,
+            ),
+          );
+        }
       },
       title: Text(
         structure.title,
@@ -75,6 +84,7 @@ class DailyStructure extends StatelessWidget {
                 structure: structure,
                 structureOfADay: structureOfADay,
                 isDisabled: isDisabled,
+                isEditableOnly: isEditableOnly,
                 date: date,
               )
             : _StructureProgress(
@@ -94,13 +104,24 @@ class _StructureIconButton extends StatelessWidget {
     required this.date,
     this.structureOfADay,
     this.isDisabled = false,
+    this.isEditableOnly = false,
   });
 
   final bool isCompleted;
+  final bool isEditableOnly;
   final Structure structure;
   final StructureOfADay? structureOfADay;
   final bool isDisabled;
   final DateTime date;
+
+  IconData getIconData() {
+    if (isEditableOnly) {
+      return Icons.edit_outlined;
+    }
+
+    return isCompleted ? Icons.check : Icons.add;
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -113,7 +134,12 @@ class _StructureIconButton extends StatelessWidget {
       onPressed: () {
         if (isDisabled) return;
 
-        if (isCompleted) {
+        if (isEditableOnly) {
+          context.pushNamed(
+            RoutesNames.editStructure,
+            extra: structure,
+          );
+        } else if (isCompleted) {
           context.pushNamed(
             RoutesNames.structureDetails,
             extra: StructureDetailsRouteParameters(
@@ -127,7 +153,7 @@ class _StructureIconButton extends StatelessWidget {
         }
       },
       icon: Icon(
-        isCompleted ? Icons.check : Icons.add,
+        getIconData(),
         size: 20,
       ),
     );

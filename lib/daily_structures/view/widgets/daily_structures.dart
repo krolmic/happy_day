@@ -14,6 +14,8 @@ class DailyStructures extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<DailyStructuresCubit>();
+
     final structuresToDisplay = isLoading
         ? List.generate(
             5,
@@ -35,13 +37,14 @@ class DailyStructures extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.structuresOfADay != current.structuresOfADay,
                 builder: (context, state) {
-                  final structureOfADay = state.getStructureOfADay(structure);
+                  final structureOfADay = cubit.getStructureOfADay(structure);
 
                   return DailyStructure(
                     key: ValueKey(structureOfADay?.id ?? structure.id),
                     structure: structure,
                     structureOfADay: structureOfADay,
                     date: state.date,
+                    isEditableOnly: cubit.canStructureOnlyBeEdited(structure),
                   );
                 },
               ),

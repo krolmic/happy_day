@@ -49,22 +49,4 @@ extension DailyStructuresStateX on DailyStructuresState {
       structuresStatus.isSuccess && structuresOfADayStatus.isSuccess;
   bool get isFailure =>
       structuresStatus.isFailure || structuresOfADayStatus.isFailure;
-
-  bool isStructureStarted(Structure structure) {
-    final structureOfADay = getStructureOfADay(structure);
-    return structureOfADay != null;
-  }
-
-  StructureOfADay? getStructureOfADay(Structure structure) {
-    final structureOfADay = structuresOfADay.firstWhere(
-      (s) => s.structureId == structure.id && s.date.isSameDay(date),
-      orElse: StructureOfADay.none,
-    );
-
-    if (structureOfADay.isNone) {
-      return null;
-    }
-
-    return structureOfADay;
-  }
 }

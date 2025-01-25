@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_fimber/flutter_fimber.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:happy_day/shared/extensions/datetime.dart';
+import 'package:happy_day/daily_structures/daily_structures.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
 
@@ -13,10 +13,13 @@ part 'daily_structures_state.dart';
 class DailyStructuresCubit extends Cubit<DailyStructuresState> {
   DailyStructuresCubit({
     required StructuresRepository structuresRepository,
+    required StructureAvailabilityService structureAvailabilityService,
   })  : _structuresRepository = structuresRepository,
+        _availabilityService = structureAvailabilityService,
         super(DailyStructuresState(date: DateTime.now()));
 
   final StructuresRepository _structuresRepository;
+  final StructureAvailabilityService _availabilityService;
 
   late final StreamSubscription<List<Structure>>? _structuresStream;
   late final StreamSubscription<List<StructureOfADay>>? _structuresOfADayStream;
@@ -125,7 +128,11 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
 
   Future<void> startStructure(Structure structure) async {
     try {
-      final structureStarted = state.isStructureStarted(structure);
+      final structureStarted = _availabilityService.isStructureStarted(
+        structure,
+        state.date,
+        state.structuresOfADay,
+      );
 
       if (!structureStarted) {
         emit(
@@ -162,6 +169,38 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
         ),
       );
     }
+  }
+
+  bool isStructureStarted(Structure structure) {
+    return _availabilityService.isStructureStarted(
+      structure,
+      state.date,
+      state.structuresOfADay,
+    );
+  }
+
+  StructureOfADay? getStructureOfADay(Structure structure) {
+    return _availabilityService.getStructureOfADay(
+      structure,
+      state.date,
+      state.structuresOfADay,
+    );
+  }
+
+  bool canStructureOnlyBeEdited(Structure structure) {
+    return _availabilityService.canStructureOnlyBeEdited(
+      structure,
+      state.date,
+      state.structuresOfADay,
+    );
+  }
+
+  List<Structure> getSortedStructures() {
+    return _availabilityService.getSortedStructures(
+      state.structures,
+      state.date,
+      state.structuresOfADay,
+    );
   }
 
   @override
