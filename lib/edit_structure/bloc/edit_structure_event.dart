@@ -15,6 +15,8 @@ class EditStructureEvent with _$EditStructureEvent {
   const factory EditStructureEvent.stepReordered(int oldIndex, int newIndex) =
       _StepReordered;
   const factory EditStructureEvent.structureDeleted() = _StructureDeleted;
+  const factory EditStructureEvent.weekDayTriggered(int index) =
+      _WeekDayTriggered;
 }
 
 extension EditStructureEventX on EditStructureEvent {
@@ -22,6 +24,7 @@ extension EditStructureEventX on EditStructureEvent {
   bool get isTitleChanged => this is _TitleChanged;
   bool get isDescriptionChanged => this is _DescriptionChanged;
   bool get isColorChanged => this is _ColorChanged;
+  bool get isWeekDayTriggered => this is _WeekDayTriggered;
   bool get isNextStep => this is _NextStep;
   bool get isStepChanged => this is _StepChanged;
   bool get isStepRemoved => this is _StepRemoved;
@@ -32,6 +35,7 @@ extension EditStructureEventX on EditStructureEvent {
   String get title => (this as _TitleChanged).title;
   String get description => (this as _DescriptionChanged).description;
   Color get color => (this as _ColorChanged).color;
+  int get weekDayIndex => (this as _WeekDayTriggered).index;
   int get changedStepIndex => (this as _StepChanged).index;
   String get changedStepTitle => (this as _StepChanged).title;
   int get removedStepIndex => (this as _StepRemoved).index;

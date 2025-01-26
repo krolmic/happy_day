@@ -27,6 +27,7 @@ mixin _$Structure {
   int get colorRed => throw _privateConstructorUsedError;
   int get colorGreen => throw _privateConstructorUsedError;
   int get colorBlue => throw _privateConstructorUsedError;
+  List<bool> get weekDays => throw _privateConstructorUsedError;
 
   /// Serializes this Structure to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +51,8 @@ abstract class $StructureCopyWith<$Res> {
       String? description,
       int colorRed,
       int colorGreen,
-      int colorBlue});
+      int colorBlue,
+      List<bool> weekDays});
 }
 
 /// @nodoc
@@ -75,6 +77,7 @@ class _$StructureCopyWithImpl<$Res, $Val extends Structure>
     Object? colorRed = null,
     Object? colorGreen = null,
     Object? colorBlue = null,
+    Object? weekDays = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -105,6 +108,10 @@ class _$StructureCopyWithImpl<$Res, $Val extends Structure>
           ? _value.colorBlue
           : colorBlue // ignore: cast_nullable_to_non_nullable
               as int,
+      weekDays: null == weekDays
+          ? _value.weekDays
+          : weekDays // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
     ) as $Val);
   }
 }
@@ -124,7 +131,8 @@ abstract class _$$StructureImplCopyWith<$Res>
       String? description,
       int colorRed,
       int colorGreen,
-      int colorBlue});
+      int colorBlue,
+      List<bool> weekDays});
 }
 
 /// @nodoc
@@ -147,6 +155,7 @@ class __$$StructureImplCopyWithImpl<$Res>
     Object? colorRed = null,
     Object? colorGreen = null,
     Object? colorBlue = null,
+    Object? weekDays = null,
   }) {
     return _then(_$StructureImpl(
       id: null == id
@@ -177,6 +186,10 @@ class __$$StructureImplCopyWithImpl<$Res>
           ? _value.colorBlue
           : colorBlue // ignore: cast_nullable_to_non_nullable
               as int,
+      weekDays: null == weekDays
+          ? _value._weekDays
+          : weekDays // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
     ));
   }
 }
@@ -191,8 +204,18 @@ class _$StructureImpl extends _Structure {
       this.description,
       this.colorRed = 103,
       this.colorGreen = 58,
-      this.colorBlue = 183})
+      this.colorBlue = 183,
+      final List<bool> weekDays = const [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+      ]})
       : _stepsIds = stepsIds,
+        _weekDays = weekDays,
         super._();
 
   factory _$StructureImpl.fromJson(Map<String, dynamic> json) =>
@@ -222,10 +245,18 @@ class _$StructureImpl extends _Structure {
   @override
   @JsonKey()
   final int colorBlue;
+  final List<bool> _weekDays;
+  @override
+  @JsonKey()
+  List<bool> get weekDays {
+    if (_weekDays is EqualUnmodifiableListView) return _weekDays;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_weekDays);
+  }
 
   @override
   String toString() {
-    return 'Structure(id: $id, title: $title, stepsIds: $stepsIds, description: $description, colorRed: $colorRed, colorGreen: $colorGreen, colorBlue: $colorBlue)';
+    return 'Structure(id: $id, title: $title, stepsIds: $stepsIds, description: $description, colorRed: $colorRed, colorGreen: $colorGreen, colorBlue: $colorBlue, weekDays: $weekDays)';
   }
 
   @override
@@ -243,7 +274,8 @@ class _$StructureImpl extends _Structure {
             (identical(other.colorGreen, colorGreen) ||
                 other.colorGreen == colorGreen) &&
             (identical(other.colorBlue, colorBlue) ||
-                other.colorBlue == colorBlue));
+                other.colorBlue == colorBlue) &&
+            const DeepCollectionEquality().equals(other._weekDays, _weekDays));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -256,7 +288,8 @@ class _$StructureImpl extends _Structure {
       description,
       colorRed,
       colorGreen,
-      colorBlue);
+      colorBlue,
+      const DeepCollectionEquality().hash(_weekDays));
 
   /// Create a copy of Structure
   /// with the given fields replaced by the non-null parameter values.
@@ -282,7 +315,8 @@ abstract class _Structure extends Structure {
       final String? description,
       final int colorRed,
       final int colorGreen,
-      final int colorBlue}) = _$StructureImpl;
+      final int colorBlue,
+      final List<bool> weekDays}) = _$StructureImpl;
   _Structure._() : super._();
 
   factory _Structure.fromJson(Map<String, dynamic> json) =
@@ -302,6 +336,8 @@ abstract class _Structure extends Structure {
   int get colorGreen;
   @override
   int get colorBlue;
+  @override
+  List<bool> get weekDays;
 
   /// Create a copy of Structure
   /// with the given fields replaced by the non-null parameter values.

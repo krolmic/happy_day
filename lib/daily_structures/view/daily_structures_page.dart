@@ -17,6 +17,7 @@ import 'package:structures_repository/structures_repository.dart';
 
 part 'widgets/daily_structure.dart';
 part 'widgets/daily_structures.dart';
+part 'widgets/display_setting.dart';
 
 class DailyStructuresPage extends StatelessWidget {
   const DailyStructuresPage({super.key});
@@ -26,6 +27,7 @@ class DailyStructuresPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => DailyStructuresCubit(
         structuresRepository: context.read<StructuresRepository>(),
+        structureAvailabilityService: const StructureAvailabilityService(),
       )..init(),
       child: const DailyStructuresView(),
     );
@@ -86,6 +88,8 @@ class DailyStructuresContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<DailyStructuresCubit>();
+
     return CustomScrollView(
       slivers: <Widget>[
         SliverPersistentHeader(
@@ -130,6 +134,28 @@ class DailyStructuresContent extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           sliver: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
             buildWhen: (previous, current) =>
+                previous.structuresToDisplaySetting !=
+                current.structuresToDisplaySetting,
+            builder: (context, state) {
+              return SliverToBoxAdapter(
+                child: DisplaySetting(
+                  selectedSetting: state.structuresToDisplaySetting,
+                  onSelectionChanged:
+                      (Set<StructuresToDisplaySetting> newSelection) {
+                    cubit.setStructuresToDisplaySetting(newSelection.first);
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.all(10),
+          sliver: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
+            buildWhen: (previous, current) =>
+                previous.date != current.date ||
+                previous.structuresToDisplaySetting !=
+                    current.structuresToDisplaySetting ||
                 previous.structuresOfADay != current.structuresOfADay ||
                 previous.structures != current.structures ||
                 previous.structuresStatus != current.structuresStatus ||
@@ -138,7 +164,7 @@ class DailyStructuresContent extends StatelessWidget {
             builder: (context, state) {
               return DailyStructures(
                 isLoading: state.isInitialOrLoading,
-                structures: state.structures,
+                structures: cubit.getSortedStructures(),
                 structuresOfADay: state.structuresOfADay,
               );
             },

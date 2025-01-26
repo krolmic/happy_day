@@ -26,6 +26,7 @@ part 'widgets/preview.dart';
 part 'widgets/steps.dart';
 part 'widgets/structure_wizard.dart';
 part 'widgets/title_field.dart';
+part 'widgets/weekdays_selection.dart';
 
 class EditStructurePage extends StatelessWidget {
   const EditStructurePage({required this.initialStructure, super.key});
@@ -129,15 +130,16 @@ class EditStructureView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: BlocBuilder<EditStructureBloc, EditStructureState>(
-                        buildWhen: (previous, current) =>
-                            previous.color != current.color,
-                        builder: (context, state) {
-                          return TitleField(color: state.color);
-                        },
-                      ),
+                    const WeekdaysSelection(),
+                    const SizedBox(
+                      height: 45,
+                    ),
+                    BlocBuilder<EditStructureBloc, EditStructureState>(
+                      buildWhen: (previous, current) =>
+                          previous.color != current.color,
+                      builder: (context, state) {
+                        return TitleField(color: state.color);
+                      },
                     ),
                     const SizedBox(
                       height: 30,

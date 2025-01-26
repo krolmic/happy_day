@@ -16,6 +16,16 @@ class Structure with _$Structure {
     @Default(103) int colorRed,
     @Default(58) int colorGreen,
     @Default(183) int colorBlue,
+    @Default([
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+    ])
+    List<bool> weekDays,
   }) = _Structure;
 
   const Structure._();
@@ -32,4 +42,7 @@ class Structure with _$Structure {
 
   /// Whether the structure has a description.
   bool get hasDescription => description != null && description!.isNotEmpty;
+
+  /// Whether the given weekday is assigned to the structure.
+  bool isAssignedToWeekDay(int weekDayIndex) => weekDays[weekDayIndex];
 }

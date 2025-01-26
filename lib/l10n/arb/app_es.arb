@@ -33,5 +33,15 @@
     "sendFeedback": "Enviar feedback",
     "contactSupport": "Contactar con el soporte",
     "privacyPolicy": "Política de privacidad",
-    "termsOfService": "Condiciones del servicio"
+    "termsOfService": "Condiciones del servicio",
+    "weekDays": "Días de la semana",
+    "mondayShort": "Lu",
+    "tuesdayShort": "Ma",
+    "wednesdayShort": "Mi",
+    "thursdayShort": "Ju",
+    "fridayShort": "Vi",
+    "saturdayShort": "Sá",
+    "sundayShort": "Do",
+    "all": "Todos",
+    "weekday": "Día laborable"
 }

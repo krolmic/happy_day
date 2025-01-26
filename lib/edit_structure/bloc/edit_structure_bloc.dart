@@ -32,6 +32,9 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
                 ? structuresRepository.getSteps(initialStructure.id)
                 : [],
             languageCode: languageCode ?? 'en',
+            weekDays: initialStructure != null
+                ? initialStructure.weekDays
+                : [true, true, true, true, true, false, false],
           ),
         ) {
     on<EditStructureEvent>((event, emit) async {
@@ -59,6 +62,8 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
         );
       } else if (event.isStructureDeleted) {
         await _onStructureDeleted(emit);
+      } else if (event.isWeekDayTriggered) {
+        _onWeekDayTriggered(event.weekDayIndex, emit);
       }
     });
   }
@@ -111,6 +116,23 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
     }
   }
 
+  void _onWeekDayTriggered(
+    int index,
+    Emitter<EditStructureState> emit,
+  ) {
+    try {
+      final weekDays = List<bool>.from(state.weekDays);
+      weekDays[index] = !weekDays[index];
+      emit(state.copyWith(weekDays: weekDays));
+    } catch (error, stackTrace) {
+      Fimber.e(
+        'Failed to change week day',
+        ex: error,
+        stacktrace: stackTrace,
+      );
+    }
+  }
+
   Future<void> _onSubmitted(
     Emitter<EditStructureState> emit,
   ) async {
@@ -124,6 +146,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
       colorRed: (state.color.r * 255).toInt(),
       colorGreen: (state.color.g * 255).toInt(),
       colorBlue: (state.color.b * 255).toInt(),
+      weekDays: state.weekDays,
     );
 
     try {

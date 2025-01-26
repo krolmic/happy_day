@@ -18,6 +18,10 @@ _$StructureImpl _$$StructureImplFromJson(Map<String, dynamic> json) =>
       colorRed: (json['colorRed'] as num?)?.toInt() ?? 103,
       colorGreen: (json['colorGreen'] as num?)?.toInt() ?? 58,
       colorBlue: (json['colorBlue'] as num?)?.toInt() ?? 183,
+      weekDays: (json['weekDays'] as List<dynamic>?)
+              ?.map((e) => e as bool)
+              .toList() ??
+          const [true, true, true, true, true, false, false],
     );
 
 Map<String, dynamic> _$$StructureImplToJson(_$StructureImpl instance) =>
@@ -29,4 +33,5 @@ Map<String, dynamic> _$$StructureImplToJson(_$StructureImpl instance) =>
       'colorRed': instance.colorRed,
       'colorGreen': instance.colorGreen,
       'colorBlue': instance.colorBlue,
+      'weekDays': instance.weekDays,
     };
