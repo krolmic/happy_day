@@ -12,25 +12,36 @@ class MockDailyStructuresCubit extends MockCubit<DailyStructuresState>
 
 void main() {
   group('DailyStructuresPage', () {
-    late DailyStructuresCubit counterCubit;
+    late DailyStructuresCubit dailyStructuresCubit;
+
+    setUpAll(() {
+      registerFallbackValue(Structure.empty());
+    });
 
     setUp(() {
-      counterCubit = MockDailyStructuresCubit();
+      dailyStructuresCubit = MockDailyStructuresCubit();
     });
 
     testWidgets('renders Structures', (tester) async {
+      final structures = [
+        Structure.empty(),
+        Structure.empty(),
+      ];
       final state = DailyStructuresState(
         structuresStatus: DailyStructuresStatus.success,
-        structures: [
-          Structure.empty(),
-          Structure.empty(),
-        ],
+        structures: structures,
         date: DateTime.now(),
+        structuresOfADayStatus: StructuresOfADayStatus.success,
+        structuresOfADay: [],
       );
-      when(() => counterCubit.state).thenReturn(state);
+      when(() => dailyStructuresCubit.state).thenReturn(state);
+      when(() => dailyStructuresCubit.getSortedStructures())
+          .thenReturn(structures);
+      when(() => dailyStructuresCubit.canStructureOnlyBeEdited(any()))
+          .thenReturn(false);
       await tester.pumpApp(
         BlocProvider.value(
-          value: counterCubit,
+          value: dailyStructuresCubit,
           child: const DailyStructuresView(),
         ),
       );

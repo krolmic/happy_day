@@ -17,6 +17,7 @@ import 'package:structures_repository/structures_repository.dart';
 
 part 'widgets/daily_structure.dart';
 part 'widgets/daily_structures.dart';
+part 'widgets/display_setting.dart';
 
 class DailyStructuresPage extends StatelessWidget {
   const DailyStructuresPage({super.key});
@@ -133,7 +134,28 @@ class DailyStructuresContent extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           sliver: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
             buildWhen: (previous, current) =>
+                previous.structuresToDisplaySetting !=
+                current.structuresToDisplaySetting,
+            builder: (context, state) {
+              return SliverToBoxAdapter(
+                child: DisplaySetting(
+                  selectedSetting: state.structuresToDisplaySetting,
+                  onSelectionChanged:
+                      (Set<StructuresToDisplaySetting> newSelection) {
+                    cubit.setStructuresToDisplaySetting(newSelection.first);
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.all(10),
+          sliver: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
+            buildWhen: (previous, current) =>
                 previous.date != current.date ||
+                previous.structuresToDisplaySetting !=
+                    current.structuresToDisplaySetting ||
                 previous.structuresOfADay != current.structuresOfADay ||
                 previous.structures != current.structures ||
                 previous.structuresStatus != current.structuresStatus ||

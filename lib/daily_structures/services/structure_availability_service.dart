@@ -75,11 +75,12 @@ class StructureAvailabilityService {
     }).toList();
   }
 
-  List<Structure> getSortedStructures(
-    List<Structure> structures,
-    DateTime date,
-    List<StructureOfADay> structuresOfDay,
-  ) {
+  List<Structure> getSortedStructures({
+    required List<Structure> structures,
+    required DateTime date,
+    required List<StructureOfADay> structuresOfDay,
+    required bool returnAllStructures,
+  }) {
     if (structures.isEmpty) return [];
 
     final structuresForSelectedDay = _getStructuresForDateWeekday(
@@ -87,6 +88,9 @@ class StructureAvailabilityService {
       date,
       structuresOfDay,
     );
+
+    if (!returnAllStructures) return structuresForSelectedDay;
+
     final structuresNotForSelectedDay = _getStructuresNotForDateWeekday(
       structures,
       date,

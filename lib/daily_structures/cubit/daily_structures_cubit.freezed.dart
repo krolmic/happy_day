@@ -26,6 +26,8 @@ mixin _$DailyStructuresState {
       throw _privateConstructorUsedError;
   StartStructureStatus get startStructureStatus =>
       throw _privateConstructorUsedError;
+  StructuresToDisplaySetting get structuresToDisplaySetting =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of DailyStructuresState
   /// with the given fields replaced by the non-null parameter values.
@@ -46,7 +48,8 @@ abstract class $DailyStructuresStateCopyWith<$Res> {
       List<Structure> structures,
       StructuresOfADayStatus structuresOfADayStatus,
       List<StructureOfADay> structuresOfADay,
-      StartStructureStatus startStructureStatus});
+      StartStructureStatus startStructureStatus,
+      StructuresToDisplaySetting structuresToDisplaySetting});
 }
 
 /// @nodoc
@@ -71,6 +74,7 @@ class _$DailyStructuresStateCopyWithImpl<$Res,
     Object? structuresOfADayStatus = null,
     Object? structuresOfADay = null,
     Object? startStructureStatus = null,
+    Object? structuresToDisplaySetting = null,
   }) {
     return _then(_value.copyWith(
       date: null == date
@@ -97,6 +101,10 @@ class _$DailyStructuresStateCopyWithImpl<$Res,
           ? _value.startStructureStatus
           : startStructureStatus // ignore: cast_nullable_to_non_nullable
               as StartStructureStatus,
+      structuresToDisplaySetting: null == structuresToDisplaySetting
+          ? _value.structuresToDisplaySetting
+          : structuresToDisplaySetting // ignore: cast_nullable_to_non_nullable
+              as StructuresToDisplaySetting,
     ) as $Val);
   }
 }
@@ -115,7 +123,8 @@ abstract class _$$DailyStructuresStateImplCopyWith<$Res>
       List<Structure> structures,
       StructuresOfADayStatus structuresOfADayStatus,
       List<StructureOfADay> structuresOfADay,
-      StartStructureStatus startStructureStatus});
+      StartStructureStatus startStructureStatus,
+      StructuresToDisplaySetting structuresToDisplaySetting});
 }
 
 /// @nodoc
@@ -137,6 +146,7 @@ class __$$DailyStructuresStateImplCopyWithImpl<$Res>
     Object? structuresOfADayStatus = null,
     Object? structuresOfADay = null,
     Object? startStructureStatus = null,
+    Object? structuresToDisplaySetting = null,
   }) {
     return _then(_$DailyStructuresStateImpl(
       date: null == date
@@ -163,6 +173,10 @@ class __$$DailyStructuresStateImplCopyWithImpl<$Res>
           ? _value.startStructureStatus
           : startStructureStatus // ignore: cast_nullable_to_non_nullable
               as StartStructureStatus,
+      structuresToDisplaySetting: null == structuresToDisplaySetting
+          ? _value.structuresToDisplaySetting
+          : structuresToDisplaySetting // ignore: cast_nullable_to_non_nullable
+              as StructuresToDisplaySetting,
     ));
   }
 }
@@ -176,7 +190,8 @@ class _$DailyStructuresStateImpl implements _DailyStructuresState {
       final List<Structure> structures = const [],
       this.structuresOfADayStatus = StructuresOfADayStatus.initial,
       final List<StructureOfADay> structuresOfADay = const [],
-      this.startStructureStatus = StartStructureStatus.initial})
+      this.startStructureStatus = StartStructureStatus.initial,
+      this.structuresToDisplaySetting = StructuresToDisplaySetting.all})
       : _structures = structures,
         _structuresOfADay = structuresOfADay;
 
@@ -210,10 +225,13 @@ class _$DailyStructuresStateImpl implements _DailyStructuresState {
   @override
   @JsonKey()
   final StartStructureStatus startStructureStatus;
+  @override
+  @JsonKey()
+  final StructuresToDisplaySetting structuresToDisplaySetting;
 
   @override
   String toString() {
-    return 'DailyStructuresState(date: $date, structuresStatus: $structuresStatus, structures: $structures, structuresOfADayStatus: $structuresOfADayStatus, structuresOfADay: $structuresOfADay, startStructureStatus: $startStructureStatus)';
+    return 'DailyStructuresState(date: $date, structuresStatus: $structuresStatus, structures: $structures, structuresOfADayStatus: $structuresOfADayStatus, structuresOfADay: $structuresOfADay, startStructureStatus: $startStructureStatus, structuresToDisplaySetting: $structuresToDisplaySetting)';
   }
 
   @override
@@ -231,7 +249,11 @@ class _$DailyStructuresStateImpl implements _DailyStructuresState {
             const DeepCollectionEquality()
                 .equals(other._structuresOfADay, _structuresOfADay) &&
             (identical(other.startStructureStatus, startStructureStatus) ||
-                other.startStructureStatus == startStructureStatus));
+                other.startStructureStatus == startStructureStatus) &&
+            (identical(other.structuresToDisplaySetting,
+                    structuresToDisplaySetting) ||
+                other.structuresToDisplaySetting ==
+                    structuresToDisplaySetting));
   }
 
   @override
@@ -242,7 +264,8 @@ class _$DailyStructuresStateImpl implements _DailyStructuresState {
       const DeepCollectionEquality().hash(_structures),
       structuresOfADayStatus,
       const DeepCollectionEquality().hash(_structuresOfADay),
-      startStructureStatus);
+      startStructureStatus,
+      structuresToDisplaySetting);
 
   /// Create a copy of DailyStructuresState
   /// with the given fields replaced by the non-null parameter values.
@@ -262,7 +285,8 @@ abstract class _DailyStructuresState implements DailyStructuresState {
           final List<Structure> structures,
           final StructuresOfADayStatus structuresOfADayStatus,
           final List<StructureOfADay> structuresOfADay,
-          final StartStructureStatus startStructureStatus}) =
+          final StartStructureStatus startStructureStatus,
+          final StructuresToDisplaySetting structuresToDisplaySetting}) =
       _$DailyStructuresStateImpl;
 
   @override
@@ -277,6 +301,8 @@ abstract class _DailyStructuresState implements DailyStructuresState {
   List<StructureOfADay> get structuresOfADay;
   @override
   StartStructureStatus get startStructureStatus;
+  @override
+  StructuresToDisplaySetting get structuresToDisplaySetting;
 
   /// Create a copy of DailyStructuresState
   /// with the given fields replaced by the non-null parameter values.

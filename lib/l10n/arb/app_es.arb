@@ -41,5 +41,7 @@
     "thursdayShort": "Ju",
     "fridayShort": "Vi",
     "saturdayShort": "Sá",
-    "sundayShort": "Do"
+    "sundayShort": "Do",
+    "all": "Todos",
+    "weekday": "Día laborable"
 }

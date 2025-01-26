@@ -41,5 +41,7 @@
     "thursdayShort": "Do",
     "fridayShort": "Fr",
     "saturdayShort": "Sa",
-    "sundayShort": "So"
+    "sundayShort": "So",
+    "all": "Alle",
+    "weekday": "Wochentag"
 }

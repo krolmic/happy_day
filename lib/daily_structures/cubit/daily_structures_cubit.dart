@@ -126,6 +126,14 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
     }
   }
 
+  void setStructuresToDisplaySetting(StructuresToDisplaySetting setting) {
+    emit(
+      state.copyWith(
+        structuresToDisplaySetting: setting,
+      ),
+    );
+  }
+
   Future<void> startStructure(Structure structure) async {
     try {
       final structureStarted = _availabilityService.isStructureStarted(
@@ -197,9 +205,11 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
 
   List<Structure> getSortedStructures() {
     return _availabilityService.getSortedStructures(
-      state.structures,
-      state.date,
-      state.structuresOfADay,
+      structures: state.structures,
+      date: state.date,
+      structuresOfDay: state.structuresOfADay,
+      returnAllStructures:
+          state.structuresToDisplaySetting == StructuresToDisplaySetting.all,
     );
   }
 

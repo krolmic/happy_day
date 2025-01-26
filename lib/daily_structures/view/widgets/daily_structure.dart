@@ -33,7 +33,9 @@ class DailyStructure extends StatelessWidget {
     final buildAddIconButton = !isStarted && !buildCheckIconButton;
     final buildIconButton = buildCheckIconButton || buildAddIconButton;
 
-    final color = structure.color;
+    final color = isEditableOnly
+        ? structure.color.withValues(alpha: 0.5)
+        : structure.color;
 
     return ListTile(
       tileColor: color.withValues(alpha: 0.25),
@@ -86,6 +88,7 @@ class DailyStructure extends StatelessWidget {
                 isDisabled: isDisabled,
                 isEditableOnly: isEditableOnly,
                 date: date,
+                color: color,
               )
             : _StructureProgress(
                 completedStepsCount: completedStepsCountToBuild,
@@ -102,6 +105,7 @@ class _StructureIconButton extends StatelessWidget {
     required this.isCompleted,
     required this.structure,
     required this.date,
+    required this.color,
     this.structureOfADay,
     this.isDisabled = false,
     this.isEditableOnly = false,
@@ -113,6 +117,7 @@ class _StructureIconButton extends StatelessWidget {
   final StructureOfADay? structureOfADay;
   final bool isDisabled;
   final DateTime date;
+  final Color color;
 
   IconData getIconData() {
     if (isEditableOnly) {
@@ -129,7 +134,7 @@ class _StructureIconButton extends StatelessWidget {
     return IconButton(
       style: IconButton.styleFrom(
         backgroundColor: theme.colorScheme.surface,
-        foregroundColor: structure.color,
+        foregroundColor: color,
       ),
       onPressed: () {
         if (isDisabled) return;
