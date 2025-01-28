@@ -25,7 +25,6 @@ class WeekdaysSelection extends StatelessWidget {
               previous.weekDays != current.weekDays,
           builder: (context, state) {
             return WeekdaysSelectionDays(
-              color: color,
               values: state.weekDays,
               weekdaysLabels: [
                 l10n.mondayShort,
@@ -49,9 +48,6 @@ class WeekdaysSelection extends StatelessWidget {
                 color: color.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
-              selectedTextStyle: const TextStyle(
-                color: Colors.white,
-              ),
               unselectedTextStyle: TextStyle(
                 color: color,
               ),
@@ -65,19 +61,39 @@ class WeekdaysSelection extends StatelessWidget {
 
 class WeekdaysSelectionDays extends StatelessWidget {
   const WeekdaysSelectionDays({
-    required this.color,
-    required this.values,
-    required this.weekdaysLabels,
     required this.onChange,
-    required this.selectedDecoration,
-    required this.unselectedDecoration,
-    required this.selectedTextStyle,
-    required this.unselectedTextStyle,
+    this.values = const [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+    ],
+    this.weekdaysLabels = const [
+      'Mo',
+      'Tu',
+      'We',
+      'Th',
+      'Fr',
+      'Sa',
+      'Su',
+    ],
+    this.selectedDecoration = const BoxDecoration(
+      color: Colors.blue,
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    this.unselectedDecoration = const BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    this.selectedTextStyle = const TextStyle(color: Colors.white),
+    this.unselectedTextStyle = const TextStyle(color: Colors.blue),
     this.borderRadius = const BorderRadius.all(Radius.circular(10)),
     super.key,
   });
 
-  final Color color;
   final List<bool> values;
   final List<String> weekdaysLabels;
   final void Function(int) onChange;
