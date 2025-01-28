@@ -73,6 +73,7 @@ class WeekdaysSelectionDays extends StatelessWidget {
     required this.unselectedDecoration,
     required this.selectedTextStyle,
     required this.unselectedTextStyle,
+    this.borderRadius = const BorderRadius.all(Radius.circular(10)),
     super.key,
   });
 
@@ -84,6 +85,7 @@ class WeekdaysSelectionDays extends StatelessWidget {
   final BoxDecoration unselectedDecoration;
   final TextStyle selectedTextStyle;
   final TextStyle unselectedTextStyle;
+  final BorderRadius borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +101,7 @@ class WeekdaysSelectionDays extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               onTap: () => onChange(index),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: borderRadius,
               child: Container(
                 width: 40,
                 height: 40,
