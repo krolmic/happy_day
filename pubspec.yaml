@@ -36,7 +36,7 @@ dependencies:
     path: packages/onboarding_repository
   path_provider: ^2.1.5
   reorderables: ^0.6.0
-  shared_preferences: ^2.3.5
+  shared_preferences: ^2.5.1
   simple_circular_progress_bar: ^1.0.2
   skeletonizer: ^1.4.3
   step_progress_indicator: ^1.0.2
