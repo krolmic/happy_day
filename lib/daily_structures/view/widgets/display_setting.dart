@@ -41,7 +41,7 @@ class DisplaySetting extends StatelessWidget {
           value: StructuresToDisplaySetting.weekday,
           label: Text(l10n.weekday),
           icon: Icon(
-            Icons.calendar_view_day,
+            Icons.calendar_today,
             color: selectedSetting == StructuresToDisplaySetting.weekday
                 ? Colors.white
                 : HappyDayTheme.primaryColor,
