@@ -26,8 +26,6 @@ extension StartStructureStatusX on StartStructureStatus {
   bool get isFailure => this == StartStructureStatus.failure;
 }
 
-enum StructuresToDisplaySetting { all, weekday }
-
 @freezed
 class DailyStructuresState with _$DailyStructuresState {
   const factory DailyStructuresState({
@@ -40,8 +38,6 @@ class DailyStructuresState with _$DailyStructuresState {
     @Default([]) List<StructureOfADay> structuresOfADay,
     @Default(StartStructureStatus.initial)
     StartStructureStatus startStructureStatus,
-    @Default(StructuresToDisplaySetting.all)
-    StructuresToDisplaySetting structuresToDisplaySetting,
   }) = _DailyStructuresState;
 }
 

@@ -7,14 +7,14 @@ class DisplaySetting extends StatelessWidget {
     super.key,
   });
 
-  final StructuresToDisplaySetting selectedSetting;
-  final void Function(Set<StructuresToDisplaySetting>) onSelectionChanged;
+  final StructuresDisplaySettingState selectedSetting;
+  final void Function(Set<StructuresDisplaySettingState>) onSelectionChanged;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return SegmentedButton<StructuresToDisplaySetting>(
+    return SegmentedButton<StructuresDisplaySettingState>(
       style: SegmentedButton.styleFrom(
         side: const BorderSide(color: HappyDayTheme.primaryColor),
         shape: const RoundedRectangleBorder(
@@ -26,29 +26,29 @@ class DisplaySetting extends StatelessWidget {
         foregroundColor: HappyDayTheme.primaryColor,
         iconColor: Colors.white,
       ),
-      segments: <ButtonSegment<StructuresToDisplaySetting>>[
-        ButtonSegment<StructuresToDisplaySetting>(
-          value: StructuresToDisplaySetting.all,
+      segments: <ButtonSegment<StructuresDisplaySettingState>>[
+        ButtonSegment<StructuresDisplaySettingState>(
+          value: StructuresDisplaySettingState.all,
           label: Text(l10n.all),
           icon: Icon(
             Icons.list,
-            color: selectedSetting == StructuresToDisplaySetting.all
+            color: selectedSetting == StructuresDisplaySettingState.all
                 ? Colors.white
                 : HappyDayTheme.primaryColor,
           ),
         ),
-        ButtonSegment<StructuresToDisplaySetting>(
-          value: StructuresToDisplaySetting.weekday,
+        ButtonSegment<StructuresDisplaySettingState>(
+          value: StructuresDisplaySettingState.weekday,
           label: Text(l10n.weekday),
           icon: Icon(
             Icons.calendar_today,
-            color: selectedSetting == StructuresToDisplaySetting.weekday
+            color: selectedSetting == StructuresDisplaySettingState.weekday
                 ? Colors.white
                 : HappyDayTheme.primaryColor,
           ),
         ),
       ],
-      selected: <StructuresToDisplaySetting>{
+      selected: <StructuresDisplaySettingState>{
         selectedSetting,
       },
       onSelectionChanged: onSelectionChanged,

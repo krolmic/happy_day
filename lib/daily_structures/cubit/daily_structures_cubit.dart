@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_fimber/flutter_fimber.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:happy_day/daily_structures/cubit/structures_display_setting_cubit.dart';
 import 'package:happy_day/daily_structures/daily_structures.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
@@ -126,14 +127,6 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
     }
   }
 
-  void setStructuresToDisplaySetting(StructuresToDisplaySetting setting) {
-    emit(
-      state.copyWith(
-        structuresToDisplaySetting: setting,
-      ),
-    );
-  }
-
   Future<void> startStructure(Structure structure) async {
     try {
       final structureStarted = _availabilityService.isStructureStarted(
@@ -203,13 +196,14 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
     );
   }
 
-  List<Structure> getSortedStructures() {
+  List<Structure> getSortedStructures(
+    StructuresDisplaySettingState displaySetting,
+  ) {
     return _availabilityService.getSortedStructures(
       structures: state.structures,
       date: state.date,
       structuresOfDay: state.structuresOfADay,
-      returnAllStructures:
-          state.structuresToDisplaySetting == StructuresToDisplaySetting.all,
+      returnAllStructures: displaySetting == StructuresDisplaySettingState.all,
     );
   }
 

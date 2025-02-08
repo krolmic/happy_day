@@ -2,6 +2,7 @@ import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:happy_day/daily_structures/cubit/structures_display_setting_cubit.dart';
 import 'package:happy_day/daily_structures/daily_structures.dart';
 import 'package:happy_day/l10n/l10n.dart';
 import 'package:happy_day/shared/extensions/structure.dart';
@@ -24,11 +25,18 @@ class DailyStructuresPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => DailyStructuresCubit(
-        structuresRepository: context.read<StructuresRepository>(),
-        structureAvailabilityService: const StructureAvailabilityService(),
-      )..init(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => DailyStructuresCubit(
+            structuresRepository: context.read<StructuresRepository>(),
+            structureAvailabilityService: const StructureAvailabilityService(),
+          )..init(),
+        ),
+        BlocProvider(
+          create: (_) => StructuresDisplaySettingCubit(),
+        ),
+      ],
       child: const DailyStructuresView(),
     );
   }
@@ -90,6 +98,8 @@ class DailyStructuresContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<DailyStructuresCubit>();
 
+    final displaySettingCubit = context.read<StructuresDisplaySettingCubit>();
+
     return CustomScrollView(
       slivers: <Widget>[
         SliverPersistentHeader(
@@ -125,24 +135,22 @@ class DailyStructuresContent extends StatelessWidget {
                   ),
                   todayHighlightColor: HappyDayTheme.primaryColor,
                 ),
-                onDateChange: context.read<DailyStructuresCubit>().setDate,
+                onDateChange: cubit.setDate,
               ),
             ),
           ),
         ),
         SliverPadding(
           padding: const EdgeInsets.all(10),
-          sliver: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
-            buildWhen: (previous, current) =>
-                previous.structuresToDisplaySetting !=
-                current.structuresToDisplaySetting,
+          sliver: BlocBuilder<StructuresDisplaySettingCubit,
+              StructuresDisplaySettingState>(
             builder: (context, state) {
               return SliverToBoxAdapter(
                 child: DisplaySetting(
-                  selectedSetting: state.structuresToDisplaySetting,
+                  selectedSetting: state,
                   onSelectionChanged:
-                      (Set<StructuresToDisplaySetting> newSelection) {
-                    cubit.setStructuresToDisplaySetting(newSelection.first);
+                      (Set<StructuresDisplaySettingState> newSelection) {
+                    displaySettingCubit.setSetting(newSelection.first);
                   },
                 ),
               );
@@ -154,17 +162,18 @@ class DailyStructuresContent extends StatelessWidget {
           sliver: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
             buildWhen: (previous, current) =>
                 previous.date != current.date ||
-                previous.structuresToDisplaySetting !=
-                    current.structuresToDisplaySetting ||
                 previous.structuresOfADay != current.structuresOfADay ||
                 previous.structures != current.structures ||
                 previous.structuresStatus != current.structuresStatus ||
                 previous.structuresOfADayStatus !=
                     current.structuresOfADayStatus,
             builder: (context, state) {
+              final displaySetting =
+                  context.watch<StructuresDisplaySettingCubit>().state;
+
               return DailyStructures(
                 isLoading: state.isInitialOrLoading,
-                structures: cubit.getSortedStructures(),
+                structures: cubit.getSortedStructures(displaySetting),
                 structuresOfADay: state.structuresOfADay,
               );
             },
