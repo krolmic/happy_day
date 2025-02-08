@@ -213,6 +213,14 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
     );
   }
 
+  List<Structure> getActiveStructures(List<Structure> structures) {
+    return structures.where((s) => !canStructureOnlyBeEdited(s)).toList();
+  }
+
+  List<Structure> getOnlyEditableStructures(List<Structure> structures) {
+    return structures.where(canStructureOnlyBeEdited).toList();
+  }
+
   @override
   Future<void> close() {
     _structuresStream?.cancel();

@@ -23,11 +23,36 @@ class DailyStructures extends StatelessWidget {
           )
         : structures;
 
+    final currentWeekdayStructures =
+        cubit.getActiveStructures(structuresToDisplay);
+
+    final onlyEditableStructures =
+        cubit.getOnlyEditableStructures(structuresToDisplay);
+
+    final showDivider = currentWeekdayStructures.isNotEmpty &&
+        onlyEditableStructures.isNotEmpty;
+
     return SliverFixedExtentList(
       itemExtent: 80,
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          final structure = structuresToDisplay[index];
+          if (showDivider && index == currentWeekdayStructures.length) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Divider(),
+            );
+          }
+
+          final currentIndex =
+              showDivider && index > currentWeekdayStructures.length
+                  ? index - 1
+                  : index;
+
+          final structure = index < currentWeekdayStructures.length
+              ? currentWeekdayStructures[index]
+              : onlyEditableStructures[
+                  currentIndex - currentWeekdayStructures.length];
+
           return Padding(
             key: ValueKey(structure.id),
             padding: const EdgeInsets.symmetric(vertical: 5),
@@ -51,7 +76,9 @@ class DailyStructures extends StatelessWidget {
             ),
           );
         },
-        childCount: structuresToDisplay.length,
+        childCount: showDivider
+            ? structuresToDisplay.length + 1 // +1 for divider
+            : structuresToDisplay.length,
       ),
     );
   }
