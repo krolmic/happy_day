@@ -38,7 +38,7 @@ class DailyStructures extends StatelessWidget {
         (context, index) {
           if (showDivider && index == currentWeekdayStructures.length) {
             return const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: EdgeInsets.symmetric(horizontal: 5),
               child: Divider(),
             );
           }
