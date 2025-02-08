@@ -37,6 +37,10 @@ void main() {
       when(() => dailyStructuresCubit.state).thenReturn(state);
       when(() => dailyStructuresCubit.getSortedStructures())
           .thenReturn(structures);
+      when(() => dailyStructuresCubit.getActiveStructures(any()))
+          .thenReturn(structures);
+      when(() => dailyStructuresCubit.getOnlyEditableStructures(any()))
+          .thenReturn([]);
       when(() => dailyStructuresCubit.canStructureOnlyBeEdited(any()))
           .thenReturn(false);
       await tester.pumpApp(
