@@ -140,21 +140,29 @@ class DailyStructuresContent extends StatelessWidget {
             ),
           ),
         ),
-        SliverPadding(
-          padding: const EdgeInsets.all(10),
-          sliver: BlocBuilder<StructuresDisplaySettingCubit,
-              StructuresDisplaySettingState>(
-            builder: (context, state) {
-              return SliverToBoxAdapter(
-                child: DisplaySetting(
-                  selectedSetting: state,
-                  onSelectionChanged:
-                      (Set<StructuresDisplaySettingState> newSelection) {
-                    displaySettingCubit.setSetting(newSelection.first);
-                  },
-                ),
-              );
-            },
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: SliverDelegate(
+            minHeight: 70,
+            maxHeight: 70,
+            child: ColoredBox(
+              color: Theme.of(context).colorScheme.surface,
+              child: BlocBuilder<StructuresDisplaySettingCubit,
+                  StructuresDisplaySettingState>(
+                builder: (context, state) {
+                  return Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: DisplaySetting(
+                      selectedSetting: state,
+                      onSelectionChanged:
+                          (Set<StructuresDisplaySettingState> newSelection) {
+                        displaySettingCubit.setSetting(newSelection.first);
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ),
         SliverPadding(
@@ -171,10 +179,35 @@ class DailyStructuresContent extends StatelessWidget {
               final displaySetting =
                   context.watch<StructuresDisplaySettingCubit>().state;
 
-              return DailyStructures(
-                isLoading: state.isInitialOrLoading,
-                structures: cubit.getSortedStructures(displaySetting),
-                structuresOfADay: state.structuresOfADay,
+              final availableStructures = cubit.getAvailableStructures();
+              final buildUnavailableStructures = displaySetting.isAll;
+              final unavailableStructures = buildUnavailableStructures
+                  ? cubit.getUnavailableStructures()
+                  : <Structure>[];
+              final buildDivider = unavailableStructures.isNotEmpty &&
+                  availableStructures.isNotEmpty;
+
+              return SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    DailyStructures(
+                      isLoading: state.isInitialOrLoading,
+                      structures: cubit.getAvailableStructures(),
+                    ),
+                    if (buildDivider)
+                      const Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                        child: Divider(),
+                      ),
+                    if (buildUnavailableStructures)
+                      DailyStructures(
+                        isLoading: state.isInitialOrLoading,
+                        structures: unavailableStructures,
+                        areStructuresAvailable: false,
+                      ),
+                  ],
+                ),
               );
             },
           ),

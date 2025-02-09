@@ -4,13 +4,13 @@ class DailyStructures extends StatelessWidget {
   const DailyStructures({
     required this.isLoading,
     this.structures = const [],
-    this.structuresOfADay = const [],
+    this.areStructuresAvailable = true,
     super.key,
   });
 
   final bool isLoading;
   final List<Structure> structures;
-  final List<StructureOfADay> structuresOfADay;
+  final bool areStructuresAvailable;
 
   @override
   Widget build(BuildContext context) {
@@ -23,63 +23,38 @@ class DailyStructures extends StatelessWidget {
           )
         : structures;
 
-    final currentWeekdayStructures =
-        cubit.getActiveStructures(structuresToDisplay);
-
-    final onlyEditableStructures =
-        cubit.getOnlyEditableStructures(structuresToDisplay);
-
-    final showDivider = currentWeekdayStructures.isNotEmpty &&
-        onlyEditableStructures.isNotEmpty;
-
-    return SliverFixedExtentList(
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemExtent: 80,
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          if (showDivider && index == currentWeekdayStructures.length) {
-            return const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5),
-              child: Divider(),
-            );
-          }
+      itemCount: structuresToDisplay.length,
+      itemBuilder: (context, index) {
+        final structure = structuresToDisplay[index];
 
-          final currentIndex =
-              showDivider && index > currentWeekdayStructures.length
-                  ? index - 1
-                  : index;
+        return Padding(
+          key: ValueKey(structure.id),
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          child: Skeletonizer(
+            enabled: isLoading,
+            child: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
+              buildWhen: (previous, current) =>
+                  previous.structuresOfADay != current.structuresOfADay,
+              builder: (context, state) {
+                final structureOfADay = cubit.getStructureOfADay(structure);
 
-          final structure = index < currentWeekdayStructures.length
-              ? currentWeekdayStructures[index]
-              : onlyEditableStructures[
-                  currentIndex - currentWeekdayStructures.length];
-
-          return Padding(
-            key: ValueKey(structure.id),
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Skeletonizer(
-              enabled: isLoading,
-              child: BlocBuilder<DailyStructuresCubit, DailyStructuresState>(
-                buildWhen: (previous, current) =>
-                    previous.structuresOfADay != current.structuresOfADay,
-                builder: (context, state) {
-                  final structureOfADay = cubit.getStructureOfADay(structure);
-
-                  return DailyStructure(
-                    key: ValueKey(structureOfADay?.id ?? structure.id),
-                    structure: structure,
-                    structureOfADay: structureOfADay,
-                    date: state.date,
-                    isEditableOnly: cubit.canStructureOnlyBeEdited(structure),
-                  );
-                },
-              ),
+                return DailyStructure(
+                  key: ValueKey(structureOfADay?.id ?? structure.id),
+                  structure: structure,
+                  structureOfADay: structureOfADay,
+                  date: state.date,
+                  isEditableOnly: !areStructuresAvailable,
+                  isStarted: cubit.isStructureStarted(structure),
+                );
+              },
             ),
-          );
-        },
-        childCount: showDivider
-            ? structuresToDisplay.length + 1 // +1 for divider
-            : structuresToDisplay.length,
-      ),
+          ),
+        );
+      },
     );
   }
 }

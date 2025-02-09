@@ -18,6 +18,7 @@ void main() {
             title: 'Test Structure',
             description: 'Test Description',
           ),
+          isStarted: false,
         ),
       );
 
@@ -44,6 +45,7 @@ void main() {
             id: '1',
             structureId: '1',
           ),
+          isStarted: true,
         ),
       );
 
@@ -70,6 +72,7 @@ void main() {
             id: '1',
             structureId: '1',
           ),
+          isStarted: true,
         ),
       );
 
