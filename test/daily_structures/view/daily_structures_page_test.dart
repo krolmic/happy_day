@@ -34,6 +34,7 @@ void main() {
         Structure.empty(),
         Structure.empty(),
       ];
+
       final state = DailyStructuresState(
         structuresStatus: DailyStructuresStatus.success,
         structures: structures,
@@ -41,20 +42,17 @@ void main() {
         structuresOfADayStatus: StructuresOfADayStatus.success,
         structuresOfADay: [],
       );
+
       when(() => structuresDisplaySettingCubit.state)
           .thenReturn(StructuresDisplaySettingState.all);
       when(() => dailyStructuresCubit.state).thenReturn(state);
-      when(
-        () => dailyStructuresCubit.getSortedStructures(
-          StructuresDisplaySettingState.all,
-        ),
-      ).thenReturn(structures);
-      when(() => dailyStructuresCubit.getActiveStructures(any()))
+      when(() => dailyStructuresCubit.getAvailableStructures())
           .thenReturn(structures);
-      when(() => dailyStructuresCubit.getOnlyEditableStructures(any()))
+      when(() => dailyStructuresCubit.getUnavailableStructures())
           .thenReturn([]);
-      when(() => dailyStructuresCubit.canStructureOnlyBeEdited(any()))
+      when(() => dailyStructuresCubit.isStructureStarted(any()))
           .thenReturn(false);
+
       await tester.pumpApp(
         MultiBlocProvider(
           providers: [
@@ -68,7 +66,7 @@ void main() {
           child: const DailyStructuresView(),
         ),
       );
-      expect(find.byType(DailyStructures), findsOneWidget);
+      expect(find.byType(DailyStructures), findsExactly(2));
     });
   });
 }

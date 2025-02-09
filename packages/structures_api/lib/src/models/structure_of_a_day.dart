@@ -46,4 +46,10 @@ class StructureOfADay with _$StructureOfADay {
 
   /// Whether the structure of a day is completed.
   bool get isCompleted => completedStepsIds.length >= stepsIds.length;
+
+  /// The number of completed steps assigned to the structure of a day.
+  int get completedStepsCount => completedStepsIds.length;
+
+  /// Total number of steps assigned to the structure of a day.
+  int get totalStepsCount => stepsIds.length;
 }

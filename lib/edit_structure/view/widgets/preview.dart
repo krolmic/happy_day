@@ -12,12 +12,23 @@ class Preview extends StatelessWidget {
           previous.title != current.title ||
           previous.description != current.description,
       builder: (context, state) {
+        final color = state.color;
+
+        final previewStructure = Structure(
+          id: 'preview',
+          title: state.title,
+          description: state.description,
+          colorRed: (color.r * 255).toInt(),
+          colorGreen: (color.g * 255).toInt(),
+          colorBlue: (color.b * 255).toInt(),
+        );
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Label(
               text: l10n.editStructurePreviewLabel,
-              color: state.color,
+              color: color,
             ),
             const SizedBox(
               height: 10,
@@ -25,14 +36,8 @@ class Preview extends StatelessWidget {
             DailyStructure(
               date: DateTime.now(),
               isDisabled: true,
-              structure: Structure(
-                id: 'preview',
-                title: state.title,
-                description: state.description,
-                colorRed: (state.color.r * 255).toInt(),
-                colorGreen: (state.color.g * 255).toInt(),
-                colorBlue: (state.color.b * 255).toInt(),
-              ),
+              isStarted: false,
+              structure: previewStructure,
             ),
           ],
         );

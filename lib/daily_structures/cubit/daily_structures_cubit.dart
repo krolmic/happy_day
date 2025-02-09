@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_fimber/flutter_fimber.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:happy_day/daily_structures/cubit/structures_display_setting_cubit.dart';
 import 'package:happy_day/daily_structures/daily_structures.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
@@ -188,31 +187,20 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
     );
   }
 
-  bool canStructureOnlyBeEdited(Structure structure) {
-    return _availabilityService.canStructureOnlyBeEdited(
-      structure,
+  List<Structure> getAvailableStructures() {
+    return _availabilityService.getAvailableStructures(
+      state.structures,
       state.date,
       state.structuresOfADay,
     );
   }
 
-  List<Structure> getSortedStructures(
-    StructuresDisplaySettingState displaySetting,
-  ) {
-    return _availabilityService.getSortedStructures(
-      structures: state.structures,
-      date: state.date,
-      structuresOfDay: state.structuresOfADay,
-      returnAllStructures: displaySetting == StructuresDisplaySettingState.all,
+  List<Structure> getUnavailableStructures() {
+    return _availabilityService.getUnavailableStructures(
+      state.structures,
+      state.date,
+      state.structuresOfADay,
     );
-  }
-
-  List<Structure> getActiveStructures(List<Structure> structures) {
-    return structures.where((s) => !canStructureOnlyBeEdited(s)).toList();
-  }
-
-  List<Structure> getOnlyEditableStructures(List<Structure> structures) {
-    return structures.where(canStructureOnlyBeEdited).toList();
   }
 
   @override

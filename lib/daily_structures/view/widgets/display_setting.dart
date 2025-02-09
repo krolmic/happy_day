@@ -14,18 +14,20 @@ class DisplaySetting extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return SegmentedButton<StructuresDisplaySettingState>(
-      style: SegmentedButton.styleFrom(
-        side: const BorderSide(color: HappyDayTheme.primaryColor),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-        ),
-        backgroundColor: Colors.transparent,
-        selectedBackgroundColor: HappyDayTheme.primaryColor,
-        selectedForegroundColor: Colors.white,
-        foregroundColor: HappyDayTheme.primaryColor,
-        iconColor: Colors.white,
+    final segmentedButtonStyle = SegmentedButton.styleFrom(
+      side: const BorderSide(color: HappyDayTheme.primaryColor),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
+      backgroundColor: Colors.transparent,
+      selectedBackgroundColor: HappyDayTheme.primaryColor,
+      selectedForegroundColor: Colors.white,
+      foregroundColor: HappyDayTheme.primaryColor,
+      iconColor: Colors.white,
+    );
+
+    return SegmentedButton<StructuresDisplaySettingState>(
+      style: segmentedButtonStyle,
       segments: <ButtonSegment<StructuresDisplaySettingState>>[
         ButtonSegment<StructuresDisplaySettingState>(
           value: StructuresDisplaySettingState.all,

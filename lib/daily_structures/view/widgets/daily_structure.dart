@@ -4,6 +4,7 @@ class DailyStructure extends StatelessWidget {
   const DailyStructure({
     required this.structure,
     required this.date,
+    required this.isStarted,
     this.structureOfADay,
     this.isDisabled = false,
     this.isEditableOnly = false,
@@ -12,30 +13,38 @@ class DailyStructure extends StatelessWidget {
 
   final Structure structure;
   final StructureOfADay? structureOfADay;
+  final DateTime date;
+  final bool isStarted;
   final bool isDisabled;
   final bool isEditableOnly;
-  final DateTime date;
+
+  Color get color =>
+      isEditableOnly ? structure.color.withValues(alpha: 0.5) : structure.color;
+
+  int get _completedStepsCount => structureOfADay?.completedStepsCount ?? 0;
+
+  int get _completedStepsCountToBuild =>
+      _completedStepsCount > _totalStepsCountToBuild
+          ? _totalStepsCountToBuild
+          : _completedStepsCount;
+
+  int get _totalStepsCountToBuild =>
+      structureOfADay?.totalStepsCount ?? structure.totalStepsCount;
 
   @override
   Widget build(BuildContext context) {
-    final isStarted = structureOfADay != null;
-    final completedStepsCount = structureOfADay?.completedStepsIds.length ?? 0;
-    final totalStepsCount =
-        structureOfADay?.stepsIds.length ?? structure.stepsIds.length;
-    // If new steps were added to the structure and the structure was started
-    // previously, daily completed steps may be greater than total steps count.
-    final completedStepsCountToBuild = completedStepsCount > totalStepsCount
-        ? totalStepsCount
-        : completedStepsCount;
+    final completedStepsCountToBuild = _completedStepsCountToBuild;
+    final totalStepsCountToBuild = _totalStepsCountToBuild;
 
     final buildCheckIconButton =
-        isStarted && completedStepsCountToBuild == totalStepsCount;
+        isStarted && completedStepsCountToBuild == totalStepsCountToBuild;
     final buildAddIconButton = !isStarted && !buildCheckIconButton;
     final buildIconButton = buildCheckIconButton || buildAddIconButton;
 
-    final color = isEditableOnly
-        ? structure.color.withValues(alpha: 0.5)
-        : structure.color;
+    final colorToBuild = color;
+
+    final subtitle = structure.hasDescription ? structure.description! : '-';
+    const trailingSize = 50.0;
 
     return ListTile(
       tileColor: color.withValues(alpha: 0.25),
@@ -64,22 +73,22 @@ class DailyStructure extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          color: color,
+          color: colorToBuild,
           fontWeight: FontWeight.w700,
         ),
       ),
       subtitle: Text(
-        structure.hasDescription ? structure.description! : '-',
+        subtitle,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          color: color,
+          color: colorToBuild,
           fontWeight: FontWeight.w500,
         ),
       ),
       trailing: SizedBox(
-        width: 50,
-        height: 50,
+        width: trailingSize,
+        height: trailingSize,
         child: buildIconButton
             ? _StructureIconButton(
                 isCompleted: buildCheckIconButton,
@@ -88,12 +97,12 @@ class DailyStructure extends StatelessWidget {
                 isDisabled: isDisabled,
                 isEditableOnly: isEditableOnly,
                 date: date,
-                color: color,
+                color: colorToBuild,
               )
             : _StructureProgress(
                 completedStepsCount: completedStepsCountToBuild,
-                totalStepsCount: totalStepsCount,
-                color: color,
+                totalStepsCount: totalStepsCountToBuild,
+                color: colorToBuild,
               ),
       ),
     );
@@ -203,9 +212,21 @@ class _StructureProgressState extends State<_StructureProgress> {
     super.dispose();
   }
 
+  Text getText() {
+    return Text(
+      '${widget.completedStepsCount} / ${widget.totalStepsCount}',
+      style: TextStyle(
+        fontSize: 10,
+        color: widget.color,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final progressColor = widget.color.withValues(alpha: 0.75);
+    const strokeWidth = 4.0;
 
     return Container(
       decoration: BoxDecoration(
@@ -215,23 +236,17 @@ class _StructureProgressState extends State<_StructureProgress> {
       margin: const EdgeInsets.all(1),
       child: SimpleCircularProgressBar(
         backColor: theme.colorScheme.surface,
-        progressColors: [widget.color.withValues(alpha: 0.75)],
+        progressColors: [progressColor],
         animationDuration: 1,
         valueNotifier: _progressNotifier,
         maxValue: widget.totalStepsCount.toDouble(),
-        backStrokeWidth: 4,
-        progressStrokeWidth: 4,
-        fullProgressColor: widget.color.withValues(alpha: 0.75),
+        backStrokeWidth: strokeWidth,
+        progressStrokeWidth: strokeWidth,
+        fullProgressColor: progressColor,
         size: 50,
         mergeMode: true,
         onGetText: (double value) {
-          return Text(
-            '${widget.completedStepsCount} / ${widget.totalStepsCount}',
-            style: TextStyle(
-              fontSize: 10,
-              color: widget.color,
-            ),
-          );
+          return getText();
         },
       ),
     );

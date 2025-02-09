@@ -45,4 +45,7 @@ class Structure with _$Structure {
 
   /// Whether the given weekday is assigned to the structure.
   bool isAssignedToWeekDay(int weekDayIndex) => weekDays[weekDayIndex];
+
+  /// Total number of steps assigned to the structure.
+  int get totalStepsCount => stepsIds.length;
 }
