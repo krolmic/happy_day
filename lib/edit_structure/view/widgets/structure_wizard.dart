@@ -84,6 +84,8 @@ class StructureWizardState extends State<StructureWizard> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.structureWizardColors;
+
     return Column(
       children: [
         Expanded(
@@ -126,8 +128,8 @@ class StructureWizardState extends State<StructureWizard> {
                     icon: Icon(
                       Icons.arrow_back,
                       color: isEnabled
-                          ? HappyDayTheme.secondaryColor
-                          : HappyDayTheme.secondaryColorWithTransparency,
+                          ? colors.enabledControllsColor
+                          : colors.disabledControllsColor,
                     ),
                   );
                 },
@@ -156,8 +158,8 @@ class StructureWizardState extends State<StructureWizard> {
                                 ? Icons.check
                                 : Icons.arrow_forward,
                             color: isEnabled
-                                ? HappyDayTheme.secondaryColor
-                                : HappyDayTheme.secondaryColorWithTransparency,
+                                ? colors.enabledControllsColor
+                                : colors.disabledControllsColor,
                           ),
                   );
                 },
@@ -201,4 +203,64 @@ class StructureWizardPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class StructureWizardColors extends ThemeExtension<StructureWizardColors> {
+  StructureWizardColors({
+    required this.enabledControllsColor,
+    required this.disabledControllsColor,
+  });
+
+  StructureWizardColors.light()
+      : this(
+          enabledControllsColor: HappyDayTheme.secondaryColor,
+          disabledControllsColor: HappyDayTheme.secondaryColorWithTransparency,
+        );
+
+  StructureWizardColors.dark()
+      : this(
+          enabledControllsColor: Colors.white,
+          disabledControllsColor: Colors.white38,
+        );
+
+  final Color enabledControllsColor;
+  final Color disabledControllsColor;
+
+  @override
+  ThemeExtension<StructureWizardColors> copyWith({
+    Color? enabledControllsColor,
+    Color? disabledControllsColor,
+  }) {
+    return StructureWizardColors(
+      enabledControllsColor:
+          enabledControllsColor ?? this.enabledControllsColor,
+      disabledControllsColor:
+          disabledControllsColor ?? this.disabledControllsColor,
+    );
+  }
+
+  @override
+  ThemeExtension<StructureWizardColors> lerp(
+    ThemeExtension<StructureWizardColors>? other,
+    double t,
+  ) {
+    if (other is! StructureWizardColors) return this;
+    return StructureWizardColors(
+      enabledControllsColor: Color.lerp(
+        enabledControllsColor,
+        other.enabledControllsColor,
+        t,
+      )!,
+      disabledControllsColor: Color.lerp(
+        disabledControllsColor,
+        other.disabledControllsColor,
+        t,
+      )!,
+    );
+  }
+}
+
+extension StructureWizardColorsExtension on BuildContext {
+  StructureWizardColors get structureWizardColors =>
+      Theme.of(this).extension<StructureWizardColors>()!;
 }

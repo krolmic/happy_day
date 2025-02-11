@@ -5,6 +5,7 @@ import 'package:happy_day/l10n/l10n.dart';
 import 'package:happy_day/settings/cubit/settings_cubit.dart';
 import 'package:happy_day/shared/toastification.dart';
 import 'package:happy_day/shared/widgets/loading_indicator.dart';
+import 'package:happy_day/theme/cubit/theme_cubit.dart';
 import 'package:wiredash/wiredash.dart';
 
 part 'widgets/contact_support_tile.dart';
@@ -83,6 +84,14 @@ class SettingsContent extends StatelessWidget {
             title: Text(l10n.termsOfService),
             trailing: const Icon(Icons.description_outlined),
             onTap: () {},
+          ),
+          ListTile(
+            key: const Key('darkMode'),
+            title: Text(l10n.darkMode),
+            trailing: Switch(
+              value: Theme.of(context).brightness == Brightness.dark,
+              onChanged: (value) => context.read<ThemeCubit>().toggleTheme(),
+            ),
           ),
         ],
       ),
