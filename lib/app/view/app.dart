@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:email_repository/email_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +52,10 @@ class App extends StatelessWidget {
             )..init(),
           ),
           BlocProvider(
-            create: (context) => ThemeCubit(),
+            create: (context) {
+              final brightness = PlatformDispatcher.instance.platformBrightness;
+              return ThemeCubit(isDark: brightness == Brightness.dark);
+            },
           ),
         ],
         child: const AppView(),
