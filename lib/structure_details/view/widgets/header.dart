@@ -21,7 +21,7 @@ class Header extends StatelessWidget {
           vertical: 30,
         ),
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.25),
+          color: color.withValues(alpha: 0.10),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

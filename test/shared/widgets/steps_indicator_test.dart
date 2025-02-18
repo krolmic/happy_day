@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:happy_day/shared/theme.dart';
 import 'package:happy_day/shared/widgets/steps_indicator.dart';
+import 'package:happy_day/theme/theme.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../../helpers/pump_app.dart';

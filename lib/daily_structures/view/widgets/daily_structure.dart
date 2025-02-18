@@ -33,6 +33,8 @@ class DailyStructure extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeIsDark = Theme.of(context).brightness == Brightness.dark;
+
     final completedStepsCountToBuild = _completedStepsCountToBuild;
     final totalStepsCountToBuild = _totalStepsCountToBuild;
 
@@ -47,7 +49,9 @@ class DailyStructure extends StatelessWidget {
     const trailingSize = 50.0;
 
     return ListTile(
-      tileColor: color.withValues(alpha: 0.25),
+      tileColor: themeIsDark
+          ? color.withValues(alpha: 0.1)
+          : color.withValues(alpha: 0.2),
       contentPadding: const EdgeInsets.symmetric(horizontal: 15),
       onTap: () {
         if (isDisabled) return;

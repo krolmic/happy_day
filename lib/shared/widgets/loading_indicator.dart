@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:happy_day/shared/theme.dart';
+import 'package:happy_day/theme/theme.dart';
 
 class LoadingIndicator extends StatelessWidget {
   const LoadingIndicator({
