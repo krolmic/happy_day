@@ -12,7 +12,7 @@ dependencies:
   easy_date_timeline: ^2.0.6
   email_repository:
     path: packages/email_repository
-  firebase_analytics: ^11.4.0
+  firebase_analytics: ^11.4.3
   firebase_core: ^3.10.1
   firebase_crashlytics: ^4.3.0
   firebase_vertexai: ^1.1.1
