@@ -1,6 +1,7 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:go_router/go_router.dart';
 import 'package:happy_day/daily_structures/cubit/structures_display_setting_cubit.dart';
 import 'package:happy_day/daily_structures/daily_structures.dart';
@@ -82,12 +83,57 @@ class DailyStructuresView extends StatelessWidget {
         body: const SafeArea(
           child: DailyStructuresContent(),
         ),
-        floatingActionButton: FloatingActionButton(
-          elevation: 0,
-          backgroundColor: HappyDayTheme.primaryColor,
-          onPressed: () => context.pushNamed(RoutesNames.editStructure),
-          child: const Icon(Icons.add),
+        floatingActionButton: ExpandableFab(
+          key: const ValueKey('expandable-fab'),
+          distance: 72,
+          fanAngle: 70,
+          type: ExpandableFabType.up,
+          overlayStyle: const ExpandableFabOverlayStyle(
+            blur: 2,
+          ),
+          openButtonBuilder: DefaultFloatingActionButtonBuilder(
+            child: const Icon(Icons.add),
+            foregroundColor: Colors.white,
+            backgroundColor: HappyDayTheme.primaryColor,
+            shape: const CircleBorder(),
+          ),
+          closeButtonBuilder: DefaultFloatingActionButtonBuilder(
+            child: const Icon(Icons.close),
+            fabSize: ExpandableFabSize.small,
+            foregroundColor: Colors.white,
+            backgroundColor: HappyDayTheme.primaryColor,
+            shape: const CircleBorder(),
+          ),
+          children: [
+            FloatingActionButton.small(
+              heroTag: 'weekday-fab',
+              elevation: 0,
+              backgroundColor: HappyDayTheme.primaryColor,
+              tooltip: context.l10n.addWeekdayStructure,
+              onPressed: () => context.pushNamed(RoutesNames.editStructure),
+              child: const Icon(Icons.calendar_view_week),
+            ),
+            FloatingActionButton.small(
+              heroTag: 'calendar-day-fab',
+              elevation: 0,
+              backgroundColor: HappyDayTheme.primaryColor,
+              tooltip: context.l10n.addCalendarDayStructure,
+              onPressed: () {
+                final selectedDay =
+                    context.read<DailyStructuresCubit>().state.date;
+                final parameters = EditCalendarStructureRouteParameters(
+                  selectedDay: selectedDay,
+                );
+                context.pushNamed(
+                  RoutesNames.editCalendarStructure,
+                  extra: parameters,
+                );
+              },
+              child: const Icon(Icons.calendar_month),
+            ),
+          ],
         ),
+        floatingActionButtonLocation: ExpandableFab.location,
       ),
     );
   }

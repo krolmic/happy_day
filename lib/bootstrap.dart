@@ -1,3 +1,5 @@
+import 'package:calendar_day_structures_api/calendar_day_structures_api.dart';
+import 'package:calendar_day_structures_repository/calendar_day_structures_repository.dart';
 import 'package:email_repository/email_repository.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -14,6 +16,7 @@ import 'package:wiredash/wiredash.dart';
 
 Future<void> bootstrap({
   required StructuresApi structuresApi,
+  required CalendarDayStructuresApi calendarDayStructuresApi,
   required StepsGenerationRepository stepsGenerationRepository,
   required OnboardingRepository onboardingRepository,
   required void Function(FlutterErrorDetails) onFatalError,
@@ -30,8 +33,15 @@ Future<void> bootstrap({
 
   Fimber.plantTree(logTree);
 
+  // Hive is already initialized in main_development.dart
+
   final structuresRepository =
       StructuresRepository(structuresApi: structuresApi);
+
+  final calendarDayStructuresRepository = CalendarDayStructuresRepository(
+    calendarDayStructuresApi: calendarDayStructuresApi,
+  );
+
   const emailRepository = EmailRepository();
 
   if (sendCrashlyticsReports) {
@@ -53,6 +63,7 @@ Future<void> bootstrap({
       secret: wiredashSecret,
       child: App(
         structuresRepository: structuresRepository,
+        calendarDayStructuresRepository: calendarDayStructuresRepository,
         stepsGenerationRepository: stepsGenerationRepository,
         onboardingRepository: onboardingRepository,
         emailRepository: emailRepository,

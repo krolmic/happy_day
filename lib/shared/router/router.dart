@@ -13,6 +13,8 @@ import 'package:happy_day/structure_details/view/structure_details_page.dart';
 import 'package:structures_api/structures_api.dart';
 
 part 'routes/daily_structures.dart';
+part 'routes/edit_calendar_structure.dart';
+part 'routes/edit_calendar_structure_parameters.dart';
 part 'routes/edit_structure.dart';
 part 'routes/onboarding.dart';
 part 'routes/settings.dart';
@@ -26,6 +28,7 @@ final goRouter = GoRouter(
     _dailyStructuresRoute,
     _structureDetailsRoute,
     _editStructureRoute,
+    _editCalendarStructureRoute,
     _settingsRoute,
   ],
 );
