@@ -44,5 +44,8 @@
     "saturdayShort": "Sa",
     "sundayShort": "Su",
     "all": "All",
-    "weekday": "Weekday"
+    "weekday": "Weekday",
+    "calendarDayStructure": "Calendar Day Structure",
+    "addWeekdayStructure": "Add Weekday Structure",
+    "addCalendarDayStructure": "Add Calendar Day Structure"
 }
