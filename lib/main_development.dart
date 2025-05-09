@@ -27,7 +27,6 @@ Future<void> main() async {
     plugin: sharedPreferences,
   );
 
-  // Now open the box after Hive is properly initialized
   final calendarDayStructuresBox = await Hive.openBox<String>(
     'calendar_day_structures_box',
   );

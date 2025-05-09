@@ -33,8 +33,6 @@ Future<void> bootstrap({
 
   Fimber.plantTree(logTree);
 
-  // Hive is already initialized in main_development.dart
-
   final structuresRepository =
       StructuresRepository(structuresApi: structuresApi);
 
