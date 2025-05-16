@@ -7,6 +7,8 @@ class HappyDayTheme {
   static const primaryColor = Color(0xFF6a61f0);
   static Color primaryColorWithTransparency =
       primaryColor.withValues(alpha: 0.1);
+  static Color primaryColorAlmostTransparent =
+      primaryColor.withValues(alpha: 0.05);
   static const secondaryColor = Color(0xFF282828);
   static Color secondaryColorWithTransparency =
       secondaryColor.withValues(alpha: 0.3);
@@ -54,6 +56,9 @@ class HappyDayTheme {
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: primaryColor,
         foregroundColor: foregroundColorOnPrimary,
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: primaryColorAlmostTransparent,
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(

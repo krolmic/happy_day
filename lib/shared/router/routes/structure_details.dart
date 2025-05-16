@@ -2,7 +2,7 @@ part of '../router.dart';
 
 final _structureDetailsRoute = GoRoute(
   name: RoutesNames.structureDetails,
-  path: '/${RoutesNames.structureDetails}',
+  path: RoutesNames.structureDetails,
   builder: (context, state) {
     final parameters = StructureDetailsRouteParameters.fromState(state);
     return StructureDetailsPage(

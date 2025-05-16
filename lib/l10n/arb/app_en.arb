@@ -8,6 +8,8 @@
     "onboardingDescriptionGenerate": "Simplify planning with AI-powered suggestions tailored just for you.",
     "onboardingHeadingTrack": "Build Habits That Stick",
     "onboardingDescriptionTrack": "Track your progress, stay consistent, and complete tasks with ease.",
+    "manage": "Manage",
+    "timeline": "Timeline",
     "editStructureAddAppBarTitle": "New Structure",
     "editStructureTitleLabel": "Title",
     "editStructureTitleHint": "Required structure name",
@@ -44,8 +46,5 @@
     "saturdayShort": "Sa",
     "sundayShort": "Su",
     "all": "All",
-    "weekday": "Weekday",
-    "calendarDayStructure": "Calendar Day Structure",
-    "addWeekdayStructure": "Add Weekday Structure",
-    "addCalendarDayStructure": "Add Calendar Day Structure"
+    "weekday": "Weekday"
 }
