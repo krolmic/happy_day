@@ -8,6 +8,8 @@
     "onboardingDescriptionGenerate": "Simplifica la planificación con sugerencias impulsadas por IA hechas para ti.",
     "onboardingHeadingTrack": "Construye hábitos que perduren",
     "onboardingDescriptionTrack": "Sigue tu progreso, mantente constante y completa tareas con facilidad.",
+    "manage": "Gestionar",
+    "timeline": "Cronograma",
     "editStructureAddAppBarTitle": "Añadir estructura",
     "editStructureTitleLabel": "Título",
     "editStructureTitleHint": "Obligatorio, nombre de la estructura",
