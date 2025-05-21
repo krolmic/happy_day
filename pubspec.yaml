@@ -46,6 +46,12 @@ dependencies:
     path: packages/structures_api
   structures_repository:
     path: packages/structures_repository
+  reviews_api:
+    path: packages/reviews_api
+  reviews_repository:
+    path: packages/reviews_repository
+  local_reviews_api:
+    path: packages/local_reviews_api
   toastification: ^2.3.0
   wiredash: ^2.4.0
 

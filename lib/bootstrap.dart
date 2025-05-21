@@ -10,10 +10,13 @@ import 'package:path_provider/path_provider.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_api/structures_api.dart';
 import 'package:structures_repository/structures_repository.dart';
+import 'package:reviews_api/reviews_api.dart';
+import 'package:reviews_repository/reviews_repository.dart';
 import 'package:wiredash/wiredash.dart';
 
 Future<void> bootstrap({
   required StructuresApi structuresApi,
+  required ReviewsApi reviewsApi,
   required StepsGenerationRepository stepsGenerationRepository,
   required OnboardingRepository onboardingRepository,
   required void Function(FlutterErrorDetails) onFatalError,
@@ -32,6 +35,7 @@ Future<void> bootstrap({
 
   final structuresRepository =
       StructuresRepository(structuresApi: structuresApi);
+  final reviewsRepository = ReviewsRepository(reviewsApi: reviewsApi);
   const emailRepository = EmailRepository();
 
   if (sendCrashlyticsReports) {
@@ -53,6 +57,7 @@ Future<void> bootstrap({
       secret: wiredashSecret,
       child: App(
         structuresRepository: structuresRepository,
+        reviewsRepository: reviewsRepository,
         stepsGenerationRepository: stepsGenerationRepository,
         onboardingRepository: onboardingRepository,
         emailRepository: emailRepository,

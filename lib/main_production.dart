@@ -7,6 +7,7 @@ import 'package:happy_day/bootstrap.dart';
 import 'package:happy_day/firebase_options_prod.dart';
 import 'package:happy_day/shared/logging.dart';
 import 'package:local_storage_structures_api/local_storage_structures_api.dart';
+import 'package:local_reviews_api/local_reviews_api.dart';
 import 'package:onboarding_repository/onboarding_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
@@ -21,6 +22,9 @@ Future<void> main() async {
   );
 
   final structuresApi = LocalStorageStructuresApi(
+    plugin: sharedPreferences,
+  );
+  final reviewsApi = LocalReviewsApi(
     plugin: sharedPreferences,
   );
 
@@ -40,6 +44,7 @@ Future<void> main() async {
 
   return bootstrap(
     structuresApi: structuresApi,
+    reviewsApi: reviewsApi,
     stepsGenerationRepository: stepsGenerationRepository,
     onboardingRepository: onboardingRepository,
     onFatalError: FirebaseCrashlytics.instance.recordFlutterFatalError,
