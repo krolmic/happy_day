@@ -44,5 +44,18 @@
     "saturdayShort": "So",
     "sundayShort": "Ni",
     "all": "Wszystkie",
-    "weekday": "Dzień tygodnia"
+    "weekday": "Dzień tygodnia",
+    "weeklyReview": "Przegląd tygodnia",
+    "weeklyReviewInfo": "Napisz krótkie podsumowanie tygodnia",
+    "done": "Zrobione",
+    "inProgress": "W trakcie",
+    "ongoing": "Trwające",
+    "daysTracked": "Dni śledzone",
+    "whatIDidGreat": "Co zrobiłem świetnie",
+    "learnings": "Nauka",
+    "start": "Start",
+    "keep": "Kontynuuj",
+    "stop": "Zatrzymaj",
+    "weeklyTargets": "Cele tygodnia",
+    "ok": "OK"
 }

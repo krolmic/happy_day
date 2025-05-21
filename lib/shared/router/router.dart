@@ -10,6 +10,7 @@ import 'package:happy_day/onboarding/view/onboarding_page.dart';
 import 'package:happy_day/settings/settings.dart';
 import 'package:happy_day/shared/router/routes_names.dart';
 import 'package:happy_day/structure_details/view/structure_details_page.dart';
+import 'package:happy_day/weekly_review/view/weekly_review_page.dart';
 import 'package:structures_api/structures_api.dart';
 
 part 'routes/daily_structures.dart';
@@ -17,6 +18,7 @@ part 'routes/edit_structure.dart';
 part 'routes/onboarding.dart';
 part 'routes/settings.dart';
 part 'routes/structure_details.dart';
+part 'routes/weekly_review.dart';
 
 final goRouter = GoRouter(
   initialLocation: '/${RoutesNames.onboarding}',
@@ -26,6 +28,7 @@ final goRouter = GoRouter(
     _dailyStructuresRoute,
     _structureDetailsRoute,
     _editStructureRoute,
+    _weeklyReviewRoute,
     _settingsRoute,
   ],
 );
