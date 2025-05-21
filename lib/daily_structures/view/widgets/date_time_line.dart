@@ -114,9 +114,9 @@ class DateTimeLineColors extends ThemeExtension<DateTimeLineColors> {
           inactiveDayTextColor: HappyDayTheme.primaryColor,
           inactiveDayColor: HappyDayTheme.primaryColor.withValues(alpha: 0.2),
           disabledDayTextColor: Colors.black26,
-          todayTextColor: HappyDayTheme.foregroundColorOnPrimary,
+          todayTextColor: HappyDayTheme.primaryColor,
           todayBorderColor: HappyDayTheme.primaryColor,
-          todayColor: HappyDayTheme.primaryColor,
+          todayColor: HappyDayTheme.primaryColor.withValues(alpha: 0.2),
         );
 
   DateTimeLineColors.dark()
