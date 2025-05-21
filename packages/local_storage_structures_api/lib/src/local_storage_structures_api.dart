@@ -178,7 +178,7 @@ class LocalStorageStructuresApi extends StructuresApi {
             )
             .toList()
           ..removeWhere((s) => s.structureId == structureId);
-        return _setValue(key, json.encode(structuresOfADay));
+        await _setValue(key, json.encode(structuresOfADay));
       }
     }
   }
