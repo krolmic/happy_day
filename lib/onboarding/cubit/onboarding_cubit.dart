@@ -20,7 +20,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       if (isCompleted) {
         emit(const OnboardingState.completed());
       }
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to init onboarding',
         ex: error,
@@ -35,7 +35,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     try {
       await _onboardingRepository.completeOnboarding();
       emit(const OnboardingState.completed());
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to complete onboarding',
         ex: error,

@@ -109,11 +109,11 @@ class LocalStorageStructuresApi extends StructuresApi {
 
   @override
   Stream<List<Structure>> getStructures() =>
-      _structuresStreamController.asBroadcastStream();
+      _structuresStreamController.stream;
 
   @override
   Stream<List<StructureOfADay>> getStructuresOfADay() =>
-      _structuresOfADayStreamController.asBroadcastStream();
+      _structuresOfADayStreamController.stream;
 
   @override
   Future<void> saveStructureOfADay(StructureOfADay structureOfADay) async {
@@ -178,9 +178,13 @@ class LocalStorageStructuresApi extends StructuresApi {
             )
             .toList()
           ..removeWhere((s) => s.structureId == structureId);
-        return _setValue(key, json.encode(structuresOfADay));
+        await _setValue(key, json.encode(structuresOfADay));
       }
     }
+
+    final updated = [..._structuresOfADayStreamController.value]
+      ..removeWhere((s) => s.structureId == structureId);
+    _structuresOfADayStreamController.add(updated);
   }
 
   @override
