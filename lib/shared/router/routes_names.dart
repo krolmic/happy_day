@@ -6,4 +6,5 @@ class RoutesNames {
   static const String editStructure = 'edit-structure';
   static const String structureDetails = 'structure-details';
   static const String settings = 'settings';
+  static const String weeklyReview = 'weekly-review';
 }

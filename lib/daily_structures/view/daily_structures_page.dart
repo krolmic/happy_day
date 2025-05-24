@@ -74,6 +74,10 @@ class DailyStructuresView extends StatelessWidget {
         appBar: AppBar(
           actions: [
             IconButton(
+              onPressed: () => context.pushNamed(RoutesNames.weeklyReview),
+              icon: const Icon(Icons.calendar_view_week),
+            ),
+            IconButton(
               onPressed: () => context.pushNamed(RoutesNames.settings),
               icon: const Icon(Icons.settings_outlined),
             ),

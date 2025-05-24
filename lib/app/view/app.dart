@@ -11,11 +11,13 @@ import 'package:happy_day/theme/theme.dart';
 import 'package:onboarding_repository/onboarding_repository.dart';
 import 'package:steps_generation_repository/steps_generation_repository.dart';
 import 'package:structures_repository/structures_repository.dart';
+import 'package:reviews_repository/reviews_repository.dart';
 import 'package:toastification/toastification.dart';
 
 class App extends StatelessWidget {
   const App({
     required this.structuresRepository,
+    required this.reviewsRepository,
     required this.stepsGenerationRepository,
     required this.onboardingRepository,
     required this.emailRepository,
@@ -23,6 +25,7 @@ class App extends StatelessWidget {
   });
 
   final StructuresRepository structuresRepository;
+  final ReviewsRepository reviewsRepository;
   final StepsGenerationRepository stepsGenerationRepository;
   final OnboardingRepository onboardingRepository;
   final EmailRepository emailRepository;
@@ -36,6 +39,9 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider.value(
           value: stepsGenerationRepository,
+        ),
+        RepositoryProvider.value(
+          value: reviewsRepository,
         ),
         RepositoryProvider.value(
           value: onboardingRepository,

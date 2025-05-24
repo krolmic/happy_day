@@ -44,5 +44,18 @@
     "saturdayShort": "Sa",
     "sundayShort": "Su",
     "all": "All",
-    "weekday": "Weekday"
+    "weekday": "Weekday",
+    "weeklyReview": "Weekly review",
+    "weeklyReviewInfo": "Write a short summary of your week",
+    "done": "Done",
+    "inProgress": "In Progress",
+    "ongoing": "Ongoing",
+    "daysTracked": "Days tracked",
+    "whatIDidGreat": "What I did great",
+    "learnings": "Learnings",
+    "start": "Start",
+    "keep": "Keep",
+    "stop": "Stop",
+    "weeklyTargets": "Weekly targets",
+    "ok": "OK"
 }
