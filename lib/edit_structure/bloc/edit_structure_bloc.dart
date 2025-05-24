@@ -77,7 +77,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
   ) {
     try {
       emit(state.copyWith(title: title));
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to change title',
         ex: error,
@@ -92,7 +92,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
   ) {
     try {
       emit(state.copyWith(description: description));
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to change description',
         ex: error,
@@ -107,7 +107,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
   ) {
     try {
       emit(state.copyWith(color: color));
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to change color',
         ex: error,
@@ -124,7 +124,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
       final weekDays = List<bool>.from(state.weekDays);
       weekDays[index] = !weekDays[index];
       emit(state.copyWith(weekDays: weekDays));
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to change week day',
         ex: error,
@@ -153,7 +153,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
       await _structuresRepository.saveStructure(structure, state.steps);
 
       emit(state.copyWith(editStatus: EditStructureStatus.success));
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to submit structure',
         ex: error,
@@ -176,7 +176,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
 
         emit(state.copyWith(deletionStatus: StructureDeletionStatus.success));
       }
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to delete structure',
         ex: error,
@@ -210,7 +210,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
           ),
         );
       }
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to generate steps',
         ex: error,
@@ -243,7 +243,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
               .toList(),
         ),
       );
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to change step',
         ex: error,
@@ -262,7 +262,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
           steps: List.from(state.steps)..removeAt(index),
         ),
       );
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to remove step',
         ex: error,
@@ -281,7 +281,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
             ..insert(state.steps.length, StructureStep.empty()),
         ),
       );
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to add step',
         ex: error,
@@ -301,7 +301,7 @@ class EditStructureBloc extends Bloc<EditStructureEvent, EditStructureState> {
       steps[oldIndex] = steps[newIndex];
       steps[newIndex] = temp;
       emit(state.copyWith(steps: steps));
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Fimber.e(
         'Failed to reorder step',
         ex: error,
