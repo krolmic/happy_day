@@ -39,7 +39,7 @@ class SettingsCubit extends Cubit<SettingsState> {
           sendEmailState: const SendEmailState.success(),
         ),
       );
-    } catch (e, stackTrace) {
+    } on Exception catch (e, stackTrace) {
       Fimber.e('Sending email failed', ex: e, stacktrace: stackTrace);
 
       emit(

@@ -86,7 +86,7 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
 
     try {
       _structuresRepository.loadStructuresOfADay(state.date);
-    } catch (e, stackTrace) {
+    } on Exception catch (e, stackTrace) {
       Fimber.e(
         'Failed to load structures of a day',
         ex: e,
@@ -111,7 +111,7 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
       );
 
       _structuresRepository.loadStructuresOfADay(date);
-    } catch (e, stackTrace) {
+    } on Exception catch (e, stackTrace) {
       Fimber.e(
         'Failed to set date',
         ex: e,
@@ -156,7 +156,7 @@ class DailyStructuresCubit extends Cubit<DailyStructuresState> {
           ),
         );
       }
-    } catch (e, stackTrace) {
+    } on Exception catch (e, stackTrace) {
       Fimber.e(
         'Failed to start structure',
         ex: e,

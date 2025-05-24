@@ -54,7 +54,7 @@ class StructureDetailsCubit extends Cubit<StructureDetailsState> {
           ),
         );
       }
-    } catch (e, stackTrace) {
+    } on Exception catch (e, stackTrace) {
       Fimber.e(
         'Failed to start structure',
         ex: e,
@@ -90,7 +90,7 @@ class StructureDetailsCubit extends Cubit<StructureDetailsState> {
           ),
         );
       }
-    } catch (e, stackTrace) {
+    } on Exception catch (e, stackTrace) {
       Fimber.e(
         'Failed to reset structure',
         ex: e,
@@ -156,7 +156,7 @@ class StructureDetailsCubit extends Cubit<StructureDetailsState> {
           ),
         );
       }
-    } catch (e, stackTrace) {
+    } on Exception catch (e, stackTrace) {
       Fimber.e(
         'Failed to save structure of a day step',
         ex: e,
