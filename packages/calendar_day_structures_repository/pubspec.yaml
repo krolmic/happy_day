@@ -1,0 +1,23 @@
+name: calendar_day_structures_repository
+description: Repository for accessing calendar day structures data.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  calendar_day_structures_api:
+    path: ../calendar_day_structures_api
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  rxdart: ^0.28.0
+  structures_api:
+    path: ../structures_api
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.0
+  very_good_analysis: ^6.0.0

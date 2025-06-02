@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:calendar_day_structures_repository/calendar_day_structures_repository.dart';
 import 'package:email_repository/email_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,7 @@ class App extends StatelessWidget {
     required this.stepsGenerationRepository,
     required this.onboardingRepository,
     required this.emailRepository,
+    required this.calendarDayStructuresRepository,
     super.key,
   });
 
@@ -26,6 +28,7 @@ class App extends StatelessWidget {
   final StepsGenerationRepository stepsGenerationRepository;
   final OnboardingRepository onboardingRepository;
   final EmailRepository emailRepository;
+  final CalendarDayStructuresRepository calendarDayStructuresRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,9 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider.value(
           value: emailRepository,
+        ),
+        RepositoryProvider.value(
+          value: calendarDayStructuresRepository,
         ),
       ],
       child: MultiBlocProvider(

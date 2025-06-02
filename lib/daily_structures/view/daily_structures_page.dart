@@ -70,23 +70,9 @@ class DailyStructuresView extends StatelessWidget {
           },
         ),
       ],
-      child: Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () => context.pushNamed(RoutesNames.settings),
-              icon: const Icon(Icons.settings_outlined),
-            ),
-          ],
-        ),
-        body: const SafeArea(
+      child: const Scaffold(
+        body: SafeArea(
           child: DailyStructuresContent(),
-        ),
-        floatingActionButton: FloatingActionButton(
-          elevation: 0,
-          backgroundColor: HappyDayTheme.primaryColor,
-          onPressed: () => context.pushNamed(RoutesNames.editStructure),
-          child: const Icon(Icons.add),
         ),
       ),
     );

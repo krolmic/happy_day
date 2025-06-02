@@ -14,16 +14,6 @@ class DateTimeLine extends StatelessWidget {
 
     return EasyDateTimeLine(
       initialDate: DateTime.now(),
-      disabledDates: () {
-        final now = DateTime.now();
-        final endOfYear = DateTime(now.year, 12, 31);
-        final daysUntilEndOfYear = endOfYear.difference(now).inDays;
-
-        return List.generate(
-          daysUntilEndOfYear,
-          (index) => now.add(Duration(days: index + 1)),
-        );
-      }(),
       headerProps: EasyHeaderProps(
         monthPickerType: MonthPickerType.switcher,
         dateFormatter: const DateFormatter.fullDateDMonthAsStrY(),

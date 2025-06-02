@@ -29,9 +29,16 @@ part 'widgets/title_field.dart';
 part 'widgets/weekdays_selection.dart';
 
 class EditStructurePage extends StatelessWidget {
-  const EditStructurePage({required this.initialStructure, super.key});
+  const EditStructurePage({
+    required this.initialStructure,
+    this.isStructureAssignedToWeekDay = true,
+    this.selectedDay,
+    super.key,
+  });
 
   final Structure? initialStructure;
+  final bool isStructureAssignedToWeekDay;
+  final DateTime? selectedDay;
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +49,23 @@ class EditStructurePage extends StatelessWidget {
         initialStructure: initialStructure,
         languageCode: context.languageCode,
       ),
-      child: const EditStructureView(),
+      child: EditStructureView(
+        isStructureAssignedToWeekDay: isStructureAssignedToWeekDay,
+        selectedDay: selectedDay,
+      ),
     );
   }
 }
 
 class EditStructureView extends StatelessWidget {
-  const EditStructureView({super.key});
+  const EditStructureView({
+    required this.isStructureAssignedToWeekDay,
+    this.selectedDay,
+    super.key,
+  });
+
+  final bool isStructureAssignedToWeekDay;
+  final DateTime? selectedDay;
 
   @override
   Widget build(BuildContext context) {
@@ -130,10 +147,12 @@ class EditStructureView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const WeekdaysSelection(),
-                    const SizedBox(
-                      height: 45,
-                    ),
+                    if (isStructureAssignedToWeekDay) ...[
+                      const WeekdaysSelection(),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                    ],
                     BlocBuilder<EditStructureBloc, EditStructureState>(
                       buildWhen: (previous, current) =>
                           previous.color != current.color,

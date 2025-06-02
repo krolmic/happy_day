@@ -8,6 +8,8 @@
     "onboardingDescriptionGenerate": "Vereinfache die Planung mit KI-gestützten Vorschlägen, die genau zu dir passen.",
     "onboardingHeadingTrack": "Gewohnheiten aufbauen, die bleiben",
     "onboardingDescriptionTrack": "Verfolge deinen Fortschritt, bleib konsequent und erledige Aufgaben mühelos.",
+    "manage": "Verwaltung",
+    "timeline": "Timeline",
     "editStructureAddAppBarTitle": "Neue Struktur",
     "editStructureTitleLabel": "Titel",
     "editStructureTitleHint": "Pflichtfeld, Titel der Struktur",
